@@ -60,12 +60,141 @@ function renderCell(cell) {
 
 function renderColumnHeader(column) {
   const keeperState = `${column.keeperCount} KEEP`;
-  return `<th class="team-header" scope="col" data-team-column="${escapeHtml(column.teamId)}">
-    <div class="slot-number">${escapeHtml(column.r1PickNumber)}</div>
-    <div class="team-name">${escapeHtml(column.teamName)}</div>
-    <div class="team-context">#${escapeHtml(column.previousFinish)} LAST SEASON</div>
-    <div class="team-state">${escapeHtml(keeperState)} · ${escapeHtml(column.stealDirection ?? "UNDECLARED")}</div>
+  const classes = ["team-header", column.isSelected ? "is-selected" : "", column.hasMoved ? "has-moved" : ""]
+    .filter(Boolean)
+    .join(" ");
+  return `<th class="${classes}" scope="col" data-team-column="${escapeHtml(column.teamId)}">
+    <button class="team-header-button" type="button" data-action="select-team" data-team-id="${escapeHtml(column.teamId)}" aria-label="Open ${escapeHtml(column.teamName)} scenario controls">
+      <div class="slot-number">${escapeHtml(column.r1PickNumber)}</div>
+      <div class="team-name">${escapeHtml(column.teamName)}</div>
+      <div class="team-context">#${escapeHtml(column.previousFinish)} LAST SEASON</div>
+      <div class="team-state">${escapeHtml(keeperState)} · ${escapeHtml(column.stealDirection ?? "UNDECLARED")}</div>
+    </button>
   </th>`;
+}
+
+function renderYahooMetadata(metadata) {
+  if (!metadata) return "";
+  const summary = [metadata.nbaTeamAbbreviation, positionLabel(metadata.displayPosition)]
+    .filter(Boolean)
+    .map(escapeHtml)
+    .join(" · ");
+  return `<div class="roster-meta">${summary}${metadata.oRank !== null ? ` · O-RANK ${escapeHtml(metadata.oRank)}` : ""}</div>`;
+}
+
+function renderCandidateStatus(candidate) {
+  const firstError = candidate.validation.find((item) => item.severity === "ERROR");
+  if (firstError) {
+    return `<div class="candidate-status is-error"><strong>INELIGIBLE</strong><span>${escapeHtml(firstError.message)}</span></div>`;
+  }
+  if (candidate.requiresEligibilityAssumption) {
+    return `<div class="candidate-status is-unresolved"><strong>UNRESOLVED</strong><span>Prior-year keeper status is unknown.</span></div>`;
+  }
+  if (candidate.assumedEligible) {
+    return `<div class="candidate-status is-assumed"><strong>SCENARIO ASSUMPTION</strong><span>Treated as eligible in this scenario only.</span></div>`;
+  }
+  return `<div class="candidate-status is-eligible"><strong>ELIGIBLE</strong><span>Finish and keeper-history checks pass.</span></div>`;
+}
+
+function renderCandidateAction(candidate, teamId) {
+  if (candidate.selected) {
+    return `<button class="row-action remove" type="button" data-action="remove-keeper" data-team-id="${escapeHtml(teamId)}" data-player-id="${escapeHtml(candidate.playerId)}">REMOVE</button>`;
+  }
+  if (candidate.deterministicError) {
+    return `<button class="row-action" type="button" disabled>INELIGIBLE</button>`;
+  }
+  if (candidate.requiresEligibilityAssumption) {
+    return `<button class="row-action assume" type="button" data-action="assume-eligible" data-player-id="${escapeHtml(candidate.playerId)}">ASSUME ELIGIBLE</button>`;
+  }
+  return `<div class="row-actions">
+    <button class="row-action" type="button" data-action="select-keeper" data-team-id="${escapeHtml(teamId)}" data-player-id="${escapeHtml(candidate.playerId)}">SELECT</button>
+    ${candidate.assumedEligible ? `<button class="clear-assumption" type="button" data-action="clear-assumption" data-player-id="${escapeHtml(candidate.playerId)}">CLEAR ASSUMPTION</button>` : ""}
+  </div>`;
+}
+
+function renderRosterRow(candidate, teamId) {
+  return `<li class="roster-row ${candidate.selected ? "is-selected" : ""}">
+    <div class="old-round">R${escapeHtml(candidate.oldRound)}</div>
+    <div class="roster-player">
+      <div class="roster-player-name">${escapeHtml(candidate.playerName)}</div>
+      ${renderYahooMetadata(candidate.yahooMetadata)}
+      <div class="cost-flow">${escapeHtml(candidate.costLabel)}${candidate.possibleResolvedCostRounds.length ? " · ASSIGNMENT UNRESOLVED" : ""}</div>
+      ${renderCandidateStatus(candidate)}
+    </div>
+    <div class="roster-action">${renderCandidateAction(candidate, teamId)}</div>
+  </li>`;
+}
+
+function renderTeamValidation(validation) {
+  if (validation.length === 0) return "";
+  return `<section class="drawer-section validation-list" aria-labelledby="team-validation-title">
+    <h3 id="team-validation-title">VALIDATION</h3>
+    ${validation
+      .map(
+        (item) => `<div class="validation-item ${escapeHtml(item.severity.toLowerCase())}">
+          <strong>${escapeHtml(item.severity)}</strong><span>${escapeHtml(item.message)}</span>
+        </div>`,
+      )
+      .join("")}
+  </section>`;
+}
+
+function renderPickPath(teamPanel) {
+  if (teamPanel.pickPath.length === 0) {
+    return `<p class="empty-path">Exact pick path is pending resolver allocation.</p>`;
+  }
+  return `<div class="pick-path">
+    ${teamPanel.pickPath
+      .map(
+        (pick) => `<div class="path-row">
+          <span>R${escapeHtml(pick.round)}</span>
+          <strong>${escapeHtml(pick.pickNumber)}</strong>
+          <span>${escapeHtml(pick.occupant ?? pick.status)}</span>
+          ${pick.isAcquired ? `<small>FROM ${escapeHtml(pick.originTeamId)}</small>` : ""}
+        </div>`,
+      )
+      .join("")}
+  </div>`;
+}
+
+function renderTeamDrawer(teamPanel) {
+  if (!teamPanel) return "";
+  return `<div class="drawer-scrim" data-action="close-drawer" aria-hidden="true"></div>
+  <aside class="team-drawer" aria-labelledby="drawer-team-name">
+    <header class="drawer-header">
+      <div>
+        <p class="eyebrow">TEAM SCENARIO · ${escapeHtml(teamPanel.allocationBucket ?? "UNRESOLVED")}</p>
+        <h2 id="drawer-team-name">${escapeHtml(teamPanel.teamName)}</h2>
+        <p>#${escapeHtml(teamPanel.previousFinish)} LAST SEASON · ${escapeHtml(teamPanel.keeperTierLabel)}</p>
+      </div>
+      <button class="drawer-close" type="button" data-action="close-drawer" aria-label="Close team panel">×</button>
+    </header>
+
+    <section class="drawer-section scenario-controls">
+      <div class="mode-card">
+        <span>KEEPER MODE</span>
+        <strong>${escapeHtml(teamPanel.entitlementModeLabel)}</strong>
+        ${teamPanel.keeperTier === "ONE_R2_OR_TWO_R3_PLUS" && teamPanel.selectedKeeperCount < 2 ? `<small>Selecting a second keeper switches the mode to two from R3+.</small>` : ""}
+      </div>
+      <fieldset class="steal-control">
+        <legend>STEAL</legend>
+        <button type="button" data-action="set-steal" data-team-id="${escapeHtml(teamPanel.teamId)}" data-direction="EARLY" class="${teamPanel.stealDirection === "EARLY" ? "active" : ""}">EARLY</button>
+        <button type="button" data-action="set-steal" data-team-id="${escapeHtml(teamPanel.teamId)}" data-direction="LATE" class="${teamPanel.stealDirection === "LATE" ? "active" : ""}">LATE</button>
+      </fieldset>
+    </section>
+
+    ${renderTeamValidation(teamPanel.validation)}
+
+    <section class="drawer-section roster-section" aria-labelledby="prior-draft-title">
+      <div class="section-heading"><h3 id="prior-draft-title">PRIOR DRAFT</h3><span>${escapeHtml(teamPanel.selectedKeeperCount)} SELECTED</span></div>
+      <ol class="roster-list">${teamPanel.roster.map((candidate) => renderRosterRow(candidate, teamPanel.teamId)).join("")}</ol>
+    </section>
+
+    <section class="drawer-section path-section" aria-labelledby="draft-path-title">
+      <div class="section-heading"><h3 id="draft-path-title">CURRENT DRAFT PATH</h3><span>${teamPanel.r1Slot ? `SLOT ${escapeHtml(teamPanel.r1Slot)}` : "PENDING"}</span></div>
+      ${renderPickPath(teamPanel)}
+    </section>
+  </aside>`;
 }
 
 function renderPending(viewModel) {
@@ -88,7 +217,7 @@ function renderPending(viewModel) {
   </section>`;
 }
 
-export function renderDraftBoard(viewModel) {
+export function renderDraftBoard(viewModel, teamPanel = null) {
   const roundRows = Array.from({ length: viewModel.draftRounds }, (_, index) => index + 1)
     .map(
       (round) => `<tr>
@@ -103,7 +232,7 @@ export function renderDraftBoard(viewModel) {
     (item) => item.severity === "ERROR" || item.severity === "UNRESOLVED",
   );
 
-  return `<main class="app-shell">
+  return `<main class="app-shell ${teamPanel ? "has-drawer" : ""}">
     <header class="masthead">
       <div class="title-block">
         <div class="league-mark" aria-hidden="true">SA</div>
@@ -114,7 +243,9 @@ export function renderDraftBoard(viewModel) {
       </div>
       <div class="state-block">
         <span class="state-pill">${escapeHtml(viewModel.stateLabel)}</span>
-        <span class="read-only-pill">READ ONLY</span>
+        ${viewModel.assumedEligibilityCount ? `<span class="assumption-pill">${escapeHtml(viewModel.assumedEligibilityCount)} ASSUMPTION${viewModel.assumedEligibilityCount === 1 ? "" : "S"}</span>` : ""}
+        <span class="read-only-pill">SCENARIO TOOL</span>
+        <button class="reset-button" type="button" data-action="reset-scenario" ${viewModel.scenarioChangeCount === 0 ? "disabled" : ""}>RESET SCENARIO</button>
       </div>
     </header>
 
@@ -126,7 +257,7 @@ export function renderDraftBoard(viewModel) {
           ${viewModel.columns
             .map(
               (column) =>
-                `<option value="${escapeHtml(column.teamId)}">${escapeHtml(column.r1PickNumber)} · ${escapeHtml(column.teamName)}</option>`,
+                `<option value="${escapeHtml(column.teamId)}" ${column.isSelected ? "selected" : ""}>${escapeHtml(column.r1PickNumber)} · ${escapeHtml(column.teamName)}</option>`,
             )
             .join("")}
         </select>
@@ -157,5 +288,6 @@ export function renderDraftBoard(viewModel) {
 
     ${renderPending(viewModel)}
     <footer><span>Resolver-derived board · Yahoo metadata enrichment</span><span>${escapeHtml(viewModel.resolvedPickCount)} resolved picks</span></footer>
+    ${renderTeamDrawer(teamPanel)}
   </main>`;
 }

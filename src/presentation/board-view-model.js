@@ -22,6 +22,10 @@ export function buildDraftBoardViewModel({
   identityMap,
   yahooPlayers,
   stateLabel = "READ-ONLY",
+  scenarioChangeCount = 0,
+  assumedEligibilityCount = 0,
+  selectedTeamId = null,
+  movedTeamIds = [],
 }) {
   const teamById = new Map(teams.map((team) => [team.teamId, team]));
   const keeperCountByTeam = new Map();
@@ -53,6 +57,8 @@ export function buildDraftBoardViewModel({
         stealDirection: allocation.stealDirection,
         r1Slot: allocation.r1Slot,
         r1PickNumber: firstRoundPick?.pickNumber ?? null,
+        isSelected: allocation.teamId === selectedTeamId,
+        hasMoved: movedTeamIds.includes(allocation.teamId),
         cells: resolverPicks.map((pick) => {
           const owner = teamById.get(pick.currentOwnerTeamId);
           const origin = teamById.get(pick.originTeamId);
@@ -88,6 +94,9 @@ export function buildDraftBoardViewModel({
 
   return {
     stateLabel,
+    scenarioChangeCount,
+    assumedEligibilityCount,
+    selectedTeamId,
     season: resolvedState.season,
     draftRounds: resolvedState.draftRounds,
     columns,
@@ -96,4 +105,3 @@ export function buildDraftBoardViewModel({
     resolvedPickCount: columns.reduce((count, column) => count + column.cells.length, 0),
   };
 }
-

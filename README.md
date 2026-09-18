@@ -23,6 +23,8 @@ Task 003 adds a Vite-powered, read-only 18-column × 11-round board. The browser
 
 The bundled screen is clearly labeled `DEMO / NOT OFFICIAL`. Its fixture clones all 18 canonical team records, supplies an explicit zero-keeper and `EARLY` declaration for each team, and passes everything through the production resolver. Canonical `data/teams.json` remains unchanged.
 
+Task 004 adds client-side scenario controls. Clicking a team header or using Jump to Team opens its roster drawer, where keeper selections, explicit scenario-only eligibility assumptions, and `EARLY`/`LATE` overrides can be changed. Scenario state stores inputs only; every change reruns the complete domain resolver and rebuilds the board. Reset returns to the immutable demo baseline.
+
 Run locally with:
 
 ```sh
