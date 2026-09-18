@@ -2,17 +2,6 @@
 
 These are intentionally unresolved. Do not let implementation assumptions become league rules.
 
-## Q1. Prior-year consecutive keeper exclusions
-The source keeper sheet used red player names for players who were already kept in the prior year and therefore cannot be kept again.
-
-The available text extraction does not preserve those red names.
-
-Required input:
-- explicit list of 2025/26 prior-year kept players by original drafting team, or
-- original source retaining the formatting/state.
-
-Until supplied, individual consecutive-year eligibility must remain `UNKNOWN`.
-
 ## Q2. Collision assignment between named players
 The confirmed rule says that if two keeper candidates map to the same current-year cost, one uses the target round and the other moves to the next earlier available round.
 

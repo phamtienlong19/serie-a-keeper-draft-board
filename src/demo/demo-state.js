@@ -19,26 +19,32 @@ export function createDemoDraftInput(canonicalTeamsPayload) {
       status: "CONFIRMED",
       direction: "EARLY",
     })),
-    trades: [
-      {
-        tradeId: "demo-sup-fam-r6-to-mnqa",
-        status: "CONFIRMED",
-        transfers: [
-          {
-            originTeamId: "sup-fam",
-            round: 6,
-            fromTeamId: "sup-fam",
-            toTeamId: "mnqa",
-          },
-        ],
-      },
-    ],
+    trades: [],
   };
+}
+
+/** Explicit presentation fixture for traded-pick regression coverage only. */
+export function createTradedEntitlementDemoInput(canonicalTeamsPayload) {
+  const input = createDemoDraftInput(canonicalTeamsPayload);
+  input.trades = [
+    {
+      tradeId: "demo-sup-fam-r6-to-mnqa",
+      status: "CONFIRMED",
+      transfers: [
+        {
+          originTeamId: "sup-fam",
+          round: 6,
+          fromTeamId: "sup-fam",
+          toTeamId: "mnqa",
+        },
+      ],
+    },
+  ];
+  return input;
 }
 
 export const demoFixtureDescription = Object.freeze({
   label: "DEMO / NOT OFFICIAL",
-  note: "Resolver-driven all-zero-keeper, all-EARLY baseline; it does not modify canonical league data.",
+  note: "Resolver-driven all-zero-keeper, all-EARLY, native-entitlement baseline; it does not modify canonical league data.",
   keeperPlayerIds: [],
-  tradeId: "demo-sup-fam-r6-to-mnqa",
 });

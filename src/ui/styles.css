@@ -1,6 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Roboto+Mono:wght@500;600;700&display=swap");
+
 :root {
   color-scheme: light;
-  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-sans: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "Roboto Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-family: var(--font-sans);
   --ink: #121625;
   --muted: #677083;
   --line: #dfe3ea;
@@ -193,7 +197,7 @@ h1 { margin: 0; font-size: clamp(24px, 3vw, 34px); line-height: 1; letter-spacin
   0% { background: #eadcff; box-shadow: inset 0 -4px 0 var(--purple), 0 0 0 3px rgb(96 1 210 / 28%); }
   100% { background: #fff; box-shadow: inset 0 -3px 0 var(--purple); }
 }
-.slot-number, .pick-number { font-variant-numeric: tabular-nums; font-family: "SFMono-Regular", Consolas, monospace; }
+.slot-number, .pick-number { font-variant-numeric: tabular-nums; font-family: var(--font-mono); }
 .slot-number { color: var(--purple); font-size: 19px; font-weight: 900; }
 .team-name { margin-top: 7px; overflow: hidden; text-overflow: ellipsis; font-size: 13px; font-weight: 950; letter-spacing: .025em; text-transform: uppercase; white-space: nowrap; }
 .team-context, .team-state { margin-top: 4px; color: var(--muted); font-size: 10px; font-weight: 750; letter-spacing: .025em; }
@@ -209,7 +213,7 @@ h1 { margin: 0; font-size: clamp(24px, 3vw, 34px); line-height: 1; letter-spacin
   background: #171b28;
 }
 .board-corner { top: 0; z-index: 9 !important; height: 112px; font-size: 10px; letter-spacing: .1em; }
-.round-label { padding: 12px 10px; text-align: center; vertical-align: top; }
+.round-label { padding: 12px 10px; text-align: center; vertical-align: top; font-family: var(--font-mono); }
 .round-label span { display: block; font-size: 17px; font-weight: 950; }
 .round-label small { display: block; margin-top: 4px; color: #aeb6c8; font-size: 8px; letter-spacing: .08em; }
 
@@ -237,7 +241,7 @@ h1 { margin: 0; font-size: clamp(24px, 3vw, 34px); line-height: 1; letter-spacin
 .cell-player { margin-top: 12px; overflow-wrap: anywhere; font-size: 14px; font-weight: 950; line-height: 1.15; text-transform: uppercase; }
 .player-meta { margin-top: 6px; color: #4c5568; font-size: 10px; font-weight: 750; }
 .injury-note { margin-top: 3px; color: var(--danger); font-size: 10px; font-weight: 750; }
-.o-rank { margin-top: 5px; color: var(--purple-dark); font-size: 10px; font-weight: 900; letter-spacing: .04em; }
+.o-rank { margin-top: 5px; color: var(--purple-dark); font-family: var(--font-mono); font-size: 10px; font-weight: 900; letter-spacing: .04em; }
 .keeper-line { display: flex; justify-content: space-between; gap: 8px; margin-top: 8px; color: var(--keeper); font-size: 10px; font-weight: 900; }
 .ownership { position: absolute; right: 13px; bottom: 11px; left: 13px; display: grid; gap: 2px; color: #7c4a08; font-size: 9px; font-weight: 850; text-transform: uppercase; }
 .unresolved-copy { margin-top: 8px; color: var(--danger); font-size: 9px; font-weight: 900; }
@@ -358,10 +362,10 @@ footer { display: flex; flex: 0 0 auto; justify-content: space-between; gap: 16p
   border-radius: 8px;
 }
 .roster-row.is-selected { background: var(--keeper-soft); border-color: #9fd6cb; }
-.old-round { color: var(--purple); font: 900 12px "SFMono-Regular", Consolas, monospace; }
+.old-round { color: var(--purple); font: 900 12px var(--font-mono); }
 .roster-player-name { font-size: 12px; font-weight: 900; }
 .roster-meta { margin-top: 3px; color: #565e70; font-size: 9px; font-weight: 700; }
-.cost-flow { margin-top: 5px; color: #303748; font: 800 9px "SFMono-Regular", Consolas, monospace; }
+.cost-flow { margin-top: 5px; color: #303748; font: 800 9px var(--font-mono); }
 .candidate-status { display: flex; gap: 5px; align-items: baseline; margin-top: 6px; font-size: 8px; line-height: 1.3; }
 .candidate-status strong { flex: 0 0 auto; letter-spacing: .04em; }
 .candidate-status span { color: var(--muted); }
@@ -396,7 +400,7 @@ footer { display: flex; flex: 0 0 auto; justify-content: space-between; gap: 16p
 .validation-item.warning { color: #5d4b00; background: #fffbdc; }
 .pick-path { display: grid; gap: 1px; border: 1px solid var(--line); border-radius: 7px; overflow: hidden; }
 .path-row { display: grid; grid-template-columns: 34px 54px minmax(0, 1fr) auto; gap: 8px; padding: 7px 9px; background: #fafbfc; font-size: 9px; }
-.path-row strong { font-family: "SFMono-Regular", Consolas, monospace; }
+.path-row strong { font-family: var(--font-mono); }
 .path-row small { color: var(--trade); font-size: 7px; font-weight: 900; }
 .empty-path { margin: 0; color: var(--muted); font-size: 10px; }
 

@@ -1,6 +1,6 @@
 {
   "season": "2026-27",
-  "sourceNote": "Seeded from the 2025/26 keeper/draft board source. Consecutive-year keeper eligibility is UNKNOWN because red-name formatting is not preserved in text extraction.",
+  "sourceNote": "Seeded from the 2025/26 keeper/draft board source. Consecutive-year keeper eligibility was reconciled from the authoritative complete prior-year keeper list supplied for 2026/27.",
   "teams": [
     {
       "teamId": "sup-fam",
@@ -13,77 +13,77 @@
           "playerName": "James Harden",
           "oldRound": 1,
           "originalDrafterTeamId": "sup-fam",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "cooper-flagg",
           "playerName": "Cooper Flagg",
           "oldRound": 2,
           "originalDrafterTeamId": "sup-fam",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "deni-avdija",
           "playerName": "Deni Avdija",
           "oldRound": 3,
           "originalDrafterTeamId": "sup-fam",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "immanuel-quickley",
           "playerName": "Immanuel Quickley",
           "oldRound": 4,
           "originalDrafterTeamId": "sup-fam",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "alex-sarr",
           "playerName": "Alex Sarr",
           "oldRound": 5,
           "originalDrafterTeamId": "sup-fam",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "toumani-camara",
           "playerName": "Toumani Camara",
           "oldRound": 6,
           "originalDrafterTeamId": "sup-fam",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "vj-edgecombe",
           "playerName": "VJ Edgecombe",
           "oldRound": 7,
           "originalDrafterTeamId": "sup-fam",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "kyshawn-george",
           "playerName": "Kyshawn George",
           "oldRound": 8,
           "originalDrafterTeamId": "sup-fam",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "neemias-queta",
           "playerName": "Neemias Queta",
           "oldRound": 9,
           "originalDrafterTeamId": "sup-fam",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "kelly-oubre-jr",
           "playerName": "Kelly Oubre Jr",
           "oldRound": 10,
           "originalDrafterTeamId": "sup-fam",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "al-horford",
           "playerName": "Al Horford",
           "oldRound": 11,
           "originalDrafterTeamId": "sup-fam",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         }
       ]
     },
@@ -98,77 +98,77 @@
           "playerName": "Shai Gilgeous-Alexander",
           "oldRound": 1,
           "originalDrafterTeamId": "under-armour",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "kawhi-leonard",
           "playerName": "Kawhi Leonard",
           "oldRound": 2,
           "originalDrafterTeamId": "under-armour",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "paolo-banchero",
           "playerName": "Paolo Banchero",
           "oldRound": 3,
           "originalDrafterTeamId": "under-armour",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "michael-porter-jr",
           "playerName": "Michael Porter Jr",
           "oldRound": 4,
           "originalDrafterTeamId": "under-armour",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "shaedon-sharpe",
           "playerName": "Shaedon Sharpe",
           "oldRound": 5,
           "originalDrafterTeamId": "under-armour",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "tyrese-haliburton",
           "playerName": "Tyrese Haliburton",
           "oldRound": 6,
           "originalDrafterTeamId": "under-armour",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "tobias-harris",
           "playerName": "Tobias Harris",
           "oldRound": 7,
           "originalDrafterTeamId": "under-armour",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "dennis-schroder",
           "playerName": "Dennis Schroder",
           "oldRound": 8,
           "originalDrafterTeamId": "under-armour",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "isaiah-jackson",
           "playerName": "Isaiah Jackson",
           "oldRound": 9,
           "originalDrafterTeamId": "under-armour",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "chris-boucher",
           "playerName": "Chris Boucher",
           "oldRound": 10,
           "originalDrafterTeamId": "under-armour",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "brice-sensabaugh",
           "playerName": "Brice Sensabaugh",
           "oldRound": 11,
           "originalDrafterTeamId": "under-armour",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         }
       ]
     },
@@ -183,77 +183,77 @@
           "playerName": "Tyrese Maxey",
           "oldRound": 1,
           "originalDrafterTeamId": "angry-bird",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "jamal-murray",
           "playerName": "Jamal Murray",
           "oldRound": 2,
           "originalDrafterTeamId": "angry-bird",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "miles-bridges",
           "playerName": "Miles Bridges",
           "oldRound": 3,
           "originalDrafterTeamId": "angry-bird",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "deandre-ayton",
           "playerName": "Deandre Ayton",
           "oldRound": 4,
           "originalDrafterTeamId": "angry-bird",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "ausar-thompson",
           "playerName": "Ausar Thompson",
           "oldRound": 5,
           "originalDrafterTeamId": "angry-bird",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "jakob-poeltl",
           "playerName": "Jakob Poeltl",
           "oldRound": 6,
           "originalDrafterTeamId": "angry-bird",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "INELIGIBLE"
         },
         {
           "playerId": "andrew-nembhard",
           "playerName": "Andrew Nembhard",
           "oldRound": 7,
           "originalDrafterTeamId": "angry-bird",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "INELIGIBLE"
         },
         {
           "playerId": "zach-edey",
           "playerName": "Zach Edey",
           "oldRound": 8,
           "originalDrafterTeamId": "angry-bird",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "damian-lillard",
           "playerName": "Damian Lillard",
           "oldRound": 9,
           "originalDrafterTeamId": "angry-bird",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "grayson-allen",
           "playerName": "Grayson Allen",
           "oldRound": 10,
           "originalDrafterTeamId": "angry-bird",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "kyle-kuzma",
           "playerName": "Kyle Kuzma",
           "oldRound": 11,
           "originalDrafterTeamId": "angry-bird",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         }
       ]
     },
@@ -268,77 +268,77 @@
           "playerName": "Donovan Mitchell",
           "oldRound": 1,
           "originalDrafterTeamId": "to-kinh",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "cade-cunningham",
           "playerName": "Cade Cunningham",
           "oldRound": 2,
           "originalDrafterTeamId": "to-kinh",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "INELIGIBLE"
         },
         {
           "playerId": "lauri-markkanen",
           "playerName": "Lauri Markkanen",
           "oldRound": 3,
           "originalDrafterTeamId": "to-kinh",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "julius-randle",
           "playerName": "Julius Randle",
           "oldRound": 4,
           "originalDrafterTeamId": "to-kinh",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "naz-reid",
           "playerName": "Naz Reid",
           "oldRound": 5,
           "originalDrafterTeamId": "to-kinh",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "draymond-green",
           "playerName": "Draymond Green",
           "oldRound": 6,
           "originalDrafterTeamId": "to-kinh",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "donte-divincenzo",
           "playerName": "Donte DiVincenzo",
           "oldRound": 7,
           "originalDrafterTeamId": "to-kinh",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "aaron-gordon",
           "playerName": "Aaron Gordon",
           "oldRound": 8,
           "originalDrafterTeamId": "to-kinh",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "jerami-grant",
           "playerName": "Jerami Grant",
           "oldRound": 9,
           "originalDrafterTeamId": "to-kinh",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "nickeil-alexander-walker",
           "playerName": "Nickeil Alexander-Walker",
           "oldRound": 10,
           "originalDrafterTeamId": "to-kinh",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "jaime-jaquez-jr",
           "playerName": "Jaime Jaquez Jr",
           "oldRound": 11,
           "originalDrafterTeamId": "to-kinh",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         }
       ]
     },
@@ -353,77 +353,77 @@
           "playerName": "Nikola Jokic",
           "oldRound": 1,
           "originalDrafterTeamId": "jinple",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "jimmy-butler-iii",
           "playerName": "Jimmy Butler III",
           "oldRound": 2,
           "originalDrafterTeamId": "jinple",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "myles-turner",
           "playerName": "Myles Turner",
           "oldRound": 3,
           "originalDrafterTeamId": "jinple",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "reed-sheppard",
           "playerName": "Reed Sheppard",
           "oldRound": 4,
           "originalDrafterTeamId": "jinple",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "tyler-herro",
           "playerName": "Tyler Herro",
           "oldRound": 5,
           "originalDrafterTeamId": "jinple",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "mark-williams",
           "playerName": "Mark Williams",
           "oldRound": 6,
           "originalDrafterTeamId": "jinple",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "jaden-mcdaniels",
           "playerName": "Jaden McDaniels",
           "oldRound": 7,
           "originalDrafterTeamId": "jinple",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "zaccharie-risacher",
           "playerName": "Zaccharie Risacher",
           "oldRound": 8,
           "originalDrafterTeamId": "jinple",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "lonzo-ball",
           "playerName": "Lonzo Ball",
           "oldRound": 9,
           "originalDrafterTeamId": "jinple",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "mitchell-robinson",
           "playerName": "Mitchell Robinson",
           "oldRound": 10,
           "originalDrafterTeamId": "jinple",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "obi-toppin",
           "playerName": "Obi Toppin",
           "oldRound": 11,
           "originalDrafterTeamId": "jinple",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         }
       ]
     },
@@ -438,77 +438,77 @@
           "playerName": "Karl-Anthony Towns",
           "oldRound": 1,
           "originalDrafterTeamId": "bounce-island",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "desmond-bane",
           "playerName": "Desmond Bane",
           "oldRound": 2,
           "originalDrafterTeamId": "bounce-island",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "nikola-vucevic",
           "playerName": "Nikola Vucevic",
           "oldRound": 3,
           "originalDrafterTeamId": "bounce-island",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "jordan-poole",
           "playerName": "Jordan Poole",
           "oldRound": 4,
           "originalDrafterTeamId": "bounce-island",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "john-collins",
           "playerName": "John Collins",
           "oldRound": 5,
           "originalDrafterTeamId": "bounce-island",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "stephon-castle",
           "playerName": "Stephon Castle",
           "oldRound": 6,
           "originalDrafterTeamId": "bounce-island",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "yves-missi",
           "playerName": "Yves Missi",
           "oldRound": 7,
           "originalDrafterTeamId": "bounce-island",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "dejounte-murray",
           "playerName": "Dejounte Murray",
           "oldRound": 8,
           "originalDrafterTeamId": "bounce-island",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "buddy-hield",
           "playerName": "Buddy Hield",
           "oldRound": 9,
           "originalDrafterTeamId": "bounce-island",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "chris-paul",
           "playerName": "Chris Paul",
           "oldRound": 10,
           "originalDrafterTeamId": "bounce-island",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "dylan-harper",
           "playerName": "Dylan Harper",
           "oldRound": 11,
           "originalDrafterTeamId": "bounce-island",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         }
       ]
     },
@@ -523,77 +523,77 @@
           "playerName": "Alperen Sengun",
           "oldRound": 1,
           "originalDrafterTeamId": "cuckoo",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "pascal-siakam",
           "playerName": "Pascal Siakam",
           "oldRound": 2,
           "originalDrafterTeamId": "cuckoo",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "zion-williamson",
           "playerName": "Zion Williamson",
           "oldRound": 3,
           "originalDrafterTeamId": "cuckoo",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "josh-giddey",
           "playerName": "Josh Giddey",
           "oldRound": 4,
           "originalDrafterTeamId": "cuckoo",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "INELIGIBLE"
         },
         {
           "playerId": "donovan-clingan",
           "playerName": "Donovan Clingan",
           "oldRound": 5,
           "originalDrafterTeamId": "cuckoo",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "tari-eason",
           "playerName": "Tari Eason",
           "oldRound": 6,
           "originalDrafterTeamId": "cuckoo",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "brandin-podziemski",
           "playerName": "Brandin Podziemski",
           "oldRound": 7,
           "originalDrafterTeamId": "cuckoo",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "kyrie-irving",
           "playerName": "Kyrie Irving",
           "oldRound": 8,
           "originalDrafterTeamId": "cuckoo",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "khris-middleton",
           "playerName": "Khris Middleton",
           "oldRound": 9,
           "originalDrafterTeamId": "cuckoo",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "taylor-hendricks",
           "playerName": "Taylor Hendricks",
           "oldRound": 10,
           "originalDrafterTeamId": "cuckoo",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "rob-dillingham",
           "playerName": "Rob Dillingham",
           "oldRound": 11,
           "originalDrafterTeamId": "cuckoo",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         }
       ]
     },
@@ -608,77 +608,77 @@
           "playerName": "Stephen Curry",
           "oldRound": 1,
           "originalDrafterTeamId": "rip-city-remix",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "jalen-johnson",
           "playerName": "Jalen Johnson",
           "oldRound": 2,
           "originalDrafterTeamId": "rip-city-remix",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "lebron-james",
           "playerName": "LeBron James",
           "oldRound": 3,
           "originalDrafterTeamId": "rip-city-remix",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "kristaps-porzingis",
           "playerName": "Kristaps Porzingis",
           "oldRound": 4,
           "originalDrafterTeamId": "rip-city-remix",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "anfernee-simons",
           "playerName": "Anfernee Simons",
           "oldRound": 5,
           "originalDrafterTeamId": "rip-city-remix",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "kel-el-ware",
           "playerName": "Kel'El Ware",
           "oldRound": 6,
           "originalDrafterTeamId": "rip-city-remix",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "andrew-wiggins",
           "playerName": "Andrew Wiggins",
           "oldRound": 7,
           "originalDrafterTeamId": "rip-city-remix",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "wendell-carter-jr",
           "playerName": "Wendell Carter Jr",
           "oldRound": 8,
           "originalDrafterTeamId": "rip-city-remix",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "rui-hachimura",
           "playerName": "Rui Hachimura",
           "oldRound": 9,
           "originalDrafterTeamId": "rip-city-remix",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "gary-trent-jr",
           "playerName": "Gary Trent Jr",
           "oldRound": 10,
           "originalDrafterTeamId": "rip-city-remix",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "cole-anthony",
           "playerName": "Cole Anthony",
           "oldRound": 11,
           "originalDrafterTeamId": "rip-city-remix",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         }
       ]
     },
@@ -693,77 +693,77 @@
           "playerName": "Trae Young",
           "oldRound": 1,
           "originalDrafterTeamId": "ecstasy",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "lamelo-ball",
           "playerName": "LaMelo Ball",
           "oldRound": 2,
           "originalDrafterTeamId": "ecstasy",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "brandon-miller",
           "playerName": "Brandon Miller",
           "oldRound": 3,
           "originalDrafterTeamId": "ecstasy",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "mikal-bridges",
           "playerName": "Mikal Bridges",
           "oldRound": 4,
           "originalDrafterTeamId": "ecstasy",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "devin-vassell",
           "playerName": "Devin Vassell",
           "oldRound": 5,
           "originalDrafterTeamId": "ecstasy",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "onyeka-okongwu",
           "playerName": "Onyeka Okongwu",
           "oldRound": 6,
           "originalDrafterTeamId": "ecstasy",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "herbert-jones",
           "playerName": "Herbert Jones",
           "oldRound": 7,
           "originalDrafterTeamId": "ecstasy",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "jay-huff",
           "playerName": "Jay Huff",
           "oldRound": 8,
           "originalDrafterTeamId": "ecstasy",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "tyus-jones",
           "playerName": "Tyus Jones",
           "oldRound": 9,
           "originalDrafterTeamId": "ecstasy",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "ayo-dosunmu",
           "playerName": "Ayo Dosunmu",
           "oldRound": 10,
           "originalDrafterTeamId": "ecstasy",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "bub-carrington",
           "playerName": "Bub Carrington",
           "oldRound": 11,
           "originalDrafterTeamId": "ecstasy",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         }
       ]
     },
@@ -778,77 +778,77 @@
           "playerName": "Jalen Brunson",
           "oldRound": 1,
           "originalDrafterTeamId": "mnqa",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "chet-holmgren",
           "playerName": "Chet Holmgren",
           "oldRound": 2,
           "originalDrafterTeamId": "mnqa",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "zach-lavine",
           "playerName": "Zach LaVine",
           "oldRound": 3,
           "originalDrafterTeamId": "mnqa",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "jarrett-allen",
           "playerName": "Jarrett Allen",
           "oldRound": 4,
           "originalDrafterTeamId": "mnqa",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "cj-mccollum",
           "playerName": "CJ McCollum",
           "oldRound": 5,
           "originalDrafterTeamId": "mnqa",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "trey-murphy-iii",
           "playerName": "Trey Murphy III",
           "oldRound": 6,
           "originalDrafterTeamId": "mnqa",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "INELIGIBLE"
         },
         {
           "playerId": "bradley-beal",
           "playerName": "Bradley Beal",
           "oldRound": 7,
           "originalDrafterTeamId": "mnqa",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "brook-lopez",
           "playerName": "Brook Lopez",
           "oldRound": 8,
           "originalDrafterTeamId": "mnqa",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "cam-whitmore",
           "playerName": "Cam Whitmore",
           "oldRound": 9,
           "originalDrafterTeamId": "mnqa",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "fred-vanvleet",
           "playerName": "Fred VanVleet",
           "oldRound": 10,
           "originalDrafterTeamId": "mnqa",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "jordan-clarkson",
           "playerName": "Jordan Clarkson",
           "oldRound": 11,
           "originalDrafterTeamId": "mnqa",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         }
       ]
     },
@@ -863,77 +863,77 @@
           "playerName": "Evan Mobley",
           "oldRound": 1,
           "originalDrafterTeamId": "seattle-supersonics",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "scottie-barnes",
           "playerName": "Scottie Barnes",
           "oldRound": 2,
           "originalDrafterTeamId": "seattle-supersonics",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "walker-kessler",
           "playerName": "Walker Kessler",
           "oldRound": 3,
           "originalDrafterTeamId": "seattle-supersonics",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "jalen-duren",
           "playerName": "Jalen Duren",
           "oldRound": 4,
           "originalDrafterTeamId": "seattle-supersonics",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "josh-hart",
           "playerName": "Josh Hart",
           "oldRound": 5,
           "originalDrafterTeamId": "seattle-supersonics",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "jrue-holiday",
           "playerName": "Jrue Holiday",
           "oldRound": 6,
           "originalDrafterTeamId": "seattle-supersonics",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "collin-sexton",
           "playerName": "Collin Sexton",
           "oldRound": 7,
           "originalDrafterTeamId": "seattle-supersonics",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "ty-jerome",
           "playerName": "Ty Jerome",
           "oldRound": 8,
           "originalDrafterTeamId": "seattle-supersonics",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "tj-mcconnell",
           "playerName": "TJ McConnell",
           "oldRound": 9,
           "originalDrafterTeamId": "seattle-supersonics",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "nikola-jovic",
           "playerName": "Nikola Jovic",
           "oldRound": 10,
           "originalDrafterTeamId": "seattle-supersonics",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "aaron-wiggins",
           "playerName": "Aaron Wiggins",
           "oldRound": 11,
           "originalDrafterTeamId": "seattle-supersonics",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         }
       ]
     },
@@ -948,77 +948,77 @@
           "playerName": "Kevin Durant",
           "oldRound": 1,
           "originalDrafterTeamId": "rising-rockets",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "domantas-sabonis",
           "playerName": "Domantas Sabonis",
           "oldRound": 2,
           "originalDrafterTeamId": "rising-rockets",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "brandon-ingram",
           "playerName": "Brandon Ingram",
           "oldRound": 3,
           "originalDrafterTeamId": "rising-rockets",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "coby-white",
           "playerName": "Coby White",
           "oldRound": 4,
           "originalDrafterTeamId": "rising-rockets",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "amen-thompson",
           "playerName": "Amen Thompson",
           "oldRound": 5,
           "originalDrafterTeamId": "rising-rockets",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "INELIGIBLE"
         },
         {
           "playerId": "dyson-daniels",
           "playerName": "Dyson Daniels",
           "oldRound": 6,
           "originalDrafterTeamId": "rising-rockets",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "INELIGIBLE"
         },
         {
           "playerId": "jaylen-wells",
           "playerName": "Jaylen Wells",
           "oldRound": 7,
           "originalDrafterTeamId": "rising-rockets",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "egor-demin",
           "playerName": "Egor Demin",
           "oldRound": 8,
           "originalDrafterTeamId": "rising-rockets",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "sam-hauser",
           "playerName": "Sam Hauser",
           "oldRound": 9,
           "originalDrafterTeamId": "rising-rockets",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "caris-levert",
           "playerName": "Caris LeVert",
           "oldRound": 10,
           "originalDrafterTeamId": "rising-rockets",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "tre-johnson",
           "playerName": "Tre Johnson",
           "oldRound": 11,
           "originalDrafterTeamId": "rising-rockets",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         }
       ]
     },
@@ -1033,77 +1033,77 @@
           "playerName": "Giannis Antetokounmpo",
           "oldRound": 1,
           "originalDrafterTeamId": "dial-square",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "jaren-jackson-jr",
           "playerName": "Jaren Jackson Jr",
           "oldRound": 2,
           "originalDrafterTeamId": "dial-square",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "ja-morant",
           "playerName": "Ja Morant",
           "oldRound": 3,
           "originalDrafterTeamId": "dial-square",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "demar-derozan",
           "playerName": "DeMar DeRozan",
           "oldRound": 4,
           "originalDrafterTeamId": "dial-square",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "rudy-gobert",
           "playerName": "Rudy Gobert",
           "oldRound": 5,
           "originalDrafterTeamId": "dial-square",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "jalen-suggs",
           "playerName": "Jalen Suggs",
           "oldRound": 6,
           "originalDrafterTeamId": "dial-square",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "rj-barrett",
           "playerName": "RJ Barrett",
           "oldRound": 7,
           "originalDrafterTeamId": "dial-square",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "d-angelo-russell",
           "playerName": "D'Angelo Russell",
           "oldRound": 8,
           "originalDrafterTeamId": "dial-square",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "klay-thompson",
           "playerName": "Klay Thompson",
           "oldRound": 9,
           "originalDrafterTeamId": "dial-square",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "jonathan-kuminga",
           "playerName": "Jonathan Kuminga",
           "oldRound": 10,
           "originalDrafterTeamId": "dial-square",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "kentavious-caldwell-pope",
           "playerName": "Kentavious Caldwell-Pope",
           "oldRound": 11,
           "originalDrafterTeamId": "dial-square",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         }
       ]
     },
@@ -1118,77 +1118,77 @@
           "playerName": "Luka Doncic",
           "oldRound": 1,
           "originalDrafterTeamId": "run-and-gun",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "austin-reaves",
           "playerName": "Austin Reaves",
           "oldRound": 2,
           "originalDrafterTeamId": "run-and-gun",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "ivica-zubac",
           "playerName": "Ivica Zubac",
           "oldRound": 3,
           "originalDrafterTeamId": "run-and-gun",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "bennedict-mathurin",
           "playerName": "Bennedict Mathurin",
           "oldRound": 4,
           "originalDrafterTeamId": "run-and-gun",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "cameron-johnson",
           "playerName": "Cameron Johnson",
           "oldRound": 5,
           "originalDrafterTeamId": "run-and-gun",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "isaiah-hartenstein",
           "playerName": "Isaiah Hartenstein",
           "oldRound": 6,
           "originalDrafterTeamId": "run-and-gun",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "kevin-porter-jr",
           "playerName": "Kevin Porter Jr",
           "oldRound": 7,
           "originalDrafterTeamId": "run-and-gun",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "quentin-grimes",
           "playerName": "Quentin Grimes",
           "oldRound": 8,
           "originalDrafterTeamId": "run-and-gun",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "aaron-nesmith",
           "playerName": "Aaron Nesmith",
           "oldRound": 9,
           "originalDrafterTeamId": "run-and-gun",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "dillon-brooks",
           "playerName": "Dillon Brooks",
           "oldRound": 10,
           "originalDrafterTeamId": "run-and-gun",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "luguentz-dort",
           "playerName": "Luguentz Dort",
           "oldRound": 11,
           "originalDrafterTeamId": "run-and-gun",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         }
       ]
     },
@@ -1203,77 +1203,77 @@
           "playerName": "Anthony Edwards",
           "oldRound": 1,
           "originalDrafterTeamId": "tien-delay",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "derrick-white",
           "playerName": "Derrick White",
           "oldRound": 2,
           "originalDrafterTeamId": "tien-delay",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "darius-garland",
           "playerName": "Darius Garland",
           "oldRound": 3,
           "originalDrafterTeamId": "tien-delay",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "payton-pritchard",
           "playerName": "Payton Pritchard",
           "oldRound": 4,
           "originalDrafterTeamId": "tien-delay",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "cam-thomas",
           "playerName": "Cam Thomas",
           "oldRound": 5,
           "originalDrafterTeamId": "tien-delay",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "santi-aldama",
           "playerName": "Santi Aldama",
           "oldRound": 6,
           "originalDrafterTeamId": "tien-delay",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "bobby-portis",
           "playerName": "Bobby Portis",
           "oldRound": 7,
           "originalDrafterTeamId": "tien-delay",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "pj-washington",
           "playerName": "PJ Washington",
           "oldRound": 8,
           "originalDrafterTeamId": "tien-delay",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "de-andre-hunter",
           "playerName": "De'Andre Hunter",
           "oldRound": 9,
           "originalDrafterTeamId": "tien-delay",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "davion-mitchell",
           "playerName": "Davion Mitchell",
           "oldRound": 10,
           "originalDrafterTeamId": "tien-delay",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "noah-clowney",
           "playerName": "Noah Clowney",
           "oldRound": 11,
           "originalDrafterTeamId": "tien-delay",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         }
       ]
     },
@@ -1288,77 +1288,77 @@
           "playerName": "Devin Booker",
           "oldRound": 1,
           "originalDrafterTeamId": "dontrick-devilteam",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "bam-adebayo",
           "playerName": "Bam Adebayo",
           "oldRound": 2,
           "originalDrafterTeamId": "dontrick-devilteam",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "jaylen-brown",
           "playerName": "Jaylen Brown",
           "oldRound": 3,
           "originalDrafterTeamId": "dontrick-devilteam",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "og-anunoby",
           "playerName": "OG Anunoby",
           "oldRound": 4,
           "originalDrafterTeamId": "dontrick-devilteam",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "jayson-tatum",
           "playerName": "Jayson Tatum",
           "oldRound": 5,
           "originalDrafterTeamId": "dontrick-devilteam",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "jalen-green",
           "playerName": "Jalen Green",
           "oldRound": 6,
           "originalDrafterTeamId": "dontrick-devilteam",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "nic-claxton",
           "playerName": "Nic Claxton",
           "oldRound": 7,
           "originalDrafterTeamId": "dontrick-devilteam",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "malik-monk",
           "playerName": "Malik Monk",
           "oldRound": 8,
           "originalDrafterTeamId": "dontrick-devilteam",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "isaiah-collier",
           "playerName": "Isaiah Collier",
           "oldRound": 9,
           "originalDrafterTeamId": "dontrick-devilteam",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "ryan-kalkbrenner",
           "playerName": "Ryan Kalkbrenner",
           "oldRound": 10,
           "originalDrafterTeamId": "dontrick-devilteam",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "bilal-coulibaly",
           "playerName": "Bilal Coulibaly",
           "oldRound": 11,
           "originalDrafterTeamId": "dontrick-devilteam",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         }
       ]
     },
@@ -1373,77 +1373,77 @@
           "playerName": "Victor Wembanyama",
           "oldRound": 1,
           "originalDrafterTeamId": "abcxyz",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "franz-wagner",
           "playerName": "Franz Wagner",
           "oldRound": 2,
           "originalDrafterTeamId": "abcxyz",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "joel-embiid",
           "playerName": "Joel Embiid",
           "oldRound": 3,
           "originalDrafterTeamId": "abcxyz",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "paul-george",
           "playerName": "Paul George",
           "oldRound": 4,
           "originalDrafterTeamId": "abcxyz",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "christian-braun",
           "playerName": "Christian Braun",
           "oldRound": 5,
           "originalDrafterTeamId": "abcxyz",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "keyonte-george",
           "playerName": "Keyonte George",
           "oldRound": 6,
           "originalDrafterTeamId": "abcxyz",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "ace-bailey",
           "playerName": "Ace Bailey",
           "oldRound": 7,
           "originalDrafterTeamId": "abcxyz",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "keegan-murray",
           "playerName": "Keegan Murray",
           "oldRound": 8,
           "originalDrafterTeamId": "abcxyz",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "kon-knueppel",
           "playerName": "Kon Knueppel",
           "oldRound": 9,
           "originalDrafterTeamId": "abcxyz",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "keon-ellis",
           "playerName": "Keon Ellis",
           "oldRound": 10,
           "originalDrafterTeamId": "abcxyz",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "adem-bona",
           "playerName": "Adem Bona",
           "oldRound": 11,
           "originalDrafterTeamId": "abcxyz",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         }
       ]
     },
@@ -1458,77 +1458,77 @@
           "playerName": "Anthony Davis",
           "oldRound": 1,
           "originalDrafterTeamId": "chicken-wings",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "jalen-williams",
           "playerName": "Jalen Williams",
           "oldRound": 2,
           "originalDrafterTeamId": "chicken-wings",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "de-aaron-fox",
           "playerName": "De'Aaron Fox",
           "oldRound": 3,
           "originalDrafterTeamId": "chicken-wings",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "matas-buzelis",
           "playerName": "Matas Buzelis",
           "oldRound": 4,
           "originalDrafterTeamId": "chicken-wings",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "norman-powell",
           "playerName": "Norman Powell",
           "oldRound": 5,
           "originalDrafterTeamId": "chicken-wings",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "dereck-lively-ii",
           "playerName": "Dereck Lively II",
           "oldRound": 6,
           "originalDrafterTeamId": "chicken-wings",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "cason-wallace",
           "playerName": "Cason Wallace",
           "oldRound": 7,
           "originalDrafterTeamId": "chicken-wings",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "jabari-smith-jr",
           "playerName": "Jabari Smith Jr",
           "oldRound": 8,
           "originalDrafterTeamId": "chicken-wings",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "kyle-filipowski",
           "playerName": "Kyle Filipowski",
           "oldRound": 9,
           "originalDrafterTeamId": "chicken-wings",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "scoot-henderson",
           "playerName": "Scoot Henderson",
           "oldRound": 10,
           "originalDrafterTeamId": "chicken-wings",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         },
         {
           "playerId": "yang-hansen",
           "playerName": "Yang Hansen",
           "oldRound": 11,
           "originalDrafterTeamId": "chicken-wings",
-          "consecutiveYearKeeperEligibility": "UNKNOWN"
+          "consecutiveYearKeeperEligibility": "ELIGIBLE"
         }
       ]
     }

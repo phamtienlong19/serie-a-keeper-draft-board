@@ -2,7 +2,11 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import test from "node:test";
 
-import { createDemoDraftInput, demoFixtureDescription } from "../src/demo/demo-state.js";
+import {
+  createDemoDraftInput,
+  createTradedEntitlementDemoInput,
+  demoFixtureDescription,
+} from "../src/demo/demo-state.js";
 import { resolveDraftState } from "../src/domain/engine.js";
 import { buildDraftBoardViewModel } from "../src/presentation/board-view-model.js";
 import { renderDraftBoard } from "../src/ui/render-board.js";
@@ -26,9 +30,6 @@ function buildDemo() {
 
 function buildKeeperVariant() {
   const input = createDemoDraftInput(canonicalTeams);
-  const supFam = input.teams.find((team) => team.teamId === "sup-fam");
-  const cooper = supFam.priorDraft.find((player) => player.playerId === "cooper-flagg");
-  cooper.consecutiveYearKeeperEligibility = "ELIGIBLE";
   input.keeperSelections.find((selection) => selection.teamId === "sup-fam").selectedPlayerIds = [
     "cooper-flagg",
   ];
@@ -76,15 +77,14 @@ test("all-zero-keeper all-EARLY baseline maps previous finish directly to R1 slo
   assert.equal(resolvedState.allocations.find((item) => item.teamId === "chicken-wings").r1Slot, 18);
 });
 
-test("UNKNOWN consecutive-year eligibility does not block a zero-keeper declaration", () => {
+test("reconciled consecutive-year eligibility does not block a zero-keeper declaration", () => {
   const { resolvedState } = buildDemo();
 
-  assert.ok(
-    canonicalTeams.teams.every((team) =>
-      team.priorDraft.every(
-        (player) => player.consecutiveYearKeeperEligibility === "UNKNOWN",
-      ),
-    ),
+  assert.equal(
+    canonicalTeams.teams
+      .flatMap((team) => team.priorDraft)
+      .some((player) => player.consecutiveYearKeeperEligibility === "UNKNOWN"),
+    false,
   );
   assert.equal(
     resolvedState.validation.some((item) => item.code === "KEEPER_CONSECUTIVE_YEAR_UNKNOWN"),
@@ -160,7 +160,15 @@ test("view-model orders only by resolver slot, independent of insertion, names, 
 });
 
 test("traded entitlement displays owner while preserving origin column", () => {
-  const { viewModel, html } = buildDemo();
+  const input = createTradedEntitlementDemoInput(canonicalTeams);
+  const resolvedState = resolveDraftState(input);
+  const viewModel = buildDraftBoardViewModel({
+    resolvedState,
+    teams: input.teams,
+    identityMap,
+    yahooPlayers: yahooPayload.players,
+  });
+  const html = renderDraftBoard(viewModel);
   const originColumn = viewModel.columns.find((column) => column.teamId === "sup-fam");
   const tradedCell = originColumn.cells.find((cell) => cell.round === 6);
 

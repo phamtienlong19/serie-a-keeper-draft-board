@@ -74,4 +74,4 @@ Files:
 - `tests/` — Node test-runner coverage for rules and unresolved boundaries
 
 Important:
-The text source does not preserve prior-year red/ineligible keeper markings. Every player's consecutive-year keeper eligibility is intentionally seeded as `UNKNOWN` until that data is supplied.
+The authoritative complete prior-year keeper list has now been supplied. Canonical data marks those seven players `INELIGIBLE` for consecutive-year keeping and all other prior-draft players `ELIGIBLE`.

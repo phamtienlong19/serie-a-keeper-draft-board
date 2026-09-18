@@ -119,7 +119,7 @@ test("metadata refresh/reconciliation cannot mutate canonical keeper or ownershi
   assert.equal(governanceState.teams[0].priorDraft[1].originalDrafterTeamId, "sup-fam");
   assert.equal(
     governanceState.teams[0].priorDraft[1].consecutiveYearKeeperEligibility,
-    "UNKNOWN",
+    "ELIGIBLE",
   );
 });
 

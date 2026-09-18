@@ -21,13 +21,17 @@ const yahooPayload = JSON.parse(fs.readFileSync("data/external/yahoo/players.jso
 const identityMap = JSON.parse(fs.readFileSync("data/player_identity_map.json", "utf8"));
 const baselineInput = createDemoDraftInput(canonicalTeams);
 
-function assumeAndSelect(overrides, teamId, playerId) {
-  return setScenarioKeeperSelection(
-    setScenarioEligibilityAssumption(overrides, playerId, true),
-    teamId,
-    playerId,
-    true,
-  );
+function selectKeeper(overrides, teamId, playerId) {
+  return setScenarioKeeperSelection(overrides, teamId, playerId, true);
+}
+
+function inputWithUnknownHistory(teamId, playerId) {
+  const input = structuredClone(baselineInput);
+  const player = input.teams
+    .find((team) => team.teamId === teamId)
+    .priorDraft.find((candidate) => candidate.playerId === playerId);
+  player.consecutiveYearKeeperEligibility = "UNKNOWN";
+  return input;
 }
 
 function allocation(result, teamId) {
@@ -52,7 +56,7 @@ function buildPanel(result, overrides, teamId, yahooPlayers = yahooPayload.playe
 }
 
 test("selecting a first keeper changes NO_KEEPER to KEEPER", () => {
-  const overrides = assumeAndSelect(
+  const overrides = selectKeeper(
     createEmptyScenarioOverrides(),
     "sup-fam",
     "alex-sarr",
@@ -63,7 +67,7 @@ test("selecting a first keeper changes NO_KEEPER to KEEPER", () => {
 });
 
 test("removing the last keeper returns the team to NO_KEEPER", () => {
-  let overrides = assumeAndSelect(createEmptyScenarioOverrides(), "sup-fam", "alex-sarr");
+  let overrides = selectKeeper(createEmptyScenarioOverrides(), "sup-fam", "alex-sarr");
   overrides = setScenarioKeeperSelection(overrides, "sup-fam", "alex-sarr", false);
   const result = resolveScenario(baselineInput, overrides);
 
@@ -72,7 +76,7 @@ test("removing the last keeper returns the team to NO_KEEPER", () => {
 
 test("keeper bucket change globally moves multiple teams", () => {
   const baseline = resolveScenario(baselineInput, createEmptyScenarioOverrides());
-  const overrides = assumeAndSelect(
+  const overrides = selectKeeper(
     createEmptyScenarioOverrides(),
     "sup-fam",
     "alex-sarr",
@@ -105,7 +109,7 @@ test("EARLY to LATE reruns global allocation", () => {
 });
 
 test("keeper selection occupies the resolver-designated pick", () => {
-  const overrides = assumeAndSelect(
+  const overrides = selectKeeper(
     createEmptyScenarioOverrides(),
     "sup-fam",
     "alex-sarr",
@@ -121,7 +125,7 @@ test("keeper selection occupies the resolver-designated pick", () => {
 });
 
 test("keeper deselection returns the consumed pick to OPEN", () => {
-  let overrides = assumeAndSelect(createEmptyScenarioOverrides(), "sup-fam", "alex-sarr");
+  let overrides = selectKeeper(createEmptyScenarioOverrides(), "sup-fam", "alex-sarr");
   const selected = resolveScenario(baselineInput, overrides);
   const consumedPick = selected.resolvedState.keepers.find(
     (item) => item.playerId === "alex-sarr",
@@ -137,7 +141,7 @@ test("keeper deselection returns the consumed pick to OPEN", () => {
 });
 
 test("R5 to R4 mapping is displayed from resolver output", () => {
-  const overrides = assumeAndSelect(
+  const overrides = selectKeeper(
     createEmptyScenarioOverrides(),
     "sup-fam",
     "alex-sarr",
@@ -163,8 +167,8 @@ test("same-cost collision displays resolver-derived unresolved round set", () =>
   const teamId = "under-armour";
   const first = playerAtRound(teamId, 7);
   const second = playerAtRound(teamId, 8);
-  let overrides = assumeAndSelect(createEmptyScenarioOverrides(), teamId, first.playerId);
-  overrides = assumeAndSelect(overrides, teamId, second.playerId);
+  let overrides = selectKeeper(createEmptyScenarioOverrides(), teamId, first.playerId);
+  overrides = selectKeeper(overrides, teamId, second.playerId);
   const result = resolveScenario(baselineInput, overrides);
   const panel = buildPanel(result, overrides, teamId);
   const selectedRows = panel.roster.filter((candidate) => candidate.selected);
@@ -180,8 +184,7 @@ test("8th-11th candidate actions respect one-R2+ versus two-R3+ modes", () => {
   const round2 = playerAtRound(teamId, 2);
   const round3 = playerAtRound(teamId, 3);
   const round4 = playerAtRound(teamId, 4);
-  let oneR2 = assumeAndSelect(createEmptyScenarioOverrides(), teamId, round2.playerId);
-  oneR2 = setScenarioEligibilityAssumption(oneR2, round3.playerId, true);
+  const oneR2 = selectKeeper(createEmptyScenarioOverrides(), teamId, round2.playerId);
   const afterR2Candidates = evaluateKeeperCandidates({
     baselineInput,
     overrides: oneR2,
@@ -192,8 +195,8 @@ test("8th-11th candidate actions respect one-R2+ versus two-R3+ modes", () => {
     false,
   );
 
-  let twoR3 = assumeAndSelect(createEmptyScenarioOverrides(), teamId, round3.playerId);
-  twoR3 = assumeAndSelect(twoR3, teamId, round4.playerId);
+  let twoR3 = selectKeeper(createEmptyScenarioOverrides(), teamId, round3.playerId);
+  twoR3 = selectKeeper(twoR3, teamId, round4.playerId);
   const resolvedTwoR3 = resolveScenario(baselineInput, twoR3);
   assert.equal(allocation(resolvedTwoR3, teamId).bucket, "KEEPER");
   assert.equal(
@@ -216,13 +219,14 @@ test("17th and 18th place teams cannot select keepers", () => {
 });
 
 test("UNKNOWN history is unresolved until an explicit scenario assumption", () => {
+  const unknownInput = inputWithUnknownHistory("sup-fam", "alex-sarr");
   const selectedWithoutAssumption = setScenarioKeeperSelection(
     createEmptyScenarioOverrides(),
     "sup-fam",
     "alex-sarr",
     true,
   );
-  const unresolved = resolveScenario(baselineInput, selectedWithoutAssumption);
+  const unresolved = resolveScenario(unknownInput, selectedWithoutAssumption);
   assert.ok(
     unresolved.resolvedState.validation.some(
       (item) => item.code === "KEEPER_CONSECUTIVE_YEAR_UNKNOWN",
@@ -235,24 +239,32 @@ test("UNKNOWN history is unresolved until an explicit scenario assumption", () =
     "alex-sarr",
     true,
   );
-  const resolved = resolveScenario(baselineInput, assumed);
+  const resolved = resolveScenario(unknownInput, assumed);
   assert.equal(allocation(resolved, "sup-fam").bucket, "KEEPER");
 });
 
-test("scenario eligibility assumption never mutates canonical teams", () => {
-  const before = structuredClone(canonicalTeams);
-  const overrides = assumeAndSelect(
-    createEmptyScenarioOverrides(),
-    "sup-fam",
+test("scenario eligibility assumption never mutates its UNKNOWN baseline or canonical teams", () => {
+  const unknownInput = inputWithUnknownHistory("sup-fam", "alex-sarr");
+  const unknownBefore = structuredClone(unknownInput);
+  const canonicalBefore = structuredClone(canonicalTeams);
+  const overrides = setScenarioEligibilityAssumption(
+    setScenarioKeeperSelection(
+      createEmptyScenarioOverrides(),
+      "sup-fam",
+      "alex-sarr",
+      true,
+    ),
     "alex-sarr",
+    true,
   );
-  const scenarioInput = applyScenarioOverrides(baselineInput, overrides);
+  const scenarioInput = applyScenarioOverrides(unknownInput, overrides);
 
-  assert.deepEqual(canonicalTeams, before);
+  assert.deepEqual(unknownInput, unknownBefore);
+  assert.deepEqual(canonicalTeams, canonicalBefore);
   assert.equal(
     canonicalTeams.teams[0].priorDraft.find((player) => player.playerId === "alex-sarr")
       .consecutiveYearKeeperEligibility,
-    "UNKNOWN",
+    "ELIGIBLE",
   );
   assert.equal(
     scenarioInput.teams[0].priorDraft.find((player) => player.playerId === "alex-sarr")
@@ -263,7 +275,7 @@ test("scenario eligibility assumption never mutates canonical teams", () => {
 
 test("reset scenario reproduces exact baseline resolver output", () => {
   const baseline = resolveScenario(baselineInput, createEmptyScenarioOverrides());
-  const changed = assumeAndSelect(
+  const changed = selectKeeper(
     setScenarioStealDirection(createEmptyScenarioOverrides(), "under-armour", "LATE"),
     "sup-fam",
     "alex-sarr",
@@ -275,7 +287,7 @@ test("reset scenario reproduces exact baseline resolver output", () => {
 });
 
 test("missing Yahoo metadata does not block keeper interaction", () => {
-  const overrides = assumeAndSelect(
+  const overrides = selectKeeper(
     createEmptyScenarioOverrides(),
     "sup-fam",
     "alex-sarr",
@@ -290,7 +302,7 @@ test("missing Yahoo metadata does not block keeper interaction", () => {
 });
 
 test("scenario state stores only input overrides, never resolved cells or slots", () => {
-  const overrides = assumeAndSelect(
+  const overrides = selectKeeper(
     setScenarioStealDirection(createEmptyScenarioOverrides(), "sup-fam", "LATE"),
     "sup-fam",
     "alex-sarr",
@@ -306,4 +318,3 @@ test("scenario state stores only input overrides, never resolved cells or slots"
   assert.equal(serialized.includes("pickNumber"), false);
   assert.equal(serialized.includes("picks"), false);
 });
-

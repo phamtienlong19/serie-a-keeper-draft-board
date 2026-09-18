@@ -34,8 +34,8 @@ Pre-draft pick trading may reshape pick inventory / keeper channels.
 ## Additional keeper restrictions
 - Only one keeper slot may be used on an R1/R2 player.
 - The same player cannot be kept in consecutive years by the same team.
-- The prior keeper sheet marks consecutive-year ineligible players in red.
-- The available text extraction does not preserve which names were red; this must be supplied separately before authoritative keeper eligibility can be completed.
+- The complete prior-year keeper list has been supplied authoritatively for 2026/27.
+- Canonical prior-draft rows mark those seven prior-year keepers `INELIGIBLE` and every other player `ELIGIBLE`.
 
 ## Keeper cost mapping
 Keeper cost is based on prior-season original draft round.

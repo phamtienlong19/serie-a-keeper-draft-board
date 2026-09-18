@@ -85,7 +85,11 @@ function renderYahooMetadata(metadata) {
 function renderCandidateStatus(candidate) {
   const firstError = candidate.validation.find((item) => item.severity === "ERROR");
   if (firstError) {
-    return `<div class="candidate-status is-error"><strong>INELIGIBLE</strong><span>${escapeHtml(firstError.message)}</span></div>`;
+    const reason =
+      firstError.code === "KEEPER_CONSECUTIVE_YEAR_INELIGIBLE"
+        ? "Kept last season."
+        : firstError.message;
+    return `<div class="candidate-status is-error"><strong>INELIGIBLE</strong><span>${escapeHtml(reason)}</span></div>`;
   }
   if (candidate.requiresEligibilityAssumption) {
     return `<div class="candidate-status is-unresolved"><strong>UNRESOLVED</strong><span>Prior-year keeper status is unknown.</span></div>`;

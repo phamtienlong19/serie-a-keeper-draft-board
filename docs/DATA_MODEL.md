@@ -58,13 +58,13 @@ Suggested team IDs:
       "playerName": "Cooper Flagg",
       "oldRound": 2,
       "originalDrafterTeamId": "sup-fam",
-      "consecutiveYearKeeperEligibility": "UNKNOWN"
+      "consecutiveYearKeeperEligibility": "ELIGIBLE"
     }
   ]
 }
 ```
 
-`consecutiveYearKeeperEligibility` is explicit because the available text source does not preserve the red/ineligible formatting.
+`consecutiveYearKeeperEligibility` is explicit. The 2026/27 canonical rows were reconciled from the authoritative complete prior-year keeper list; `UNKNOWN` remains available for future unreconciled inputs.
 
 Allowed values:
 - `ELIGIBLE`
