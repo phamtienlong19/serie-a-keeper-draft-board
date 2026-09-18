@@ -1,6 +1,6 @@
 # Serie A Draft Board
 
-This repository contains the canonical league rules/data and a deterministic, zero-dependency domain engine for the 2026/27 keeper and draft board. No UI is included yet.
+This repository contains the canonical league rules/data, deterministic domain engine, and interactive 2026/27 keeper and draft board.
 
 ## Domain engine
 
@@ -25,17 +25,37 @@ The bundled screen is clearly labeled `DEMO / NOT OFFICIAL`. Its fixture clones 
 
 Task 004 adds client-side scenario controls. Clicking a team header or using Jump to Team opens its roster drawer, where keeper selections, explicit scenario-only eligibility assumptions, and `EARLY`/`LATE` overrides can be changed. Scenario state stores inputs only; every change reruns the complete domain resolver and rebuilds the board. Reset returns to the immutable demo baseline.
 
-Run locally with:
+## Local Development
+
+Install the locked dependencies and run the Vite development server:
 
 ```sh
+npm ci
+npm test
 npm run dev
 ```
 
-Create a production build with:
+The development server uses `/` as its base path. An optional development-only Sites artifact can be created with `npm run build:sites`; it is not the production deployment target.
+
+## Production Build
+
+Create and verify the static GitHub Pages artifact:
 
 ```sh
 npm run build
 ```
+
+The output is written directly to `dist/`. The build verifier checks repository-subpath asset references, bundled canonical/Yahoo data, missing assets, source maps, local filesystem paths, and hosting-specific output. The default public base is `/serie-a-keeper-draft-board/`; set `VITE_BASE_PATH` and `VITE_PUBLIC_SITE_URL` when building for a differently named repository.
+
+## Public Deployment
+
+Pushes to `main` and manual workflow runs execute `.github/workflows/deploy-pages.yml`. The workflow installs from `package-lock.json`, runs the complete test suite, builds the static site, uploads `dist/`, and deploys only after those gates succeed.
+
+Expected public URL:
+
+`https://phamtienlong19.github.io/serie-a-keeper-draft-board/`
+
+One-time repository setup: in GitHub, open **Settings → Pages** and set **Source** to **GitHub Actions**. If the local checkout is not yet connected to `phamtienlong19/serie-a-keeper-draft-board`, create or connect that repository and push `main`; no application secrets are required.
 
 ## Yahoo metadata enrichment
 

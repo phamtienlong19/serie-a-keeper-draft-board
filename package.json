@@ -4,7 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "vite build && node scripts/prepare-sites-build.js",
+    "build": "vite build && node scripts/verify-pages-build.js",
+    "build:sites": "vite build --mode sites && node scripts/prepare-sites-build.js",
     "dev": "vite",
     "diagnose:demo": "node scripts/diagnose-demo-allocation.js",
     "normalize:yahoo": "node scripts/normalize-yahoo-players.js",
