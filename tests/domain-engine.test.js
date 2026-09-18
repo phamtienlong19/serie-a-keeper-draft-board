@@ -153,15 +153,17 @@ test("simple R7/R8 collision resolves named assignments deterministically", () =
   assert.deepEqual(collision.resolvedRounds, [6, 5]);
   assert.equal(collision.assignmentStatus, "RESOLVED");
   assert.deepEqual(collision.assignments, [
-    { playerId: "team-1-r7", resolvedRound: 6 },
-    { playerId: "team-1-r8", resolvedRound: 5 },
+    { playerId: "team-1-r7", baseCostRound: 6, resolvedCostRound: 6, collisionDepth: 0 },
+    { playerId: "team-1-r8", baseCostRound: 6, resolvedCostRound: 5, collisionDepth: 1 },
   ]);
   assert.deepEqual(records.map((record) => record.resolvedCostRound), [6, 5]);
+  assert.deepEqual(records.map((record) => record.collisionDepth), [0, 1]);
   assert.ok(!validationCodes(result).includes("KEEPER_COLLISION_ASSIGNMENT_UNRESOLVED"));
   assert.equal(allocation(result, "team-1").bucket, "KEEPER");
   assert.equal(result.picks.filter((pick) => pick.status === "KEEPER").length, 2);
   assert.equal(result.picks.find((pick) => pick.round === 6 && pick.originTeamId === "team-1").keeper.playerId, "team-1-r7");
   assert.equal(result.picks.find((pick) => pick.round === 5 && pick.originTeamId === "team-1").keeper.playerId, "team-1-r8");
+  assert.equal(result.picks.find((pick) => pick.round === 5 && pick.originTeamId === "team-1").keeper.collisionDepth, 1);
 });
 
 test("8th-11th place team uses one-R2+ mode or two-R3+ mode, never both", () => {
@@ -331,7 +333,42 @@ test("trading away a keeper channel returns Q5 unresolved instead of inventing a
 
   assert.equal(issue.severity, "UNRESOLVED");
   assert.equal(issue.ruleQuestion, "Q5");
+  assert.equal(result.keepers.find((item) => item.playerId === "team-1-r5").resolvedCostRound, 4);
   assert.equal(allocation(result, "team-1").bucket, null);
+});
+
+test("entitlement ownership does not alter intrinsic collision costs", () => {
+  const baseline = completeInput();
+  baseline.keeperSelections = replaceTeamEntry(baseline.keeperSelections, "team-1", {
+    selectedPlayerIds: ["team-1-r7", "team-1-r8"],
+  });
+  const traded = completeInput({
+    trades: [
+      {
+        tradeId: "trade-native-r5",
+        status: "CONFIRMED",
+        transfers: [
+          { originTeamId: "team-1", round: 5, fromTeamId: "team-1", toTeamId: "team-2" },
+        ],
+      },
+    ],
+  });
+  traded.keeperSelections = replaceTeamEntry(traded.keeperSelections, "team-1", {
+    selectedPlayerIds: ["team-1-r8", "team-1-r7"],
+  });
+
+  const baselineResult = resolveDraftState(baseline);
+  const tradedResult = resolveDraftState(traded);
+  const costs = (result) => Object.fromEntries(
+    result.keepers
+      .filter((item) => item.teamId === "team-1")
+      .map((item) => [item.playerId, item.resolvedCostRound]),
+  );
+
+  assert.deepEqual(costs(tradedResult), costs(baselineResult));
+  assert.deepEqual(costs(tradedResult), { "team-1-r8": 5, "team-1-r7": 6 });
+  assert.ok(validationCodes(tradedResult).includes("KEEPER_CHANNEL_RULE_UNRESOLVED"));
+  assert.equal(allocation(tradedResult, "team-1").bucket, null);
 });
 
 test("an acquired duplicate collision-round channel returns Q4 unresolved", () => {
@@ -356,10 +393,16 @@ test("an acquired duplicate collision-round channel returns Q4 unresolved", () =
 
   assert.equal(issue.severity, "UNRESOLVED");
   assert.equal(issue.ruleQuestion, "Q4");
-  assert.deepEqual(result.keeperCollisions[0].resolvedRounds, []);
-  assert.deepEqual(result.keeperCollisions[0].possibleRoundSets, [
+  assert.deepEqual(result.keeperCollisions[0].resolvedRounds, [6, 5]);
+  assert.equal(result.keeperCollisions[0].assignmentStatus, "RESOLVED");
+  assert.equal(result.keeperCollisions[0].channelStatus, "RULE_UNRESOLVED");
+  assert.deepEqual(result.keeperCollisions[0].possibleConsumedRoundSets, [
     [6, 6],
     [6, 5],
   ]);
+  assert.deepEqual(
+    result.keepers.filter((item) => item.teamId === "team-1").map((item) => item.resolvedCostRound),
+    [6, 5],
+  );
   assert.equal(result.picks.some((pick) => pick.status === "KEEPER_UNRESOLVED"), false);
 });

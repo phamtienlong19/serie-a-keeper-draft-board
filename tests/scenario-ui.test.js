@@ -176,6 +176,7 @@ test("same-cost collision displays deterministic resolved costs", () => {
   assert.deepEqual(result.resolvedState.keeperCollisions[0].resolvedRounds, [6, 5]);
   assert.equal(result.resolvedState.keeperCollisions[0].assignmentStatus, "RESOLVED");
   assert.deepEqual(selectedRows.map((row) => row.resolvedCostRound), [6, 5]);
+  assert.deepEqual(selectedRows.map((row) => row.collisionDepth), [0, 1]);
   assert.deepEqual(selectedRows.map((row) => row.costLabel), ["R7 → R6", "R8 → R6 → R5"]);
 });
 

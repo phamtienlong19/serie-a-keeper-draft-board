@@ -101,6 +101,7 @@ The engine derives:
   "oldRound": 5,
   "baseCostRound": 4,
   "resolvedCostRound": 4,
+  "collisionDepth": 0,
   "collision": null,
   "consumedEntitlement": {
     "originTeamId": "sup-fam",
