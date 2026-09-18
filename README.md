@@ -17,6 +17,24 @@ Important input semantics:
 
 The resolver returns structured `ERROR`, `WARNING`, and `UNRESOLVED` validation. Open collision/channel questions remain machine-readable rather than receiving guessed outcomes.
 
+## Read-only draft board
+
+Task 003 adds a Vite-powered, read-only 18-column × 11-round board. The browser consumes a pure presentation model built from `resolveDraftState`; it does not calculate allocation, snake geometry, entitlement ownership, or keeper placement itself.
+
+The bundled screen is clearly labeled `DEMO / NOT OFFICIAL`. Its fixture clones all 18 canonical team records, supplies an explicit zero-keeper and `EARLY` declaration for each team, and passes everything through the production resolver. Canonical `data/teams.json` remains unchanged.
+
+Run locally with:
+
+```sh
+npm run dev
+```
+
+Create a production build with:
+
+```sh
+npm run build
+```
+
 ## Yahoo metadata enrichment
 
 Yahoo data is an external, non-authoritative enrichment layer:
