@@ -1,0 +1,13 @@
+{
+  "name": "serie-a-draft-board",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "normalize:yahoo": "node scripts/normalize-yahoo-players.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
