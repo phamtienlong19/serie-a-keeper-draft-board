@@ -52,10 +52,15 @@ Examples:
 - old R10 -> base R8.
 
 ## Keeper collisions
-If two selected keepers resolve to the same base cost:
-- both may still be kept;
-- one consumes the target round;
-- the other consumes the next earlier available round.
+Keeper-cost allocation is deterministic and independent from pick ownership:
+- calculate every selected keeper's base cost using the mapping above;
+- reserve one genuine claim at every distinct base-cost round before assigning spillover;
+- within a shared base round, order players by canonical prior-draft order (old round ascending, then stable player ID);
+- assign the first player to the base round;
+- move each additional player toward earlier rounds until an unoccupied keeper-cost round is found;
+- never move a keeper to a later/cheaper round than its base cost or earlier than R1.
+
+Earlier base-cost groups are processed first when spillovers from different groups compete for remaining rounds. Selection/click order never affects the result.
 
 Example:
 - keeper A maps to R6;
@@ -64,7 +69,13 @@ Example:
 
 Named assignment between those resolved rounds has no separate league consequence. The engine assigns the players deterministically in canonical prior-draft order (old round ascending, then stable player ID), independent of selection order. The first player consumes the base-cost round and the next consumes the earlier collision round.
 
-If multiple collisions or traded pick inventory create more complex cases, the system must follow an explicit confirmed league rule. See `OPEN_RULE_QUESTIONS.md`.
+Example with base-claim precedence:
+- keeper A maps to R6;
+- keeper B maps to R6;
+- keeper C genuinely maps to R5;
+- A resolves to R6, C retains R5, and B spills to R4.
+
+After intrinsic keeper costs resolve, native entitlement availability is checked separately. Acquired duplicate channels and missing/traded native channels remain governed by the unresolved questions in `OPEN_RULE_QUESTIONS.md`; ownership never changes the intrinsic resolved keeper cost.
 
 ## Pre-draft pick trading
 The league permits pre-draft pick trading / pick-inventory reshaping for keeper purposes.

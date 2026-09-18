@@ -6,6 +6,9 @@ import {
   TEAM_COUNT,
   VALIDATION_SEVERITIES,
 } from "./constants.js";
+import { allocateKeeperCosts } from "./keeper-costs.js";
+
+export { allocateKeeperCosts } from "./keeper-costs.js";
 
 const { ERROR, WARNING, UNRESOLVED } = VALIDATION_SEVERITIES;
 
@@ -337,6 +340,7 @@ function resolveKeepers(input, teams, entitlements, draftRounds, validation) {
         consecutiveYearEligibility: player?.consecutiveYearKeeperEligibility ?? "UNKNOWN",
         baseCostRound: player ? mapKeeperCost(player.oldRound) : null,
         resolvedCostRound: null,
+        collisionDepth: null,
         possibleResolvedCostRounds: [],
         collision: null,
         consumedEntitlement: null,
@@ -456,153 +460,123 @@ function resolveKeepers(input, teams, entitlements, draftRounds, validation) {
     }
 
     if (!blocking && records.length > 0) {
-      const byBaseRound = new Map();
-      for (const record of records) {
-        if (!byBaseRound.has(record.baseCostRound)) byBaseRound.set(record.baseCostRound, []);
-        byBaseRound.get(record.baseCostRound).push(record);
+      const costAllocation = allocateKeeperCosts(records);
+      const recordsById = new Map(records.map((record) => [record.playerId, record]));
+      const channelBlockedPlayerIds = new Set();
+
+      for (const assignment of costAllocation.assignments) {
+        const record = recordsById.get(assignment.playerId);
+        record.resolvedCostRound = assignment.resolvedCostRound;
+        record.collisionDepth = assignment.collisionDepth;
       }
 
-      for (const [baseRound, sameRoundRecords] of byBaseRound) {
-        if (sameRoundRecords.length === 1) {
-          const record = sameRoundRecords[0];
-          const channel = entitlements.get(entitlementKey(team.teamId, baseRound));
-          if (!channel || channel.ownershipStatus !== "RESOLVED" || channel.currentOwnerTeamId !== team.teamId) {
-            blocking = true;
-            hasUnresolved = true;
-            record.placementStatus = "UNRESOLVED";
-            validation.push(
-              makeValidation(
-                UNRESOLVED,
-                "KEEPER_CHANNEL_RULE_UNRESOLVED",
-                `${team.name} does not hold its native R${baseRound} entitlement; the replacement-channel rule is unresolved.`,
-                { teamId: team.teamId, playerId: record.playerId, baseCostRound: baseRound, ruleQuestion: "Q5" },
-              ),
-            );
-          } else {
-            record.resolvedCostRound = baseRound;
-            record.consumedEntitlement = { originTeamId: team.teamId, round: baseRound };
-            record.placementStatus = "RESOLVED";
-          }
-          continue;
-        }
-
-        if (sameRoundRecords.length === 2 && baseRound > 1) {
-          const resolvedRounds = [baseRound, baseRound - 1];
-          const ownedBaseRoundChannels = [...entitlements.values()].filter(
-            (entitlement) =>
-              entitlement.round === baseRound &&
-              entitlement.ownershipStatus === "RESOLVED" &&
-              entitlement.currentOwnerTeamId === team.teamId,
-          );
-          if (ownedBaseRoundChannels.length > 1) {
-            const collisionId = `${team.teamId}:R${baseRound}`;
-            const collision = {
-              collisionId,
-              teamId: team.teamId,
-              playerIds: sameRoundRecords.map((record) => record.playerId),
-              baseCostRound: baseRound,
-              resolvedRounds: [],
-              possibleRoundSets: [
-                [baseRound, baseRound],
-                resolvedRounds,
-              ],
-              assignmentStatus: "RULE_UNRESOLVED",
-            };
-            collisions.push(collision);
-            for (const record of sameRoundRecords) {
-              record.possibleResolvedCostRounds = resolvedRounds;
-              record.collision = { collisionId, assignmentStatus: "RULE_UNRESOLVED" };
-              record.placementStatus = "UNRESOLVED";
-            }
-            validation.push(
-              makeValidation(
-                UNRESOLVED,
-                "KEEPER_DUPLICATE_CHANNEL_RULE_UNRESOLVED",
-                `The team owns multiple R${baseRound} entitlements, and the rule for applying them to a keeper collision is not confirmed.`,
-                {
-                  teamId: team.teamId,
-                  playerIds: collision.playerIds,
-                  entitlementOrigins: ownedBaseRoundChannels.map(
-                    (entitlement) => entitlement.originTeamId,
-                  ),
-                  ruleQuestion: "Q4",
-                },
-              ),
-            );
-            continue;
-          }
-          const channelsAvailable = resolvedRounds.every((round) => {
-            const channel = entitlements.get(entitlementKey(team.teamId, round));
-            return channel?.ownershipStatus === "RESOLVED" && channel.currentOwnerTeamId === team.teamId;
-          });
-          if (!channelsAvailable) {
-            blocking = true;
-            hasUnresolved = true;
-            for (const record of sameRoundRecords) record.placementStatus = "UNRESOLVED";
-            validation.push(
-              makeValidation(
-                UNRESOLVED,
-                "KEEPER_COLLISION_CASCADE_UNRESOLVED",
-                `The R${baseRound} collision cannot use both native R${baseRound} and R${baseRound - 1} channels.`,
-                {
-                  teamId: team.teamId,
-                  playerIds: sameRoundRecords.map((record) => record.playerId),
-                  resolvedRounds,
-                  ruleQuestions: ["Q3", "Q5"],
-                },
-              ),
-            );
-            continue;
-          }
-
-          const collisionId = `${team.teamId}:R${baseRound}`;
-          // Named assignment has no league consequence. Use canonical draft
-          // provenance so the same keeper set resolves identically regardless
-          // of UI selection order.
-          const assignedRecords = [...sameRoundRecords].sort(
-            (left, right) =>
-              left.oldRound - right.oldRound || left.playerId.localeCompare(right.playerId),
-          );
-          const assignments = assignedRecords.map((record, index) => ({
-            playerId: record.playerId,
-            resolvedRound: resolvedRounds[index],
-          }));
-          const collision = {
-            collisionId,
-            teamId: team.teamId,
-            playerIds: assignedRecords.map((record) => record.playerId),
-            baseCostRound: baseRound,
-            resolvedRounds,
-            assignments,
-            assignmentStatus: "RESOLVED",
-          };
-          collisions.push(collision);
-          for (const [index, record] of assignedRecords.entries()) {
-            const resolvedRound = resolvedRounds[index];
-            record.resolvedCostRound = resolvedRound;
-            record.consumedEntitlement = { originTeamId: team.teamId, round: resolvedRound };
-            record.collision = { collisionId, assignmentStatus: "RESOLVED" };
-            record.placementStatus = "RESOLVED";
-          }
-          continue;
-        }
-
+      for (const issue of costAllocation.validation) {
         blocking = true;
-        hasUnresolved = true;
-        for (const record of sameRoundRecords) record.placementStatus = "UNRESOLVED";
-        validation.push(
-          makeValidation(
-            UNRESOLVED,
-            "KEEPER_COLLISION_CASCADE_UNRESOLVED",
-            "Keeper collision requires an unconfirmed cascade rule.",
-            {
-              teamId: team.teamId,
-              playerIds: sameRoundRecords.map((record) => record.playerId),
-              baseCostRound: baseRound,
-              ruleQuestion: "Q3",
-            },
-          ),
+        const record = recordsById.get(issue.playerId);
+        if (record) {
+          record.selectionStatus = "INVALID";
+          record.placementStatus = "INVALID";
+        }
+        validation.push({ ...issue, teamId: team.teamId });
+      }
+
+      for (const allocatedCollision of costAllocation.collisions) {
+        const collisionId = `${team.teamId}:R${allocatedCollision.baseCostRound}`;
+        const collision = {
+          collisionId,
+          teamId: team.teamId,
+          ...allocatedCollision,
+          channelStatus: "PENDING",
+        };
+        const collisionRecords = collision.playerIds.map((playerId) => recordsById.get(playerId));
+        for (const record of collisionRecords) {
+          record.collision = { collisionId, assignmentStatus: collision.assignmentStatus };
+        }
+
+        const ownedBaseRoundChannels = [...entitlements.values()].filter(
+          (entitlement) =>
+            entitlement.round === collision.baseCostRound &&
+            entitlement.ownershipStatus === "RESOLVED" &&
+            entitlement.currentOwnerTeamId === team.teamId,
         );
+        if (ownedBaseRoundChannels.length > 1) {
+          blocking = true;
+          hasUnresolved = true;
+          collision.channelStatus = "RULE_UNRESOLVED";
+          collision.possibleConsumedRoundSets = [
+            collision.playerIds.map(() => collision.baseCostRound),
+            [...collision.resolvedRounds],
+          ];
+          for (const record of collisionRecords) {
+            channelBlockedPlayerIds.add(record.playerId);
+            record.placementStatus = "UNRESOLVED";
+          }
+          validation.push(
+            makeValidation(
+              UNRESOLVED,
+              "KEEPER_DUPLICATE_CHANNEL_RULE_UNRESOLVED",
+              `The team owns multiple R${collision.baseCostRound} entitlements, and the rule for consuming them after keeper-cost allocation is not confirmed.`,
+              {
+                teamId: team.teamId,
+                playerIds: collision.playerIds,
+                resolvedRounds: collision.resolvedRounds,
+                entitlementOrigins: ownedBaseRoundChannels.map(
+                  (entitlement) => entitlement.originTeamId,
+                ),
+                ruleQuestion: "Q4",
+              },
+            ),
+          );
+        }
+        collisions.push(collision);
+      }
+
+      for (const record of records) {
+        if (record.resolvedCostRound === null || channelBlockedPlayerIds.has(record.playerId)) continue;
+        const channel = entitlements.get(entitlementKey(team.teamId, record.resolvedCostRound));
+        if (!channel || channel.ownershipStatus !== "RESOLVED" || channel.currentOwnerTeamId !== team.teamId) {
+          blocking = true;
+          hasUnresolved = true;
+          record.placementStatus = "UNRESOLVED";
+          validation.push(
+            makeValidation(
+              UNRESOLVED,
+              "KEEPER_CHANNEL_RULE_UNRESOLVED",
+              `${team.name} does not hold its native R${record.resolvedCostRound} entitlement; the replacement-channel rule is unresolved.`,
+              {
+                teamId: team.teamId,
+                playerId: record.playerId,
+                baseCostRound: record.baseCostRound,
+                resolvedCostRound: record.resolvedCostRound,
+                ruleQuestion: "Q5",
+              },
+            ),
+          );
+        } else {
+          record.consumedEntitlement = {
+            originTeamId: team.teamId,
+            round: record.resolvedCostRound,
+          };
+          record.placementStatus = "RESOLVED";
+        }
+      }
+
+      for (const collision of collisions.filter((item) => item.teamId === team.teamId)) {
+        if (collision.channelStatus === "PENDING") {
+          collision.channelStatus = collision.playerIds.some(
+            (playerId) => recordsById.get(playerId)?.placementStatus !== "RESOLVED",
+          )
+            ? "RULE_UNRESOLVED"
+            : "RESOLVED";
+        }
+        for (const playerId of collision.playerIds) {
+          const record = recordsById.get(playerId);
+          record.collision = {
+            collisionId: collision.collisionId,
+            assignmentStatus: collision.assignmentStatus,
+            channelStatus: collision.channelStatus,
+          };
+        }
       }
     }
 
@@ -734,6 +708,7 @@ function buildPicks(teams, draftRounds, allocations, entitlements, keeperRecords
       oldRound: keeper.oldRound,
       baseCostRound: keeper.baseCostRound,
       resolvedCostRound: keeper.resolvedCostRound,
+      collisionDepth: keeper.collisionDepth,
     };
     keeper.consumedPickNumber = pick.pickNumber;
   }

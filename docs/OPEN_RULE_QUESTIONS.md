@@ -1,20 +1,14 @@
 # Open Rule Questions
 
-These are intentionally unresolved. Do not let implementation assumptions become league rules.
+Resolved clarifications are retained here for provenance. Questions explicitly marked open must not receive implementation assumptions.
 
 ## Resolved Q2. Collision assignment between named players
 Commissioner clarification: named assignment does not have a separate league consequence, so it does not require a human choice. For a simple two-player collision, the engine assigns players in canonical prior-draft order (old round ascending, then stable player ID), independent of selection order. The first player consumes the base-cost round and the next consumes the earlier collision round.
 
-## Q3. Multi-level collisions
-Example:
-- player A maps to R6;
-- player B maps to R6;
-- another selected keeper or unavailable entitlement already occupies R5.
+## Resolved Q3. Multi-level pure keeper-cost collisions
+Pure keeper-cost allocation continues toward earlier rounds until an unoccupied round is found. Genuine base-round claims are reserved before spillover, and no keeper may move later than its base cost or earlier than R1. This intrinsic allocation is independent from entitlement ownership.
 
-Need explicit rule for cascading resolution:
-- continue upward to R4?
-- reject configuration?
-- use duplicate acquired round channels differently?
+An unavailable native entitlement is not an intrinsic cost collision; replacement or substitution remains open under Q4/Q5 below.
 
 ## Q4. Acquired duplicate round entitlements and keeper collisions
 The rules state that pre-draft pick trading can reshape keeper channels and give an example where multiple relevant-round picks matter.

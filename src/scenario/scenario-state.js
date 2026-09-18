@@ -128,6 +128,7 @@ export function evaluateKeeperCandidates({ baselineInput, overrides, teamId }) {
       finishEligibility: keeper?.finishEligibility ?? "UNKNOWN",
       baseCostRound: keeper?.baseCostRound ?? null,
       resolvedCostRound: keeper?.resolvedCostRound ?? null,
+      collisionDepth: keeper?.collisionDepth ?? null,
       possibleResolvedCostRounds: keeper?.possibleResolvedCostRounds ?? [],
       placementStatus: keeper?.placementStatus ?? "PENDING",
       validation: validation.map((item) => ({ ...item })),
