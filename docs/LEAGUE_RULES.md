@@ -62,6 +62,8 @@ Example:
 - keeper B maps to R6;
 - resolved keeper costs become R6 and R5.
 
+Named assignment between those resolved rounds has no separate league consequence. The engine assigns the players deterministically in canonical prior-draft order (old round ascending, then stable player ID), independent of selection order. The first player consumes the base-cost round and the next consumes the earlier collision round.
+
 If multiple collisions or traded pick inventory create more complex cases, the system must follow an explicit confirmed league rule. See `OPEN_RULE_QUESTIONS.md`.
 
 ## Pre-draft pick trading

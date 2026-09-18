@@ -138,22 +138,30 @@ test("one keeper declaration can move multiple other teams", () => {
   assert.equal(movedOtherTeams.length, 17);
 });
 
-test("simple R7/R8 collision resolves collective channels but not named assignment", () => {
+test("simple R7/R8 collision resolves named assignments deterministically", () => {
   const input = completeInput();
   input.keeperSelections = replaceTeamEntry(input.keeperSelections, "team-1", {
-    selectedPlayerIds: ["team-1-r7", "team-1-r8"],
+    // Reverse canonical order to prove click/input order does not control assignment.
+    selectedPlayerIds: ["team-1-r8", "team-1-r7"],
   });
   const result = resolveDraftState(input);
   const collision = result.keeperCollisions[0];
-  const records = result.keepers.filter((keeper) => keeper.teamId === "team-1");
+  const records = result.keepers
+    .filter((keeper) => keeper.teamId === "team-1")
+    .sort((left, right) => left.oldRound - right.oldRound);
 
   assert.deepEqual(collision.resolvedRounds, [6, 5]);
-  assert.equal(collision.assignmentStatus, "UNRESOLVED");
-  assert.ok(records.every((record) => record.resolvedCostRound === null));
-  assert.ok(records.every((record) => record.possibleResolvedCostRounds.join(",") === "6,5"));
-  assert.ok(validationCodes(result).includes("KEEPER_COLLISION_ASSIGNMENT_UNRESOLVED"));
+  assert.equal(collision.assignmentStatus, "RESOLVED");
+  assert.deepEqual(collision.assignments, [
+    { playerId: "team-1-r7", resolvedRound: 6 },
+    { playerId: "team-1-r8", resolvedRound: 5 },
+  ]);
+  assert.deepEqual(records.map((record) => record.resolvedCostRound), [6, 5]);
+  assert.ok(!validationCodes(result).includes("KEEPER_COLLISION_ASSIGNMENT_UNRESOLVED"));
   assert.equal(allocation(result, "team-1").bucket, "KEEPER");
-  assert.equal(result.picks.filter((pick) => pick.status === "KEEPER_UNRESOLVED").length, 2);
+  assert.equal(result.picks.filter((pick) => pick.status === "KEEPER").length, 2);
+  assert.equal(result.picks.find((pick) => pick.round === 6 && pick.originTeamId === "team-1").keeper.playerId, "team-1-r7");
+  assert.equal(result.picks.find((pick) => pick.round === 5 && pick.originTeamId === "team-1").keeper.playerId, "team-1-r8");
 });
 
 test("8th-11th place team uses one-R2+ mode or two-R3+ mode, never both", () => {

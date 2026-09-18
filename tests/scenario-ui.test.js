@@ -163,7 +163,7 @@ test("R5 to R4 mapping is displayed from resolver output", () => {
   assert.ok(html.includes("R5 → R4"));
 });
 
-test("same-cost collision displays resolver-derived unresolved round set", () => {
+test("same-cost collision displays deterministic resolved costs", () => {
   const teamId = "under-armour";
   const first = playerAtRound(teamId, 7);
   const second = playerAtRound(teamId, 8);
@@ -174,9 +174,9 @@ test("same-cost collision displays resolver-derived unresolved round set", () =>
   const selectedRows = panel.roster.filter((candidate) => candidate.selected);
 
   assert.deepEqual(result.resolvedState.keeperCollisions[0].resolvedRounds, [6, 5]);
-  assert.ok(selectedRows.every((row) => row.resolvedCostRound === null));
-  assert.ok(selectedRows.every((row) => row.possibleResolvedCostRounds.join(",") === "6,5"));
-  assert.ok(selectedRows.every((row) => row.costLabel.includes("R6 / R5")));
+  assert.equal(result.resolvedState.keeperCollisions[0].assignmentStatus, "RESOLVED");
+  assert.deepEqual(selectedRows.map((row) => row.resolvedCostRound), [6, 5]);
+  assert.deepEqual(selectedRows.map((row) => row.costLabel), ["R7 → R6", "R8 → R6 → R5"]);
 });
 
 test("8th-11th candidate actions respect one-R2+ versus two-R3+ modes", () => {

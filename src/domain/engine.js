@@ -556,37 +556,34 @@ function resolveKeepers(input, teams, entitlements, draftRounds, validation) {
           }
 
           const collisionId = `${team.teamId}:R${baseRound}`;
+          // Named assignment has no league consequence. Use canonical draft
+          // provenance so the same keeper set resolves identically regardless
+          // of UI selection order.
+          const assignedRecords = [...sameRoundRecords].sort(
+            (left, right) =>
+              left.oldRound - right.oldRound || left.playerId.localeCompare(right.playerId),
+          );
+          const assignments = assignedRecords.map((record, index) => ({
+            playerId: record.playerId,
+            resolvedRound: resolvedRounds[index],
+          }));
           const collision = {
             collisionId,
             teamId: team.teamId,
-            playerIds: sameRoundRecords.map((record) => record.playerId),
+            playerIds: assignedRecords.map((record) => record.playerId),
             baseCostRound: baseRound,
             resolvedRounds,
-            assignmentStatus: "UNRESOLVED",
+            assignments,
+            assignmentStatus: "RESOLVED",
           };
           collisions.push(collision);
-          for (const record of sameRoundRecords) {
-            record.possibleResolvedCostRounds = resolvedRounds;
-            record.possibleConsumedEntitlements = resolvedRounds.map((round) => ({
-              originTeamId: team.teamId,
-              round,
-            }));
-            record.collision = { collisionId, assignmentStatus: "UNRESOLVED" };
-            record.placementStatus = "UNRESOLVED";
+          for (const [index, record] of assignedRecords.entries()) {
+            const resolvedRound = resolvedRounds[index];
+            record.resolvedCostRound = resolvedRound;
+            record.consumedEntitlement = { originTeamId: team.teamId, round: resolvedRound };
+            record.collision = { collisionId, assignmentStatus: "RESOLVED" };
+            record.placementStatus = "RESOLVED";
           }
-          validation.push(
-            makeValidation(
-              UNRESOLVED,
-              "KEEPER_COLLISION_ASSIGNMENT_UNRESOLVED",
-              `The collision resolves collectively to R${baseRound} and R${baseRound - 1}, but named-player assignment is not specified.`,
-              {
-                teamId: team.teamId,
-                playerIds: collision.playerIds,
-                resolvedRounds,
-                ruleQuestion: "Q2",
-              },
-            ),
-          );
           continue;
         }
 
@@ -742,7 +739,7 @@ function buildPicks(teams, draftRounds, allocations, entitlements, keeperRecords
   }
 
   for (const collision of collisions) {
-    if (collision.resolvedRounds.length === 0) continue;
+    if (collision.assignmentStatus === "RESOLVED" || collision.resolvedRounds.length === 0) continue;
     const candidatePicks = collision.resolvedRounds.map((round) =>
       pickByOriginRound.get(entitlementKey(collision.teamId, round)),
     );

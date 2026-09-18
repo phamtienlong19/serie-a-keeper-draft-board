@@ -2,14 +2,8 @@
 
 These are intentionally unresolved. Do not let implementation assumptions become league rules.
 
-## Q2. Collision assignment between named players
-The confirmed rule says that if two keeper candidates map to the same current-year cost, one uses the target round and the other moves to the next earlier available round.
-
-Not yet explicit:
-- who chooses which named player is assigned to which resolved round;
-- whether assignment matters only for display or has downstream rights implications.
-
-Do not invent a tie-break.
+## Resolved Q2. Collision assignment between named players
+Commissioner clarification: named assignment does not have a separate league consequence, so it does not require a human choice. For a simple two-player collision, the engine assigns players in canonical prior-draft order (old round ascending, then stable player ID), independent of selection order. The first player consumes the base-cost round and the next consumes the earlier collision round.
 
 ## Q3. Multi-level collisions
 Example:
