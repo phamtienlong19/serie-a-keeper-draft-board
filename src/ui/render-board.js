@@ -32,7 +32,7 @@ function stateClass(cell) {
   return "is-open";
 }
 
-function renderCell(cell) {
+function renderCell(cell, column) {
   const keeper = cell.keeper;
   const primary = keeper
     ? `<div class="cell-player">${escapeHtml(keeper.playerName?.toLocaleUpperCase("en-US"))}</div>`
@@ -49,7 +49,7 @@ function renderCell(cell) {
       ? `<div class="unresolved-copy">KEEPER ASSIGNMENT UNRESOLVED</div>`
       : "";
 
-  return `<td class="pick-cell ${stateClass(cell)}" data-pick-cell data-pick-number="${escapeHtml(cell.pickNumber)}">
+  return `<td class="pick-cell ${stateClass(cell)} ${column.isSelected ? "is-selected-column" : ""}" data-pick-cell data-pick-number="${escapeHtml(cell.pickNumber)}">
     <div class="pick-number">${escapeHtml(cell.pickNumber)}</div>
     ${primary}
     ${keeperDetails}
@@ -64,7 +64,7 @@ function renderColumnHeader(column) {
     .filter(Boolean)
     .join(" ");
   return `<th class="${classes}" scope="col" data-team-column="${escapeHtml(column.teamId)}">
-    <button class="team-header-button" type="button" data-action="select-team" data-team-id="${escapeHtml(column.teamId)}" aria-label="Open ${escapeHtml(column.teamName)} scenario controls">
+    <button class="team-header-button" type="button" data-action="select-team" data-team-id="${escapeHtml(column.teamId)}" aria-pressed="${column.isSelected}" aria-label="Open ${escapeHtml(column.teamName)} scenario controls">
       <div class="slot-number">${escapeHtml(column.r1PickNumber)}</div>
       <div class="team-name">${escapeHtml(column.teamName)}</div>
       <div class="team-context">#${escapeHtml(column.previousFinish)} LAST SEASON</div>
@@ -157,10 +157,10 @@ function renderPickPath(teamPanel) {
   </div>`;
 }
 
-function renderTeamDrawer(teamPanel) {
+function renderTeamDrawer(teamPanel, drawerMode) {
   if (!teamPanel) return "";
-  return `<div class="drawer-scrim" data-action="close-drawer" aria-hidden="true"></div>
-  <aside class="team-drawer" aria-labelledby="drawer-team-name">
+  const showKeepers = drawerMode !== "DRAFT_PATH";
+  return `<aside class="team-drawer" aria-labelledby="drawer-team-name">
     <header class="drawer-header">
       <div>
         <p class="eyebrow">TEAM SCENARIO · ${escapeHtml(teamPanel.allocationBucket ?? "UNRESOLVED")}</p>
@@ -183,17 +183,27 @@ function renderTeamDrawer(teamPanel) {
       </fieldset>
     </section>
 
-    ${renderTeamValidation(teamPanel.validation)}
+    <div class="drawer-tabs" role="tablist" aria-label="Team scenario views">
+      <button id="keepers-tab" type="button" role="tab" aria-selected="${showKeepers}" aria-controls="keepers-panel" data-action="set-drawer-mode" data-mode="KEEPERS" class="${showKeepers ? "active" : ""}">KEEPERS</button>
+      <button id="draft-path-tab" type="button" role="tab" aria-selected="${!showKeepers}" aria-controls="draft-path-panel" data-action="set-drawer-mode" data-mode="DRAFT_PATH" class="${!showKeepers ? "active" : ""}">DRAFT PATH</button>
+    </div>
 
-    <section class="drawer-section roster-section" aria-labelledby="prior-draft-title">
-      <div class="section-heading"><h3 id="prior-draft-title">PRIOR DRAFT</h3><span>${escapeHtml(teamPanel.selectedKeeperCount)} SELECTED</span></div>
-      <ol class="roster-list">${teamPanel.roster.map((candidate) => renderRosterRow(candidate, teamPanel.teamId)).join("")}</ol>
-    </section>
-
-    <section class="drawer-section path-section" aria-labelledby="draft-path-title">
-      <div class="section-heading"><h3 id="draft-path-title">CURRENT DRAFT PATH</h3><span>${teamPanel.r1Slot ? `SLOT ${escapeHtml(teamPanel.r1Slot)}` : "PENDING"}</span></div>
-      ${renderPickPath(teamPanel)}
-    </section>
+    <div class="drawer-content">
+      ${
+        showKeepers
+          ? `<div id="keepers-panel" role="tabpanel" aria-labelledby="keepers-tab">
+              ${renderTeamValidation(teamPanel.validation)}
+              <section class="drawer-section roster-section" aria-labelledby="prior-draft-title">
+                <div class="section-heading"><h3 id="prior-draft-title">PRIOR DRAFT</h3><span>${escapeHtml(teamPanel.selectedKeeperCount)} SELECTED</span></div>
+                <ol class="roster-list">${teamPanel.roster.map((candidate) => renderRosterRow(candidate, teamPanel.teamId)).join("")}</ol>
+              </section>
+            </div>`
+          : `<section id="draft-path-panel" class="drawer-section path-section" role="tabpanel" aria-labelledby="draft-path-tab">
+              <div class="section-heading"><h3 id="draft-path-title">CURRENT DRAFT PATH</h3><span>${teamPanel.r1Slot ? `SLOT ${escapeHtml(teamPanel.r1Slot)}` : "PENDING"}</span></div>
+              ${renderPickPath(teamPanel)}
+            </section>`
+      }
+    </div>
   </aside>`;
 }
 
@@ -217,13 +227,13 @@ function renderPending(viewModel) {
   </section>`;
 }
 
-export function renderDraftBoard(viewModel, teamPanel = null) {
+export function renderDraftBoard(viewModel, teamPanel = null, drawerMode = "KEEPERS") {
   const roundRows = Array.from({ length: viewModel.draftRounds }, (_, index) => index + 1)
     .map(
       (round) => `<tr>
         <th class="round-label" scope="row"><span>R${round}</span><small>ROUND ${round}</small></th>
         ${viewModel.columns
-          .map((column) => renderCell(column.cells.find((cell) => cell.round === round)))
+          .map((column) => renderCell(column.cells.find((cell) => cell.round === round), column))
           .join("")}
       </tr>`,
     )
@@ -249,6 +259,8 @@ export function renderDraftBoard(viewModel, teamPanel = null) {
       </div>
     </header>
 
+    <div class="workspace ${teamPanel ? "has-team-panel" : ""}">
+    <div class="board-pane">
     <section class="board-toolbar" aria-label="Board navigation and legend">
       <label class="jump-control">
         <span>JUMP TO TEAM</span>
@@ -288,6 +300,8 @@ export function renderDraftBoard(viewModel, teamPanel = null) {
 
     ${renderPending(viewModel)}
     <footer><span>Resolver-derived board · Yahoo metadata enrichment</span><span>${escapeHtml(viewModel.resolvedPickCount)} resolved picks</span></footer>
-    ${renderTeamDrawer(teamPanel)}
+    </div>
+    ${renderTeamDrawer(teamPanel, drawerMode)}
+    </div>
   </main>`;
 }
