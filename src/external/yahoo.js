@@ -43,6 +43,7 @@ function extractRank(rawPlayer, rankType) {
 
 export function normalizeYahooPlayer(rawPlayer) {
   const analysis = rawPlayer?.draft_analysis ?? {};
+  const oRank = extractRank(rawPlayer ?? {}, "OR");
   return {
     yahooPlayerId: nullableString(rawPlayer?.player_id),
     playerKey: nullableString(rawPlayer?.player_key),
@@ -60,10 +61,9 @@ export function normalizeYahooPlayer(rawPlayer) {
     statusFull: nullableString(rawPlayer?.status_full),
     injuryNote: nullableString(rawPlayer?.injury_note),
     headshotUrl: nullableString(rawPlayer?.headshot?.url ?? rawPlayer?.image_url),
-    oRank: extractRank(rawPlayer ?? {}, "OR"),
-    // The supplied snapshot contains ORank only. XRank must come from a future,
-    // explicitly identified source rather than being inferred from ORank.
-    xRank: extractRank(rawPlayer ?? {}, "XR") ?? extractRank(rawPlayer ?? {}, "XRank"),
+    oRank,
+    // Yahoo's per-player OR value is the XRank used throughout the product.
+    xrank: oRank,
     projectedAuctionValue: nullableNumber(rawPlayer?.projected_auction_value),
     averageAuctionCost: nullableNumber(rawPlayer?.average_auction_cost),
     averagePick: nullableNumber(analysis.average_pick),
@@ -80,14 +80,16 @@ export function extractYahooPlayers(snapshot) {
     throw new TypeError("Yahoo snapshot does not contain fantasy_content.league.players[].");
   }
 
-  return playerEntries
-    .map((entry) => normalizeYahooPlayer(entry?.player))
-    .sort((a, b) => {
-      const aId = Number(a.yahooPlayerId);
-      const bId = Number(b.yahooPlayerId);
-      if (Number.isFinite(aId) && Number.isFinite(bId) && aId !== bId) return aId - bId;
-      return (a.playerKey ?? "").localeCompare(b.playerKey ?? "");
-    });
+  const players = playerEntries.map((entry) => normalizeYahooPlayer(entry?.player));
+  const ids = players.map((player) => player.yahooPlayerId);
+  if (players.some((player) => !player.yahooPlayerId || !player.playerKey || !player.fullName) || new Set(ids).size !== ids.length) {
+    throw new TypeError("Yahoo snapshot contains missing or duplicate player identities; reconciliation required.");
+  }
+  const xranks = players.map((player) => player.xrank);
+  if (xranks.some((rank) => !Number.isInteger(rank) || rank < 1) || new Set(xranks).size !== xranks.length) {
+    throw new TypeError("Yahoo snapshot contains missing or duplicate OR/XRank values; ranking requires reconciliation.");
+  }
+  return players;
 }
 
 export function describeYahooSource(snapshot) {
@@ -138,6 +140,7 @@ export function describeYahooSource(snapshot) {
     season: nullableString(snapshot?.fantasy_content?.league?.season),
     playerCount: rawPlayers.length,
     rankTypes,
+    xrankProvenance: "PLAYER_RANK_OR",
     fieldsFound,
   };
 }
@@ -146,7 +149,10 @@ export function describeYahooSource(snapshot) {
  * Build the only name-based artifact in the integration. The returned map is
  * persisted, reviewed, and then used as an ID-to-ID runtime join.
  */
-export function buildPlayerIdentityMap(teams, yahooPlayers) {
+export function buildPlayerIdentityMap(teams, yahooPlayers, previousIdentityMap = { matches: [] }) {
+  createYahooMetadataIndex(previousIdentityMap, yahooPlayers);
+  const previousByLocalId = new Map(previousIdentityMap.matches.map((row) => [row.playerId, row]));
+  const yahooById = new Map(yahooPlayers.map((row) => [row.yahooPlayerId, row]));
   const yahooByNormalizedName = new Map();
   for (const player of yahooPlayers) {
     const normalizedName = normalizePlayerName(player.fullName);
@@ -168,6 +174,19 @@ export function buildPlayerIdentityMap(teams, yahooPlayers) {
         normalizedName,
       };
 
+      const previous = previousByLocalId.get(localPlayer.playerId);
+      const established = yahooById.get(previous?.yahooPlayerId);
+      // A reviewed stable ID survives external display-name changes. Never fuzzy-match.
+      if (established && !candidates.some((candidate) => candidate.yahooPlayerId !== established.yahooPlayerId)) {
+        matches.push({ ...localIdentity, yahooPlayerId: established.yahooPlayerId,
+          yahooPlayerKey: established.playerKey,
+          matchMethod: previous.matchMethod === "PERSISTED_YAHOO_ID" || candidates.length === 0 ? "PERSISTED_YAHOO_ID" : previous.matchMethod });
+        continue;
+      }
+      if (established) {
+        const conflict = { ...localIdentity, reason: "PERSISTED_ID_NAME_CONFLICT", candidates: candidates.map((candidate) => ({ yahooPlayerId: candidate.yahooPlayerId, fullName: candidate.fullName })) };
+        unresolved.push(conflict); ambiguousMatches.push(conflict); continue;
+      }
       if (candidates.length === 1) {
         matches.push({
           ...localIdentity,
@@ -212,6 +231,12 @@ export function buildPlayerIdentityMap(teams, yahooPlayers) {
 }
 
 export function createYahooMetadataIndex(identityMap, yahooPlayers) {
+  const localIds = identityMap.matches.map((row) => row.playerId);
+  const mappedIds = identityMap.matches.map((row) => row.yahooPlayerId);
+  const yahooIds = yahooPlayers.map((row) => row.yahooPlayerId);
+  if (new Set(localIds).size !== localIds.length || new Set(mappedIds).size !== mappedIds.length || new Set(yahooIds).size !== yahooIds.length) {
+    throw new TypeError("Ambiguous player identity mapping; reconciliation required.");
+  }
   const yahooById = new Map(yahooPlayers.map((player) => [player.yahooPlayerId, player]));
   return new Map(
     identityMap.matches.map((identity) => [

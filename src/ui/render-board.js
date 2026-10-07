@@ -21,7 +21,7 @@ function keeperMetadataLines(metadata) {
   return `
     ${compact.length ? `<div class="player-meta">${compact.map(escapeHtml).join(" · ")}</div>` : ""}
     ${metadata.injuryNote ? `<div class="injury-note">${escapeHtml(metadata.injuryNote)}</div>` : ""}
-    ${metadata.oRank !== null ? `<div class="o-rank">O-RANK ${escapeHtml(metadata.oRank)}</div>` : ""}
+    ${metadata.xrank != null ? `<div class="o-rank">XRank ${escapeHtml(metadata.xrank)}</div>` : ""}
   `;
 }
 
@@ -32,16 +32,32 @@ function stateClass(cell) {
   return "is-open";
 }
 
+export function formatKeeperCostFlow(keeper) {
+  const rounds = [keeper.oldRound, keeper.baseCostRound, keeper.resolvedCostRound]
+    .filter((round) => Number.isInteger(round));
+  return rounds.filter((round, index) => index === 0 || round !== rounds[index - 1])
+    .map((round) => `R${round}`).join(" → ") || "COST PENDING";
+}
+
+function snakeArrow(round) {
+  return round % 2 === 1 ? "→" : "←";
+}
+
 function renderCell(cell, column) {
   const keeper = cell.keeper;
+  const detail = keeper ? `${keeper.playerName}. Keeper cost: 2025 R${keeper.oldRound} to base R${keeper.baseCostRound} to resolved R${keeper.resolvedCostRound}. ` : "";
+  const ownershipDetail = cell.isTraded ? `Owned by ${cell.currentOwnerName}; originally ${cell.originTeamName}.` : `Owned by ${cell.currentOwnerName}.`;
+  const proposalDetail = cell.proposedPlayerOwnerName ? `Proposed player owner: ${cell.proposedPlayerOwnerName}. Keeper slot and cost for the receiving team need commissioner confirmation.` : "";
   const primary = keeper
-    ? `<div class="cell-player">${escapeHtml(keeper.playerName?.toLocaleUpperCase("en-US"))}</div>`
+    ? `<div class="cell-player">${escapeHtml(keeper.playerName)}</div>`
     : `<div class="cell-open">${cell.status === "UNRESOLVED" ? "UNRESOLVED" : "OPEN"}</div>`;
   const keeperDetails = keeper
     ? `${keeperMetadataLines(cell.yahooMetadata)}
-       <div class="keeper-line"><span>KEEPER</span><span>R${escapeHtml(keeper.oldRound)} → R${escapeHtml(keeper.resolvedCostRound)}</span></div>`
+       <div class="keeper-line"><span class="keeper-state">KEEPER${cell.isTraded ? `<span class="keeper-traded-tag">TRADED</span>` : ""}</span><span>${escapeHtml(formatKeeperCostFlow(keeper))}</span></div>`
     : "";
-  const ownership = cell.isTraded
+  const ownership = cell.proposedPlayerOwnerName
+    ? `<div class="ownership proposed-ownership"><span>OWNER: ${escapeHtml(cell.proposedPlayerOwnerName)} · proposed</span><span>PICK: ${escapeHtml(cell.currentOwnerName)}</span></div>`
+    : cell.isTraded
     ? `<div class="ownership"><span>OWNER: ${escapeHtml(cell.currentOwnerName)}</span><span>FROM: ${escapeHtml(cell.originTeamName)}</span></div>`
     : "";
   const unresolvedKeeper =
@@ -49,12 +65,12 @@ function renderCell(cell, column) {
       ? `<div class="unresolved-copy">KEEPER ASSIGNMENT UNRESOLVED</div>`
       : "";
 
-  return `<td class="pick-cell ${stateClass(cell)} ${column.isSelected ? "is-selected-column" : ""}" data-pick-cell data-pick-number="${escapeHtml(cell.pickNumber)}">
-    <div class="pick-number">${escapeHtml(cell.pickNumber)}</div>
+  return `<td class="pick-cell ${stateClass(cell)} ${cell.isHypotheticalTrade ? "is-hypothetical-trade" : ""} ${cell.proposedPlayerOwnerName ? "has-proposed-player-owner" : ""} ${column.isSelected ? "is-selected-column" : ""}" data-pick-cell data-pick-number="${escapeHtml(cell.pickNumber)}" title="${escapeHtml(detail + ownershipDetail + proposalDetail)}">
+    <div class="pick-head"><span class="pick-number">${escapeHtml(cell.pickNumber)} <span class="overall-pick">(${escapeHtml(cell.overallPick)})</span> <span class="snake-arrow" aria-label="${cell.round % 2 === 1 ? "Left to right" : "Right to left"}">${snakeArrow(cell.round)}</span></span>${keeper && cell.yahooMetadata?.xrank != null ? `<span class="pick-xrank">XRank ${escapeHtml(cell.yahooMetadata.xrank)}</span>` : ""}</div>
     ${primary}
     ${keeperDetails}
     ${unresolvedKeeper}
-    ${ownership}
+    ${ownership || `<div class="native-owner">OWNER: ${escapeHtml(cell.currentOwnerName)}</div>`}
   </td>`;
 }
 
@@ -64,11 +80,11 @@ function renderColumnHeader(column) {
     .filter(Boolean)
     .join(" ");
   return `<th class="${classes}" scope="col" data-team-column="${escapeHtml(column.teamId)}">
-    <button class="team-header-button" type="button" data-action="select-team" data-team-id="${escapeHtml(column.teamId)}" aria-pressed="${column.isSelected}" aria-label="Open ${escapeHtml(column.teamName)} scenario controls">
+    <button class="team-header-button" type="button" data-action="select-team" data-team-id="${escapeHtml(column.teamId)}" aria-pressed="${column.isSelected}" aria-label="Open ${escapeHtml(column.teamName)} scenario controls" title="#${escapeHtml(column.previousFinish)} last season · ${escapeHtml(column.provenance ?? "")}" ${column.isReadOnlyPreview ? "disabled" : ""}>
       <div class="slot-number">${escapeHtml(column.r1PickNumber)}</div>
       <div class="team-name">${escapeHtml(column.teamName)}</div>
-      <div class="team-context">#${escapeHtml(column.previousFinish)} LAST SEASON</div>
       <div class="team-state">${escapeHtml(keeperState)} · ${escapeHtml(column.stealDirection ?? "UNDECLARED")}</div>
+      ${column.provenance?.startsWith("SCENARIO") ? `<div class="column-provenance">${escapeHtml(column.provenance)}</div>` : ""}
     </button>
   </th>`;
 }
@@ -79,7 +95,7 @@ function renderYahooMetadata(metadata) {
     .filter(Boolean)
     .map(escapeHtml)
     .join(" · ");
-  return `<div class="roster-meta">${summary}${metadata.oRank !== null ? ` · O-RANK ${escapeHtml(metadata.oRank)}` : ""}</div>`;
+  return `<div class="roster-meta">${summary}${metadata.xrank != null ? ` · XRank ${escapeHtml(metadata.xrank)}` : ""}</div>`;
 }
 
 function renderCandidateStatus(candidate) {
@@ -167,7 +183,7 @@ function renderTeamDrawer(teamPanel, drawerMode) {
   return `<aside class="team-drawer" aria-labelledby="drawer-team-name">
     <header class="drawer-header">
       <div>
-        <p class="eyebrow">TEAM SCENARIO · ${escapeHtml(teamPanel.allocationBucket ?? "UNRESOLVED")}</p>
+        <p class="eyebrow">${escapeHtml(teamPanel.provenance ?? "TEAM SCENARIO")} · ${escapeHtml(teamPanel.allocationBucket ?? "UNRESOLVED")}</p>
         <h2 id="drawer-team-name">${escapeHtml(teamPanel.teamName)}</h2>
         <p>#${escapeHtml(teamPanel.previousFinish)} LAST SEASON · ${escapeHtml(teamPanel.keeperTierLabel)}</p>
       </div>
@@ -175,6 +191,7 @@ function renderTeamDrawer(teamPanel, drawerMode) {
     </header>
 
     <section class="drawer-section scenario-controls">
+      <button type="button" data-action="no-keepers" data-team-id="${escapeHtml(teamPanel.teamId)}">Set no keepers (scenario)</button>
       <div class="mode-card">
         <span>KEEPER MODE</span>
         <strong>${escapeHtml(teamPanel.entitlementModeLabel)}</strong>
@@ -213,22 +230,38 @@ function renderTeamDrawer(teamPanel, drawerMode) {
 
 function renderPending(viewModel) {
   if (viewModel.pendingTeams.length === 0) return "";
+  const decisionsNeeded = viewModel.pendingTeams.filter((team) => team.provenance === "PENDING" || team.validation.length > 0);
+  const visibleTeams = decisionsNeeded.length ? decisionsNeeded : viewModel.pendingTeams;
   return `<section class="pending-panel" aria-labelledby="pending-title">
     <div>
-      <p class="eyebrow">PENDING / UNRESOLVED</p>
-      <h2 id="pending-title">Teams awaiting exact slots</h2>
+      <p class="eyebrow">DRAFT ORDER</p>
+      <h2 id="pending-title">Waiting for league decisions</h2>
     </div>
     <ul>
-      ${viewModel.pendingTeams
+      ${visibleTeams
         .map((team) => {
           const reasons = team.validation.length
             ? team.validation.map((item) => item.message).join("; ")
             : "R1 allocation is unresolved.";
-          return `<li><strong>${escapeHtml(team.teamName)}</strong><span>${escapeHtml(reasons)}</span></li>`;
+          return `<li><strong>${escapeHtml(team.teamName)}${team.provenance ? ` · ${escapeHtml(team.provenance)}` : ""}</strong><span>${escapeHtml(reasons)}</span></li>`;
         })
         .join("")}
     </ul>
   </section>`;
+}
+
+function renderPrintBoard(viewModel) {
+  if (!viewModel.columns.length) return "";
+  const groupSize = Math.ceil(viewModel.columns.length / 2);
+  const groups = [viewModel.columns.slice(0, groupSize), viewModel.columns.slice(groupSize)].filter((group) => group.length);
+  return `<section class="print-board" aria-label="Printable draft board">${groups.map((group) => {
+    const rows = Array.from({ length: viewModel.draftRounds }, (_, index) => index + 1).map((round) => `<tr><th scope="row">R${round}</th>${group.map((column) => {
+      const cell = column.cells.find((candidate) => candidate.round === round);
+      const keeper = cell?.keeper;
+      return `<td class="print-pick ${stateClass(cell)}"><span class="print-pick-number">${escapeHtml(cell.pickNumber)} (${escapeHtml(cell.overallPick)}) ${snakeArrow(cell.round)}${keeper && cell.yahooMetadata?.xrank != null ? ` · XRank ${escapeHtml(cell.yahooMetadata.xrank)}` : ""}</span><strong>${escapeHtml(keeper?.playerName ?? cell.status)}</strong>${keeper ? `<span class="print-pick-cost">KEEPER${cell.isTraded ? " · TRADED" : ""} · ${escapeHtml(formatKeeperCostFlow(keeper))}</span>` : ""}<span class="print-pick-owner">${cell.proposedPlayerOwnerName ? `Player owner: ${escapeHtml(cell.proposedPlayerOwnerName)} · proposed<br>Pick: ` : ""}${escapeHtml(cell.currentOwnerName)}${cell.isTraded ? ` · from ${escapeHtml(cell.originTeamName)}` : ""}</span></td>`;
+    }).join("")}</tr>`).join("");
+    return `<div class="print-board-page"><div class="print-board-caption"><h2>${escapeHtml(group[0].r1PickNumber)}–${escapeHtml(group.at(-1).r1PickNumber)}</h2><span>${group.length} teams · ${viewModel.draftRounds} rounds</span></div><table class="print-grid"><thead><tr><th scope="col">R</th>${group.map((column) => `<th scope="col"><span>${escapeHtml(column.r1PickNumber)}</span><strong>${escapeHtml(column.teamName)}</strong><small>${escapeHtml(column.keeperCount)} KEEP · ${escapeHtml(column.stealDirection ?? "PENDING")}</small></th>`).join("")}</tr></thead><tbody>${rows}</tbody></table></div>`;
+  }).join("")}</section>`;
 }
 
 export function renderDraftBoard(viewModel, teamPanel = null, drawerMode = "KEEPERS") {
@@ -258,22 +291,22 @@ export function renderDraftBoard(viewModel, teamPanel = null, drawerMode = "KEEP
       <div class="state-block">
         <span class="state-pill">${escapeHtml(viewModel.stateLabel)}</span>
         ${viewModel.assumedEligibilityCount ? `<span class="assumption-pill">${escapeHtml(viewModel.assumedEligibilityCount)} ASSUMPTION${viewModel.assumedEligibilityCount === 1 ? "" : "S"}</span>` : ""}
-        <span class="read-only-pill">SCENARIO TOOL</span>
-        <button class="reset-button" type="button" data-action="reset-scenario" ${viewModel.scenarioChangeCount === 0 ? "disabled" : ""}>RESET SCENARIO</button>
       </div>
     </header>
 
+    ${viewModel.navigation ?? ""}
+    <div class="print-heading">${escapeHtml(viewModel.printTitle ?? "Draft Board")} · ${escapeHtml(viewModel.generatedAt ?? "")}</div>
     <div class="workspace ${teamPanel ? "has-team-panel" : ""}">
     <div class="board-pane">
     <section class="board-toolbar" aria-label="Board navigation and legend">
       <label class="jump-control">
         <span>JUMP TO TEAM</span>
-        <select id="team-jump">
+        <select id="team-jump" ${viewModel.isTradePreview ? "disabled" : ""}>
           <option value="">Select team…</option>
-          ${viewModel.columns
+          ${(viewModel.teamOptions ?? viewModel.columns)
             .map(
               (column) =>
-                `<option value="${escapeHtml(column.teamId)}" ${column.isSelected ? "selected" : ""}>${escapeHtml(column.r1PickNumber)} · ${escapeHtml(column.teamName)}</option>`,
+                `<option value="${escapeHtml(column.teamId)}" ${column.isSelected ? "selected" : ""}>${escapeHtml(column.r1PickNumber ?? "PENDING")} · ${escapeHtml(column.teamName)}</option>`,
             )
             .join("")}
         </select>
@@ -284,17 +317,18 @@ export function renderDraftBoard(viewModel, teamPanel = null, drawerMode = "KEEP
         <span><i class="legend-dot traded"></i>TRADED</span>
         <span><i class="legend-dot unresolved"></i>UNRESOLVED</span>
       </div>
-      <p class="board-help">Columns are origin geometry. Trades change ownership, never column position.</p>
+      <button class="surface-print-button" type="button" data-action="print-board">Print / Save PDF</button>
     </section>
 
     ${
       blockingValidation.length
-        ? `<div class="validation-banner" role="status">${blockingValidation.length} unresolved or invalid item${blockingValidation.length === 1 ? "" : "s"}. See pending teams below.</div>`
+        ? `<div class="validation-banner" role="status">${blockingValidation.length} item${blockingValidation.length === 1 ? "" : "s"} need league review. See the teams below.</div>`
         : ""
     }
 
+    ${viewModel.columns.length ? "" : `<p class="allocation-pending">The full board appears when the remaining declarations are entered. You can model them in a scenario now.</p>`}
     <section class="board-region" aria-label="18 team by 11 round draft board">
-      <div class="board-scroll" id="board-scroll" tabindex="0">
+      <div class="board-scroll" ${viewModel.columns.length ? "" : "hidden"} id="board-scroll" tabindex="0">
         <table class="draft-board">
           <thead><tr><th class="board-corner" scope="col">ROUND</th>${viewModel.columns.map(renderColumnHeader).join("")}</tr></thead>
           <tbody>${roundRows}</tbody>
@@ -302,8 +336,10 @@ export function renderDraftBoard(viewModel, teamPanel = null, drawerMode = "KEEP
       </div>
     </section>
 
+    ${renderPrintBoard(viewModel)}
+
     ${renderPending(viewModel)}
-    <footer><span>Resolver-derived board · Yahoo metadata enrichment</span><span>${escapeHtml(viewModel.resolvedPickCount)} resolved picks</span></footer>
+    <footer><span>2026/27 draft board</span><span>${escapeHtml(viewModel.resolvedPickCount)} picks shown</span></footer>
     </div>
     ${renderTeamDrawer(teamPanel, drawerMode)}
     </div>

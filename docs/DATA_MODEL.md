@@ -295,3 +295,25 @@ The resolver should be able to return:
 ```
 
 The UI consumes this derived representation.
+
+## 16. Pre-draft declarations and publication
+
+`data/pre_draft.json` schema version 1 contains a revision, season, publicationStatus, 18 declaration rows and canonical trades. A confirmed declaration requires explicit `selectedPlayerIds` (including `[]`) and `direction`. A pending declaration carries neither. The current local inputs contain 18 confirmed teams, with Run and Gun no keepers / Early and Rising Rockets no keepers / Late; the declaration layer is finalized.
+
+`createPreDraftInput` clones canonical history and separates these rows into resolver keeper/steal declarations. `resolveDraftState` exposes `confirmedDeclarationCount`, `finalizationAllowed` and validated `publicationStatus`. A complete scenario remains PRE_DRAFT. FINALIZED requires explicit human input, 18 confirmed teams and no blocking resolution issues; it is never inferred from completeness.
+
+## 17. Local scenario wire format
+
+`src/scenario/storage.js` validates `{schemaVersion: 1, id, name, createdAt, updatedAt, baseRevision, overrides}`. Overrides contain `keeperSelections` keyed by canonical team ID, `stealDirections`, `assumedEligiblePlayerIds`, and optional `trades`. Empty arrays and EARLY are explicit overrides, not reset sentinels. Missing keys inherit the immutable base. Trades must be HYPOTHETICAL and contain origin/round/from/to only. Imported derived fields are rejected. A revision mismatch blocks import and requires an explicit working-copy reset on reopening, preventing silent mutation of the fork's base. The saved old copy stays intact until Save.
+
+Only user inputs are serialized; reports, exact picks, costs and pool rows are recomputed. Reset clears overrides and adopts the current base revision. No scenario can finalize or change base declarations.
+
+## 18. External ranks and exports
+
+Yahoo `xrank` is the embedded per-player `OR` rank, also preserved as `oRank` in normalized metadata. The supplied array is ordered by average pick and does not define XRank. Neither field is a canonical league fact. `buildDraftPool` joins Yahoo IDs to resolver playerPool availability; it never consumes Yahoo is_keeper. Missing keeper identities are reported without guessed exclusion.
+
+The report builders consume the same input/resolved state pair as the board. XLSX strings are encoded as literal inline strings. Print views and exports carry state provenance, declaration count and generated time; unresolved exact picks remain PENDING.
+
+## 19. Keeper page presentation
+
+`buildKeeperPage` combines the same report builder and resolver records used by XLSX with canonical prior rosters. `buildHistoricalEligibility` probes single/two-player paths through `resolveDraftState`, independent of actual declarations and entitlement trades, to derive historical round locks and conditional paths. It does not implement a second cost or finish rule. Actual selection styling requires confirmed declaration provenance and resolver KEPT availability; overridden selections carry scenario styling. The page mode and search are presentation state only.

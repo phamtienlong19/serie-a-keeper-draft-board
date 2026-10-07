@@ -12,22 +12,20 @@ function uniquePlayerIds(playerIds) {
   return [...new Set(playerIds)];
 }
 
-export function setScenarioKeeperSelection(overrides, teamId, playerId, selected) {
-  const current = overrides.keeperSelections[teamId] ?? [];
+export function setScenarioKeeperSelection(overrides, teamId, playerId, selected, baselineInput = null) {
+  const current = selectedKeepers(baselineInput, overrides, teamId);
   const next = selected
     ? uniquePlayerIds([...current, playerId])
     : current.filter((candidateId) => candidateId !== playerId);
   const keeperSelections = { ...overrides.keeperSelections };
-  if (next.length === 0) delete keeperSelections[teamId];
-  else keeperSelections[teamId] = next;
+  keeperSelections[teamId] = next;
   return { ...overrides, keeperSelections };
 }
 
 export function setScenarioStealDirection(overrides, teamId, direction) {
   if (direction !== "EARLY" && direction !== "LATE") return overrides;
   const stealDirections = { ...overrides.stealDirections };
-  if (direction === "EARLY") delete stealDirections[teamId];
-  else stealDirections[teamId] = direction;
+  stealDirections[teamId] = direction;
   return { ...overrides, stealDirections };
 }
 
@@ -42,7 +40,7 @@ export function countScenarioChanges(overrides) {
   return (
     Object.keys(overrides.keeperSelections).length +
     Object.keys(overrides.stealDirections).length +
-    overrides.assumedEligiblePlayerIds.length
+    overrides.assumedEligiblePlayerIds.length + (overrides.trades?.length ?? 0)
   );
 }
 
@@ -53,14 +51,18 @@ export function countScenarioChanges(overrides) {
 export function applyScenarioOverrides(baselineInput, overrides) {
   const input = structuredClone(baselineInput);
   input.stateType = "SCENARIO";
+  input.publicationStatus = "PRE_DRAFT";
+  input.trades = [...(input.trades ?? []), ...structuredClone(overrides.trades ?? [])];
 
   for (const selection of input.keeperSelections) {
     if (Object.hasOwn(overrides.keeperSelections, selection.teamId)) {
+      selection.status = "SCENARIO";
       selection.selectedPlayerIds = [...overrides.keeperSelections[selection.teamId]];
     }
   }
   for (const declaration of input.stealDeclarations) {
     if (Object.hasOwn(overrides.stealDirections, declaration.teamId)) {
+      declaration.status = "SCENARIO";
       declaration.direction = overrides.stealDirections[declaration.teamId];
     }
   }
@@ -99,14 +101,14 @@ function relevantCandidateValidation(validation, teamId) {
 export function evaluateKeeperCandidates({ baselineInput, overrides, teamId }) {
   const baselineTeam = baselineInput.teams.find((team) => team.teamId === teamId);
   if (!baselineTeam) return [];
-  const selectedPlayerIds = overrides.keeperSelections[teamId] ?? [];
+  const selectedPlayerIds = selectedKeepers(baselineInput, overrides, teamId);
   const assumedPlayerIds = new Set(overrides.assumedEligiblePlayerIds);
 
   return baselineTeam.priorDraft.map((player) => {
     const selected = selectedPlayerIds.includes(player.playerId);
     const probeOverrides = selected
       ? overrides
-      : setScenarioKeeperSelection(overrides, teamId, player.playerId, true);
+      : setScenarioKeeperSelection(overrides, teamId, player.playerId, true, baselineInput);
     const { resolvedState } = resolveScenario(baselineInput, probeOverrides);
     const keeper = resolvedState.keepers.find(
       (record) => record.teamId === teamId && record.playerId === player.playerId,
@@ -138,4 +140,8 @@ export function evaluateKeeperCandidates({ baselineInput, overrides, teamId }) {
       canSelect: errors.length === 0 && (!historyUnknown || assumedEligible),
     };
   });
+}
+
+export function selectedKeepers(baselineInput, overrides, teamId) {
+  return overrides.keeperSelections[teamId] ?? baselineInput?.keeperSelections.find((row) => row.teamId === teamId)?.selectedPlayerIds ?? [];
 }

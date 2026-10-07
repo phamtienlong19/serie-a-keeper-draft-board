@@ -4,8 +4,8 @@
   "matchMethod": "NORMALIZED_NAME_EXACT_BOOTSTRAP_ONLY",
   "summary": {
     "canonicalPlayerCount": 198,
-    "matchCount": 184,
-    "unmatchedCount": 14,
+    "matchCount": 182,
+    "unmatchedCount": 16,
     "ambiguousCount": 0
   },
   "matches": [
@@ -159,14 +159,6 @@
       "normalizedName": "dennis schroder",
       "yahooPlayerId": "5187",
       "yahooPlayerKey": "478.p.5187",
-      "matchMethod": "NORMALIZED_NAME_EXACT"
-    },
-    {
-      "playerId": "isaiah-jackson",
-      "playerName": "Isaiah Jackson",
-      "normalizedName": "isaiah jackson",
-      "yahooPlayerId": "6564",
-      "yahooPlayerKey": "478.p.6564",
       "matchMethod": "NORMALIZED_NAME_EXACT"
     },
     {
@@ -426,14 +418,6 @@
       "matchMethod": "NORMALIZED_NAME_EXACT"
     },
     {
-      "playerId": "obi-toppin",
-      "playerName": "Obi Toppin",
-      "normalizedName": "obi toppin",
-      "yahooPlayerId": "6400",
-      "yahooPlayerKey": "478.p.6400",
-      "matchMethod": "NORMALIZED_NAME_EXACT"
-    },
-    {
       "playerId": "karl-anthony-towns",
       "playerName": "Karl-Anthony Towns",
       "normalizedName": "karl anthony towns",
@@ -495,14 +479,6 @@
       "normalizedName": "dejounte murray",
       "yahooPlayerId": "5660",
       "yahooPlayerKey": "478.p.5660",
-      "matchMethod": "NORMALIZED_NAME_EXACT"
-    },
-    {
-      "playerId": "buddy-hield",
-      "playerName": "Buddy Hield",
-      "normalizedName": "buddy hield",
-      "yahooPlayerId": "5637",
-      "yahooPlayerKey": "478.p.5637",
       "matchMethod": "NORMALIZED_NAME_EXACT"
     },
     {
@@ -583,14 +559,6 @@
       "normalizedName": "khris middleton",
       "yahooPlayerId": "5073",
       "yahooPlayerKey": "478.p.5073",
-      "matchMethod": "NORMALIZED_NAME_EXACT"
-    },
-    {
-      "playerId": "taylor-hendricks",
-      "playerName": "Taylor Hendricks",
-      "normalizedName": "taylor hendricks",
-      "yahooPlayerId": "10110",
-      "yahooPlayerKey": "478.p.10110",
       "matchMethod": "NORMALIZED_NAME_EXACT"
     },
     {
@@ -794,6 +762,14 @@
       "matchMethod": "NORMALIZED_NAME_EXACT"
     },
     {
+      "playerId": "bradley-beal",
+      "playerName": "Bradley Beal",
+      "normalizedName": "bradley beal",
+      "yahooPlayerId": "5009",
+      "yahooPlayerKey": "478.p.5009",
+      "matchMethod": "NORMALIZED_NAME_EXACT"
+    },
+    {
       "playerId": "brook-lopez",
       "playerName": "Brook Lopez",
       "normalizedName": "brook lopez",
@@ -802,19 +778,19 @@
       "matchMethod": "NORMALIZED_NAME_EXACT"
     },
     {
-      "playerId": "cam-whitmore",
-      "playerName": "Cam Whitmore",
-      "normalizedName": "cam whitmore",
-      "yahooPlayerId": "10118",
-      "yahooPlayerKey": "478.p.10118",
-      "matchMethod": "NORMALIZED_NAME_EXACT"
-    },
-    {
       "playerId": "fred-vanvleet",
       "playerName": "Fred VanVleet",
       "normalizedName": "fred vanvleet",
       "yahooPlayerId": "5727",
       "yahooPlayerKey": "478.p.5727",
+      "matchMethod": "NORMALIZED_NAME_EXACT"
+    },
+    {
+      "playerId": "jordan-clarkson",
+      "playerName": "Jordan Clarkson",
+      "normalizedName": "jordan clarkson",
+      "yahooPlayerId": "5357",
+      "yahooPlayerKey": "478.p.5357",
       "matchMethod": "NORMALIZED_NAME_EXACT"
     },
     {
@@ -887,6 +863,14 @@
       "normalizedName": "tj mcconnell",
       "yahooPlayerId": "5582",
       "yahooPlayerKey": "478.p.5582",
+      "matchMethod": "NORMALIZED_NAME_EXACT"
+    },
+    {
+      "playerId": "nikola-jovic",
+      "playerName": "Nikola Jovic",
+      "normalizedName": "nikola jovic",
+      "yahooPlayerId": "6717",
+      "yahooPlayerKey": "478.p.6717",
       "matchMethod": "NORMALIZED_NAME_EXACT"
     },
     {
@@ -970,14 +954,6 @@
       "matchMethod": "NORMALIZED_NAME_EXACT"
     },
     {
-      "playerId": "caris-levert",
-      "playerName": "Caris LeVert",
-      "normalizedName": "caris levert",
-      "yahooPlayerId": "5651",
-      "yahooPlayerKey": "478.p.5651",
-      "matchMethod": "NORMALIZED_NAME_EXACT"
-    },
-    {
       "playerId": "tre-johnson",
       "playerName": "Tre Johnson",
       "normalizedName": "tre johnson",
@@ -1047,6 +1023,14 @@
       "normalizedName": "klay thompson",
       "yahooPlayerId": "4892",
       "yahooPlayerKey": "478.p.4892",
+      "matchMethod": "NORMALIZED_NAME_EXACT"
+    },
+    {
+      "playerId": "jonathan-kuminga",
+      "playerName": "Jonathan Kuminga",
+      "normalizedName": "jonathan kuminga",
+      "yahooPlayerId": "6549",
+      "yahooPlayerKey": "478.p.6549",
       "matchMethod": "NORMALIZED_NAME_EXACT"
     },
     {
@@ -1191,7 +1175,7 @@
       "normalizedName": "bobby portis",
       "yahooPlayerId": "5482",
       "yahooPlayerKey": "478.p.5482",
-      "matchMethod": "NORMALIZED_NAME_EXACT"
+      "matchMethod": "PERSISTED_YAHOO_ID"
     },
     {
       "playerId": "pj-washington",
@@ -1484,6 +1468,13 @@
   ],
   "unresolved": [
     {
+      "playerId": "isaiah-jackson",
+      "playerName": "Isaiah Jackson",
+      "normalizedName": "isaiah jackson",
+      "reason": "NO_EXACT_NORMALIZED_NAME_MATCH",
+      "candidates": []
+    },
+    {
       "playerId": "chris-boucher",
       "playerName": "Chris Boucher",
       "normalizedName": "chris boucher",
@@ -1498,9 +1489,30 @@
       "candidates": []
     },
     {
+      "playerId": "obi-toppin",
+      "playerName": "Obi Toppin",
+      "normalizedName": "obi toppin",
+      "reason": "NO_EXACT_NORMALIZED_NAME_MATCH",
+      "candidates": []
+    },
+    {
+      "playerId": "buddy-hield",
+      "playerName": "Buddy Hield",
+      "normalizedName": "buddy hield",
+      "reason": "NO_EXACT_NORMALIZED_NAME_MATCH",
+      "candidates": []
+    },
+    {
       "playerId": "chris-paul",
       "playerName": "Chris Paul",
       "normalizedName": "chris paul",
+      "reason": "NO_EXACT_NORMALIZED_NAME_MATCH",
+      "candidates": []
+    },
+    {
+      "playerId": "taylor-hendricks",
+      "playerName": "Taylor Hendricks",
+      "normalizedName": "taylor hendricks",
       "reason": "NO_EXACT_NORMALIZED_NAME_MATCH",
       "candidates": []
     },
@@ -1533,23 +1545,16 @@
       "candidates": []
     },
     {
-      "playerId": "bradley-beal",
-      "playerName": "Bradley Beal",
-      "normalizedName": "bradley beal",
+      "playerId": "cam-whitmore",
+      "playerName": "Cam Whitmore",
+      "normalizedName": "cam whitmore",
       "reason": "NO_EXACT_NORMALIZED_NAME_MATCH",
       "candidates": []
     },
     {
-      "playerId": "jordan-clarkson",
-      "playerName": "Jordan Clarkson",
-      "normalizedName": "jordan clarkson",
-      "reason": "NO_EXACT_NORMALIZED_NAME_MATCH",
-      "candidates": []
-    },
-    {
-      "playerId": "nikola-jovic",
-      "playerName": "Nikola Jovic",
-      "normalizedName": "nikola jovic",
+      "playerId": "caris-levert",
+      "playerName": "Caris LeVert",
+      "normalizedName": "caris levert",
       "reason": "NO_EXACT_NORMALIZED_NAME_MATCH",
       "candidates": []
     },
@@ -1557,13 +1562,6 @@
       "playerId": "d-angelo-russell",
       "playerName": "D'Angelo Russell",
       "normalizedName": "d angelo russell",
-      "reason": "NO_EXACT_NORMALIZED_NAME_MATCH",
-      "candidates": []
-    },
-    {
-      "playerId": "jonathan-kuminga",
-      "playerName": "Jonathan Kuminga",
-      "normalizedName": "jonathan kuminga",
       "reason": "NO_EXACT_NORMALIZED_NAME_MATCH",
       "candidates": []
     },

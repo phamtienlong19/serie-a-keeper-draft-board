@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "revision": "2026-10-07-declarations-18",
+  "season": "2026-27",
+  "publicationStatus": "FINALIZED",
+  "sourceNote": "All 18 keeper and Early/Late declarations confirmed by the league operator. Run and Gun declared no keepers and Early; Rising Rockets corrected to Late. Publication remains separate from local finalization.",
+  "declarations": [
+    {
+      "teamId": "sup-fam",
+      "status": "CONFIRMED",
+      "selectedPlayerIds": [],
+      "direction": "EARLY"
+    },
+    {
+      "teamId": "under-armour",
+      "status": "CONFIRMED",
+      "selectedPlayerIds": [
+        "shai-gilgeous-alexander",
+        "tyrese-haliburton"
+      ],
+      "direction": "LATE"
+    },
+    {
+      "teamId": "angry-bird",
+      "status": "CONFIRMED",
+      "selectedPlayerIds": [],
+      "direction": "EARLY"
+    },
+    {
+      "teamId": "to-kinh",
+      "status": "CONFIRMED",
+      "selectedPlayerIds": [],
+      "direction": "EARLY"
+    },
+    {
+      "teamId": "jinple",
+      "status": "CONFIRMED",
+      "selectedPlayerIds": [],
+      "direction": "EARLY"
+    },
+    {
+      "teamId": "bounce-island",
+      "status": "CONFIRMED",
+      "selectedPlayerIds": [
+        "dejounte-murray",
+        "dylan-harper"
+      ],
+      "direction": "EARLY"
+    },
+    {
+      "teamId": "cuckoo",
+      "status": "CONFIRMED",
+      "selectedPlayerIds": [
+        "donovan-clingan",
+        "kyrie-irving"
+      ],
+      "direction": "EARLY"
+    },
+    {
+      "teamId": "rip-city-remix",
+      "status": "CONFIRMED",
+      "selectedPlayerIds": [
+        "rui-hachimura",
+        "kel-el-ware"
+      ],
+      "direction": "LATE"
+    },
+    {
+      "teamId": "ecstasy",
+      "status": "CONFIRMED",
+      "selectedPlayerIds": [
+        "onyeka-okongwu"
+      ],
+      "direction": "LATE"
+    },
+    {
+      "teamId": "mnqa",
+      "status": "CONFIRMED",
+      "selectedPlayerIds": [
+        "fred-vanvleet"
+      ],
+      "direction": "LATE"
+    },
+    {
+      "teamId": "seattle-supersonics",
+      "status": "CONFIRMED",
+      "selectedPlayerIds": [
+        "scottie-barnes"
+      ],
+      "direction": "EARLY"
+    },
+    {
+      "teamId": "rising-rockets",
+      "status": "CONFIRMED",
+      "selectedPlayerIds": [],
+      "direction": "LATE"
+    },
+    {
+      "teamId": "dial-square",
+      "status": "CONFIRMED",
+      "selectedPlayerIds": [],
+      "direction": "EARLY"
+    },
+    {
+      "teamId": "run-and-gun",
+      "status": "CONFIRMED",
+      "selectedPlayerIds": [],
+      "direction": "EARLY"
+    },
+    {
+      "teamId": "tien-delay",
+      "status": "CONFIRMED",
+      "selectedPlayerIds": [],
+      "direction": "LATE"
+    },
+    {
+      "teamId": "dontrick-devilteam",
+      "status": "CONFIRMED",
+      "selectedPlayerIds": [
+        "jayson-tatum"
+      ],
+      "direction": "EARLY"
+    },
+    {
+      "teamId": "abcxyz",
+      "status": "CONFIRMED",
+      "selectedPlayerIds": [],
+      "direction": "EARLY"
+    },
+    {
+      "teamId": "chicken-wings",
+      "status": "CONFIRMED",
+      "selectedPlayerIds": [],
+      "direction": "EARLY"
+    }
+  ],
+  "trades": []
+}

@@ -67,7 +67,7 @@ function normalizeByTeam(value) {
 }
 
 function declarationIsUsable(declaration, stateType, kind, validation, teamId) {
-  if (!declaration || declaration.status === "UNDECLARED") {
+  if (!declaration || ["UNDECLARED", "PENDING"].includes(declaration.status)) {
     validation.push(
       makeValidation(
         UNRESOLVED,
@@ -163,24 +163,11 @@ function resolveEntitlements(input, teams, draftRounds, validation) {
   }
 
   for (const trade of input.trades ?? []) {
-    const status = trade.status ?? (input.stateType === STATE_TYPES.OFFICIAL ? "CONFIRMED" : "ENTERED");
+    const status = trade.status ?? "UNDECLARED";
     if (status === "UNDECLARED" || status === "REJECTED") continue;
-    if (input.stateType === STATE_TYPES.OFFICIAL && status !== "CONFIRMED") {
-      validation.push(
-        makeValidation(
-          UNRESOLVED,
-          "TRADE_UNCONFIRMED",
-          `Official state contains unconfirmed trade ${trade.tradeId ?? "(unnamed)"}.`,
-          { tradeId: trade.tradeId ?? null },
-        ),
-      );
-      for (const transfer of trade.transfers ?? []) {
-        const target = entitlements.get(entitlementKey(transfer.originTeamId, transfer.round));
-        if (target) {
-          target.currentOwnerTeamId = null;
-          target.ownershipStatus = "UNRESOLVED";
-        }
-      }
+    // Unconfirmed trades may affect only explicit scenario inputs.
+    if (input.stateType !== STATE_TYPES.SCENARIO && status !== "CONFIRMED") {
+      validation.push(makeValidation(WARNING, "TRADE_NOT_APPLIED", "Unconfirmed trade is excluded from the league baseline.", { tradeId: trade.tradeId ?? null }));
       continue;
     }
     if (status === "ENTERED") {
@@ -281,12 +268,12 @@ function resolveKeepers(input, teams, entitlements, draftRounds, validation) {
     const tier = deriveKeeperEntitlement(team.previousFinish);
     const declaration = selections.get(team.teamId);
     const usable = declarationIsUsable(declaration, input.stateType, "KEEPER", validation, team.teamId);
-    const rawIds = declaration?.selectedPlayerIds ?? [];
+    const rawIds = declaration?.selectedPlayerIds;
     const selectedPlayerIds = Array.isArray(rawIds) ? rawIds : [];
     let blocking = !usable;
     let hasUnresolved = !usable;
 
-    if (!Array.isArray(rawIds)) {
+    if (usable && !Array.isArray(rawIds)) {
       blocking = true;
       validation.push(
         makeValidation(ERROR, "INVALID_KEEPER_SELECTION", "selectedPlayerIds must be an array.", {
@@ -817,12 +804,28 @@ export function resolveDraftState(input) {
   const entitlements = [...entitlementMap.values()].sort(
     (a, b) => a.round - b.round || a.originTeamId.localeCompare(b.originTeamId),
   );
+  const keeperDeclarations = normalizeByTeam(input.keeperSelections);
+  const stealDeclarations = normalizeByTeam(input.stealDeclarations);
+  const confirmedDeclarationCount = teams.filter((team) => {
+    const keeper = keeperDeclarations.get(team.teamId);
+    const steal = stealDeclarations.get(team.teamId);
+    return keeper?.status === "CONFIRMED" && Array.isArray(keeper.selectedPlayerIds)
+      && steal?.status === "CONFIRMED" && ["EARLY", "LATE"].includes(steal.direction);
+  }).length;
+  const finalizationAllowed = stateType !== STATE_TYPES.SCENARIO && confirmedDeclarationCount === TEAM_COUNT
+    && picks.length === TEAM_COUNT * draftRounds && !validation.some((item) => [ERROR, UNRESOLVED].includes(item.severity));
+  if (input.publicationStatus === "FINALIZED" && !finalizationAllowed) {
+    validation.push(makeValidation(ERROR, "FINALIZATION_BLOCKED", "Finalization requires all confirmed declarations and a verified, conflict-free league resolution; scenarios cannot finalize."));
+  }
   const hasBlockingValidation = validation.some(
     (item) => item.severity === ERROR || item.severity === UNRESOLVED,
   );
 
   return {
     stateType,
+    publicationStatus: input.publicationStatus === "FINALIZED" && finalizationAllowed ? "FINALIZED" : "PRE_DRAFT",
+    confirmedDeclarationCount,
+    finalizationAllowed,
     season: input.season ?? null,
     draftRounds,
     teamKeeperStates: teams.map((team) => teamStates.get(team.teamId)),
