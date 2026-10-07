@@ -19,7 +19,8 @@ const snapshot = JSON.parse(fs.readFileSync(rawSnapshotPath, "utf8"));
 const canonicalTeams = JSON.parse(fs.readFileSync(canonicalTeamsPath, "utf8"));
 const source = describeYahooSource(snapshot);
 const players = extractYahooPlayers(snapshot);
-const identityMap = buildPlayerIdentityMap(canonicalTeams.teams, players);
+const previousIdentityMap = fs.existsSync(identityMapPath) ? JSON.parse(fs.readFileSync(identityMapPath, "utf8")) : { matches: [] };
+const identityMap = buildPlayerIdentityMap(canonicalTeams.teams, players, previousIdentityMap);
 
 const normalizedPayload = {
   schemaVersion: 1,

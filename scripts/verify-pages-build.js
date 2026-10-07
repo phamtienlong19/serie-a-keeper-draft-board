@@ -62,7 +62,7 @@ const javascript = builtFiles
   .filter((file) => file.endsWith(".js"))
   .map((file) => fs.readFileSync(file, "utf8"))
   .join("\n");
-for (const marker of ["sup-fam", "yahooPlayerId", "Cooper Flagg"]) {
+for (const marker of ["sup-fam", "yahooPlayerId", "Cooper Flagg", "xrank", "PRE_DRAFT", "run-and-gun"]) {
   if (!javascript.includes(marker)) fail(`bundled application data is missing marker: ${marker}`);
 }
 

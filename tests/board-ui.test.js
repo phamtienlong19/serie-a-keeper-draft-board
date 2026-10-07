@@ -9,7 +9,7 @@ import {
 } from "../src/demo/demo-state.js";
 import { resolveDraftState } from "../src/domain/engine.js";
 import { buildDraftBoardViewModel } from "../src/presentation/board-view-model.js";
-import { renderDraftBoard } from "../src/ui/render-board.js";
+import { renderDraftBoard, formatKeeperCostFlow } from "../src/ui/render-board.js";
 
 const canonicalTeams = JSON.parse(fs.readFileSync("data/teams.json", "utf8"));
 const yahooPayload = JSON.parse(fs.readFileSync("data/external/yahoo/players.json", "utf8"));
@@ -108,6 +108,9 @@ test("every rendered cell uses an exact resolver-provided pick number", () => {
   for (const pick of resolvedState.picks) {
     assert.ok(html.includes(`data-pick-number="${pick.pickNumber}"`), pick.pickNumber);
   }
+  assert.match(html, /2\.17 <span class="overall-pick">\(35\)<\/span> <span class="snake-arrow" aria-label="Right to left">←<\/span>/);
+  assert.match(html, /1\.02 <span class="overall-pick">\(2\)<\/span> <span class="snake-arrow" aria-label="Left to right">→<\/span>/);
+  assert.match(html, /class="print-pick-number">2\.17 \(35\) ←<\/span>/);
 });
 
 test("columns remain ordered by resolved R1 slot", () => {
@@ -189,8 +192,23 @@ test("keeper is rendered on the resolver-designated consumed pick", () => {
   assert.equal(keeperCell.keeper.playerId, "cooper-flagg");
   assert.equal(keeperCell.keeper.oldRound, 2);
   assert.equal(keeperCell.keeper.resolvedCostRound, 2);
-  assert.ok(html.includes("COOPER FLAGG"));
-  assert.ok(html.includes("R2 → R2"));
+  assert.ok(html.includes("Cooper Flagg"));
+  assert.ok(html.includes("KEEPER</span><span>R2</span>"));
+});
+
+test("board keeper costs omit repeated rounds while retaining true collisions", () => {
+  assert.equal(formatKeeperCostFlow({ oldRound: 6, baseCostRound: 5, resolvedCostRound: 5 }), "R6 → R5");
+  assert.equal(formatKeeperCostFlow({ oldRound: 8, baseCostRound: 6, resolvedCostRound: 5 }), "R8 → R6 → R5");
+  assert.equal(formatKeeperCostFlow({ oldRound: 1, baseCostRound: 1, resolvedCostRound: 1 }), "R1");
+});
+
+test("print board divides 18 columns into two readable complete halves", () => {
+  const { html } = buildDemo();
+  assert.equal((html.match(/class="print-board-page"/g) ?? []).length, 2);
+  assert.equal((html.match(/class="print-pick /g) ?? []).length, 198);
+  assert.match(html, /1\.01–1\.09/);
+  assert.match(html, /1\.10–1\.18/);
+  assert.match(html, /data-action="print-board"/);
 });
 
 test("Yahoo metadata joins by stable identity even if display text differs", () => {
@@ -227,15 +245,17 @@ test("missing Yahoo metadata leaves keeper rendering intact", () => {
     .find((cell) => cell.keeper?.playerId === "cooper-flagg");
 
   assert.equal(keeperCell.yahooMetadata, null);
-  assert.ok(html.includes("COOPER FLAGG"));
+  assert.ok(html.includes("Cooper Flagg"));
   assert.ok(html.includes("KEEPER"));
 });
 
-test("O-Rank is rendered with correct semantics and never as XRank", () => {
+test("XRank metadata renders from Yahoo OR rather than average-pick array order", () => {
   const { html } = buildKeeperVariant();
-  assert.ok(html.includes("O-RANK 13"));
-  assert.equal(html.includes("XRank"), false);
-  assert.equal(html.includes("X-RANK"), false);
+  assert.ok(html.includes(`XRank ${yahooPayload.players.find((p) => p.yahooPlayerId === "10468").xrank}`));
+  assert.equal(html.includes("O-RANK 13"), false);
+  assert.match(html, /class="pick-head"><span class="pick-number">[^<]+<span class="overall-pick">\(\d+\)<\/span> <span class="snake-arrow"[^>]+>[←→]<\/span><\/span><span class="pick-xrank">XRank 13<\/span>/);
+  assert.match(html, /class="print-pick-number">[^<]+\(\d+\) [←→] · XRank 13<\/span>/);
+  assert.match(html, /<th scope="col">R<\/th>/);
 });
 
 test("unresolved teams receive pending entries and no fabricated slots", () => {

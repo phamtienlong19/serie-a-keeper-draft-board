@@ -26,8 +26,11 @@ export function buildDraftBoardViewModel({
   assumedEligibilityCount = 0,
   selectedTeamId = null,
   movedTeamIds = [],
+  hypotheticalTradeKeys = [],
+  proposedPlayerMoves = [],
 }) {
   const teamById = new Map(teams.map((team) => [team.teamId, team]));
+  const proposedOwnerByPlayer = new Map(proposedPlayerMoves.map((move) => [move.playerId, teamById.get(move.toTeamId)?.name ?? move.toTeamId]));
   const keeperCountByTeam = new Map();
   for (const keeper of resolvedState.keepers) {
     keeperCountByTeam.set(keeper.teamId, (keeperCountByTeam.get(keeper.teamId) ?? 0) + 1);
@@ -64,16 +67,19 @@ export function buildDraftBoardViewModel({
           const origin = teamById.get(pick.originTeamId);
           return {
             pickNumber: pick.pickNumber,
+            overallPick: pick.overallPick,
             round: pick.round,
             slot: pick.slot,
             status: pick.status,
             isTraded:
               pick.currentOwnerTeamId !== null && pick.currentOwnerTeamId !== pick.originTeamId,
+            isHypotheticalTrade: hypotheticalTradeKeys.includes(`${pick.originTeamId}:R${pick.round}`),
             currentOwnerTeamId: pick.currentOwnerTeamId,
             currentOwnerName: owner?.name ?? pick.currentOwnerTeamId,
             originTeamId: pick.originTeamId,
             originTeamName: origin?.name ?? pick.originTeamId,
             keeper: pick.keeper ? { ...pick.keeper } : null,
+            proposedPlayerOwnerName: pick.keeper ? proposedOwnerByPlayer.get(pick.keeper.playerId) ?? null : null,
             keeperCandidates: [...pick.keeperCandidates],
             yahooMetadata: keeperMetadata(pick, metadataIndex),
           };

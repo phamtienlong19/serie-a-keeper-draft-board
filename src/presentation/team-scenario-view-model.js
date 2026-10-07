@@ -1,7 +1,9 @@
+import { selectedKeepers } from "../scenario/scenario-state.js";
+import { declarationProvenance } from "../domain/pre-draft.js";
 import { createYahooMetadataIndex, getYahooMetadataForLocalPlayer } from "../external/yahoo.js";
 import { evaluateKeeperCandidates } from "../scenario/scenario-state.js";
 
-const TIER_LABELS = Object.freeze({
+export const TIER_LABELS = Object.freeze({
   ANY_2: "Up to 2 eligible players",
   TWO_R2_PLUS: "Up to 2 players from R2+",
   ONE_R2_OR_TWO_R3_PLUS: "1 player from R2+ or 2 players from R3+",
@@ -56,7 +58,7 @@ export function buildTeamScenarioViewModel({
   const allocation = resolvedState.allocations.find((candidate) => candidate.teamId === teamId);
   const metadataIndex = createYahooMetadataIndex(identityMap, yahooPlayers);
   const candidates = evaluateKeeperCandidates({ baselineInput, overrides: scenarioOverrides, teamId });
-  const selectedPlayerIds = scenarioOverrides.keeperSelections[teamId] ?? [];
+  const selectedPlayerIds = selectedKeepers(baselineInput, scenarioOverrides, teamId);
 
   const roster = candidates.map((candidate) => ({
     ...candidate,
@@ -77,6 +79,7 @@ export function buildTeamScenarioViewModel({
 
   return {
     teamId,
+    provenance: declarationProvenance(baselineInput, scenarioOverrides, teamId),
     teamName: team.name,
     previousFinish: team.previousFinish,
     keeperTier: teamState?.keeperTier ?? null,

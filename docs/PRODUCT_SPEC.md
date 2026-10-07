@@ -229,3 +229,17 @@ Use the compact Yahoo-inspired visual language of the existing NBA Talk VN dynas
 - Discord automation;
 - backend/database unless required by actual usage;
 - generic trade valuation.
+
+## 16. October 2026 final declaration update
+
+The current local base has 18/18 confirmed keeper and Early/Late declarations. Run and Gun declared no keepers and Early; Rising Rockets is corrected to no keepers and Late. The deterministic resolver produces all exact numbered geometry and permits `FINALIZED` declaration status. Publication is withheld pending explicit authorization.
+
+Keepers, Rankings and Trades complement the primary Draft Board. XRank is the player's Yahoo OR field; Available only removes resolver-kept players and assigns a separate consecutive available Rank. Show kept, search, position and NBA filters support factual draft preparation. Auction dollars and strategy recommendations are not presented.
+
+Scenarios can fork the current pre-draft baseline as well as a future official baseline. Named workspaces autosave locally and support copy/rename/duplicate/delete/reopen/reset; backup import/export is under Advanced. Confirmed base declarations and hypothetical overrides remain visibly separate. Two-sided trade packages select active keepers and picks by name with exact/overall pick numbers from the current board; historical prior-draft players are not represented as a current tradeable roster. Preview lists affected pick slots and offers a read-only full post-trade board before a scenario is saved. Pick identities remain origin-team/round entitlements internally. Keeper movement is saved as a proposal without changing keeper or roster state until its league rule is confirmed. Only confirmed canonical pick trades affect the base; scenario trades remain hypothetical. Existing keeper-channel uncertainties remain visible.
+
+Browser-native print views support board and keeper-report PDF saving. XLSX exports use pure report builders and preserve pending values. Finalization remains an explicit human action after complete confirmed declarations and resolver verification, not an automatic result of scenario completion.
+
+## 17. Integrated keeper context
+
+Keeper Decisions is the default mode of one keeper surface, with Eligibility as its historical companion. Decisions follows resolved R1 draft order and prints each team's R1 slot. Cards retain all prior-roster context, distinguish actual ✓ KEPT rows from SCENARIO selections, and explicitly mark confirmed no-keeper declarations including Run and Gun. Eligibility restrictions and if-kept costs come from domain probes. Team/player search and jump controls work across both modes. Decisions and Eligibility have separate PDF print views; Eligibility includes every historical player row and eligibility marker. Printing includes all 18 teams with grayscale-safe keeper markers. The original static eligibility artifact is reference-only.

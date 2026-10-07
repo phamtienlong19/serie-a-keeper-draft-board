@@ -123,7 +123,7 @@ test("metadata refresh/reconciliation cannot mutate canonical keeper or ownershi
   );
 });
 
-test("OR rank is stored as oRank and never mislabeled as xRank", () => {
+test("Yahoo OR rank supplies XRank independently of array position", () => {
   const normalized = normalizeYahooPlayer({
     player_id: "10468",
     player_key: "478.p.10468",
@@ -132,8 +132,9 @@ test("OR rank is stored as oRank and never mislabeled as xRank", () => {
   });
 
   assert.equal(normalized.oRank, 13);
-  assert.equal(normalized.xRank, null);
-  assert.ok(normalizedYahooPayload.players.every((player) => player.xRank === null));
+  assert.equal(normalized.xrank, 13);
+  assert.ok(normalizedYahooPayload.players.every((player) => player.xrank === player.oRank));
+  assert.equal(normalizedYahooPayload.source.xrankProvenance, "PLAYER_RANK_OR");
   assert.deepEqual(normalizedYahooPayload.source.rankTypes, ["OR"]);
 });
 
@@ -141,6 +142,7 @@ test("persisted identity map is reproducible from canonical and normalized input
   const rebuilt = buildPlayerIdentityMap(
     canonicalTeamsPayload.teams,
     normalizedYahooPayload.players,
+    persistedIdentityMap,
   );
   assert.deepEqual(rebuilt, persistedIdentityMap);
 });
