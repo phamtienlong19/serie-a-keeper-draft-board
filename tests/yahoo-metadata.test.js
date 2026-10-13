@@ -114,7 +114,8 @@ test("metadata refresh/reconciliation cannot mutate canonical keeper or ownershi
   assert.equal(cooper.identity.yahooPlayerId, "10468");
   assert.equal(cooper.metadata.nbaTeamAbbreviation, "DAL");
   assert.equal(cooper.metadata.displayPosition, "SG,SF,PF");
-  assert.equal(cooper.metadata.oRank, 13);
+  assert.equal(cooper.metadata.oRank, 11);
+  assert.equal(cooper.metadata.xrank, 11);
   assert.equal(governanceState.teams[0].priorDraft[1].oldRound, 2);
   assert.equal(governanceState.teams[0].priorDraft[1].originalDrafterTeamId, "sup-fam");
   assert.equal(
@@ -123,7 +124,7 @@ test("metadata refresh/reconciliation cannot mutate canonical keeper or ownershi
   );
 });
 
-test("Yahoo OR rank supplies XRank independently of array position", () => {
+test("Yahoo OR rank supplies XRank independently of source array position", () => {
   const normalized = normalizeYahooPlayer({
     player_id: "10468",
     player_key: "478.p.10468",
@@ -134,6 +135,7 @@ test("Yahoo OR rank supplies XRank independently of array position", () => {
   assert.equal(normalized.oRank, 13);
   assert.equal(normalized.xrank, 13);
   assert.ok(normalizedYahooPayload.players.every((player) => player.xrank === player.oRank));
+  assert.ok(normalizedYahooPayload.players.some((player, index) => player.xrank !== index + 1));
   assert.equal(normalizedYahooPayload.source.xrankProvenance, "PLAYER_RANK_OR");
   assert.deepEqual(normalizedYahooPayload.source.rankTypes, ["OR"]);
 });

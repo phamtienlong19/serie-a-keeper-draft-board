@@ -70,26 +70,32 @@ test("missing selectedPlayerIds cannot become a zero-keeper declaration", () => 
   assert.ok(result.validation.some((v) => v.code === "INVALID_KEEPER_SELECTION"));
   assert.equal(result.teamKeeperStates[0].bucket, null);
 });
-test("XRank follows each player's Yahoo OR rank, independent of average-pick array order", () => {
+test("XRank follows Yahoo O-Rank independently of source array order", () => {
   const raw = read("data/external/yahoo/draft_analysis.json");
   const parsed = extractYahooPlayers(raw);
   assert.deepEqual(parsed, yahoo);
-  assert.equal(parsed.length, 300);
+  assert.equal(parsed.length, raw.fantasy_content.league.players.length);
   parsed.forEach((p, i) => {
-    assert.equal(p.xrank, Number(raw.fantasy_content.league.players[i].player.player_ranks.find((rank) => rank.player_rank.rank_type === "OR").player_rank.rank_value));
+    assert.equal(p.xrank, p.oRank);
+    assert.equal(p.oRank, Number(raw.fantasy_content.league.players[i].player.player_ranks.find((rank) => rank.player_rank.rank_type === "OR").player_rank.rank_value));
     assert.equal(p.yahooPlayerId, raw.fantasy_content.league.players[i].player.player_id);
   });
-  assert.ok(parsed.every((p) => p.xrank === p.oRank));
+  assert.ok(parsed.some((p, i) => p.xrank !== i + 1));
   assert.equal(parsed.find((p) => p.fullName === "Stephen Curry").xrank, 25);
   assert.equal(parsed.find((p) => p.fullName === "Stephen Curry").oRank, 25);
-  assert.equal(parsed.find((p) => p.fullName === "Dejounte Murray").xrank, 55);
+  assert.equal(parsed.find((p) => p.fullName === "Dejounte Murray").xrank, 57);
   assert.equal(parsed.find((p) => p.fullName === "Bronny James").xrank, 467);
   const duplicate = structuredClone(raw);
   duplicate.fantasy_content.league.players[1] = duplicate.fantasy_content.league.players[0];
   assert.throws(() => extractYahooPlayers(duplicate), /duplicate/);
-  const duplicateRank = structuredClone(raw);
-  duplicateRank.fantasy_content.league.players[1].player.player_ranks[0].player_rank.rank_value = "1";
-  assert.throws(() => extractYahooPlayers(duplicateRank), /duplicate OR\/XRank/);
+  const duplicateORank = structuredClone(raw);
+  duplicateORank.fantasy_content.league.players[1].player.player_ranks[0].player_rank.rank_value = "1";
+  assert.throws(() => extractYahooPlayers(duplicateORank), /duplicate OR\/XRank/);
+  const reordered = structuredClone(raw);
+  [reordered.fantasy_content.league.players[0], reordered.fantasy_content.league.players[1]] =
+    [reordered.fantasy_content.league.players[1], reordered.fantasy_content.league.players[0]];
+  assert.equal(extractYahooPlayers(reordered)[0].yahooPlayerId, parsed[1].yahooPlayerId);
+  assert.equal(extractYahooPlayers(reordered)[0].xrank, parsed[1].xrank);
   assert.throws(() => extractYahooPlayers({}), /does not contain/);
 });
 test("all declared keeper identities are stable and unambiguous", () => {

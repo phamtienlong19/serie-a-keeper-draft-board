@@ -138,6 +138,7 @@ export function describeYahooSource(snapshot) {
     snapshotFile: "draft_analysis.json",
     gameKey: nullableString(snapshot?.fantasy_content?.league?.league_key?.split(".")[0]),
     season: nullableString(snapshot?.fantasy_content?.league?.season),
+    editKey: nullableString(snapshot?.fantasy_content?.league?.edit_key),
     playerCount: rawPlayers.length,
     rankTypes,
     xrankProvenance: "PLAYER_RANK_OR",
