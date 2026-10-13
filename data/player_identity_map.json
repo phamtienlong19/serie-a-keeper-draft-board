@@ -162,6 +162,14 @@
       "matchMethod": "NORMALIZED_NAME_EXACT"
     },
     {
+      "playerId": "isaiah-jackson",
+      "playerName": "Isaiah Jackson",
+      "normalizedName": "isaiah jackson",
+      "yahooPlayerId": "6564",
+      "yahooPlayerKey": "478.p.6564",
+      "matchMethod": "NORMALIZED_NAME_EXACT"
+    },
+    {
       "playerId": "brice-sensabaugh",
       "playerName": "Brice Sensabaugh",
       "normalizedName": "brice sensabaugh",
@@ -783,14 +791,6 @@
       "normalizedName": "fred vanvleet",
       "yahooPlayerId": "5727",
       "yahooPlayerKey": "478.p.5727",
-      "matchMethod": "NORMALIZED_NAME_EXACT"
-    },
-    {
-      "playerId": "jordan-clarkson",
-      "playerName": "Jordan Clarkson",
-      "normalizedName": "jordan clarkson",
-      "yahooPlayerId": "5357",
-      "yahooPlayerKey": "478.p.5357",
       "matchMethod": "NORMALIZED_NAME_EXACT"
     },
     {
@@ -1468,13 +1468,6 @@
   ],
   "unresolved": [
     {
-      "playerId": "isaiah-jackson",
-      "playerName": "Isaiah Jackson",
-      "normalizedName": "isaiah jackson",
-      "reason": "NO_EXACT_NORMALIZED_NAME_MATCH",
-      "candidates": []
-    },
-    {
       "playerId": "chris-boucher",
       "playerName": "Chris Boucher",
       "normalizedName": "chris boucher",
@@ -1548,6 +1541,13 @@
       "playerId": "cam-whitmore",
       "playerName": "Cam Whitmore",
       "normalizedName": "cam whitmore",
+      "reason": "NO_EXACT_NORMALIZED_NAME_MATCH",
+      "candidates": []
+    },
+    {
+      "playerId": "jordan-clarkson",
+      "playerName": "Jordan Clarkson",
+      "normalizedName": "jordan clarkson",
       "reason": "NO_EXACT_NORMALIZED_NAME_MATCH",
       "candidates": []
     },
