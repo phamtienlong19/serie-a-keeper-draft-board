@@ -41,7 +41,7 @@ function extractRank(rawPlayer, rankType) {
   return nullableNumber(rank?.rank_value);
 }
 
-export function normalizeYahooPlayer(rawPlayer) {
+export function normalizeYahooPlayer(rawPlayer, sourceIndex = null) {
   const analysis = rawPlayer?.draft_analysis ?? {};
   const oRank = extractRank(rawPlayer ?? {}, "OR");
   return {
@@ -62,8 +62,8 @@ export function normalizeYahooPlayer(rawPlayer) {
     injuryNote: nullableString(rawPlayer?.injury_note),
     headshotUrl: nullableString(rawPlayer?.headshot?.url ?? rawPlayer?.image_url),
     oRank,
-    // Yahoo's per-player OR value is the XRank used throughout the product.
-    xrank: oRank,
+    // This snapshot's array order is the product's Yahoo XRank. OR is separate.
+    xrank: Number.isInteger(sourceIndex) && sourceIndex >= 0 ? sourceIndex + 1 : null,
     projectedAuctionValue: nullableNumber(rawPlayer?.projected_auction_value),
     averageAuctionCost: nullableNumber(rawPlayer?.average_auction_cost),
     averagePick: nullableNumber(analysis.average_pick),
@@ -80,14 +80,10 @@ export function extractYahooPlayers(snapshot) {
     throw new TypeError("Yahoo snapshot does not contain fantasy_content.league.players[].");
   }
 
-  const players = playerEntries.map((entry) => normalizeYahooPlayer(entry?.player));
+  const players = playerEntries.map((entry, index) => normalizeYahooPlayer(entry?.player, index));
   const ids = players.map((player) => player.yahooPlayerId);
   if (players.some((player) => !player.yahooPlayerId || !player.playerKey || !player.fullName) || new Set(ids).size !== ids.length) {
     throw new TypeError("Yahoo snapshot contains missing or duplicate player identities; reconciliation required.");
-  }
-  const xranks = players.map((player) => player.xrank);
-  if (xranks.some((rank) => !Number.isInteger(rank) || rank < 1) || new Set(xranks).size !== xranks.length) {
-    throw new TypeError("Yahoo snapshot contains missing or duplicate OR/XRank values; ranking requires reconciliation.");
   }
   return players;
 }
@@ -138,9 +134,10 @@ export function describeYahooSource(snapshot) {
     snapshotFile: "draft_analysis.json",
     gameKey: nullableString(snapshot?.fantasy_content?.league?.league_key?.split(".")[0]),
     season: nullableString(snapshot?.fantasy_content?.league?.season),
+    editKey: nullableString(snapshot?.fantasy_content?.league?.edit_key),
     playerCount: rawPlayers.length,
     rankTypes,
-    xrankProvenance: "PLAYER_RANK_OR",
+    xrankProvenance: "SOURCE_ARRAY_INDEX_PLUS_ONE",
     fieldsFound,
   };
 }
