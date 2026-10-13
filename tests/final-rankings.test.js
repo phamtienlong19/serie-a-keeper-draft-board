@@ -45,10 +45,10 @@ test("available rank is gapless; kept rows retain source XRank and have no avail
   assert.deepEqual(pool.rows.map((row) => row.xrank), [...yahoo].sort((a, b) => a.xrank - b.xrank).map((row) => row.xrank));
   assert.ok(kept.every((row) => row.availableRank === null && row.boardRange === null));
   assert.equal(pool.rows.find((row) => row.playerId === "shai-gilgeous-alexander").xrank, 4);
-  assert.equal(pool.rows.find((row) => row.playerId === "jayson-tatum").xrank, 9);
+  assert.equal(pool.rows.find((row) => row.playerId === "jayson-tatum").xrank, 7);
   assert.equal(pool.rows.find((row) => row.playerId === "jayson-tatum").oRank, 7);
   assert.equal(available.find((row) => row.fullName === "Cooper Flagg").availableRank, 8);
-  assert.equal(available.find((row) => row.fullName === "Cooper Flagg").xrank, 10);
+  assert.equal(available.find((row) => row.fullName === "Cooper Flagg").xrank, 11);
   assert.equal(pool.rows.find((row) => row.xrank === 5).availableRank, 4);
   assert.equal(filterDraftPool(pool.rows, { search: "Giannis" })[0].availableRank, 5);
 });
@@ -82,7 +82,7 @@ test("rankings render dashed board separators, kept rows and filtered source ran
   assert.match(all, /Jayson Tatum, Donovan Clingan|Donovan Clingan, Jayson Tatum/);
   assert.match(all, /BEYOND CURRENT 11-ROUND BOARD · 102 PLAYERS/);
   assert.match(all, /<td class="available-rank">—<\/td><td class="rank-player">Shai Gilgeous-Alexander<\/td><td class="xrank">4<\/td>/);
-  assert.match(all, /<td class="available-rank">—<\/td><td class="rank-player">Jayson Tatum<\/td><td class="xrank">9<\/td>/);
+  assert.match(all, /<td class="available-rank">—<\/td><td class="rank-player">Jayson Tatum<\/td><td class="xrank">7<\/td>/);
   assert.doesNotMatch(all, /Projected Round|Auction/);
   const filtered = renderPool({ pool, visibleRows: filterDraftPool(pool.rows, { search: "Giannis" }), filters: { search: "Giannis", availability: "AVAILABLE" } });
   assert.match(filtered, /<td class="available-rank">5<\/td>/);
@@ -127,7 +127,7 @@ test("Available Rankings export carries rank, source XRank and board range", () 
   assert.deepEqual(Object.keys(report[0]), ["Rank", "XRank", "Player", "Pos", "NBA", "Board Range"]);
   assert.equal(report.length, 288);
   assert.deepEqual(report.map((row) => row.Rank), Array.from({ length: 288 }, (_, i) => i + 1));
-  assert.deepEqual(report[7], { Rank: 8, XRank: 10, Player: "Cooper Flagg", Pos: "SG,SF,PF", NBA: "DAL", "Board Range": "R1" });
+  assert.deepEqual(report[7], { Rank: 8, XRank: 11, Player: "Cooper Flagg", Pos: "SG,SF,PF", NBA: "DAL", "Board Range": "R1" });
   assert.equal(report[185]["Board Range"], "R11");
   assert.equal(report[186]["Board Range"], "Beyond R11");
   const sheets = buildExportSheets({ input: base, resolvedState, baselineInput: base, overrides }, pool.rows, { title: "Final", generatedAt: "2026-10-07T00:00:00Z" });
