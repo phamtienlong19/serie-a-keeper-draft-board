@@ -229,7 +229,7 @@ test("Yahoo metadata joins by stable identity even if display text differs", () 
   assert.equal(keeperCell.yahooMetadata.yahooPlayerId, "10468");
   assert.equal(keeperCell.yahooMetadata.nbaTeamAbbreviation, "DAL");
   assert.equal(keeperCell.yahooMetadata.oRank, 11);
-  assert.equal(keeperCell.yahooMetadata.xrank, 10);
+  assert.equal(keeperCell.yahooMetadata.xrank, 11);
 });
 
 test("missing Yahoo metadata leaves keeper rendering intact", () => {
@@ -250,12 +250,12 @@ test("missing Yahoo metadata leaves keeper rendering intact", () => {
   assert.ok(html.includes("KEEPER"));
 });
 
-test("XRank metadata renders from refreshed source order", () => {
+test("XRank metadata renders from refreshed Yahoo O-Rank", () => {
   const { html } = buildKeeperVariant();
   assert.ok(html.includes(`XRank ${yahooPayload.players.find((p) => p.yahooPlayerId === "10468").xrank}`));
   assert.equal(html.includes("O-RANK 11"), false);
-  assert.match(html, /class="pick-head"><span class="pick-number">[^<]+<span class="overall-pick">\(\d+\)<\/span> <span class="snake-arrow"[^>]+>[←→]<\/span><\/span><span class="pick-xrank">XRank 10<\/span>/);
-  assert.match(html, /class="print-pick-number">[^<]+\(\d+\) [←→] · XRank 10<\/span>/);
+  assert.match(html, /class="pick-head"><span class="pick-number">[^<]+<span class="overall-pick">\(\d+\)<\/span> <span class="snake-arrow"[^>]+>[←→]<\/span><\/span><span class="pick-xrank">XRank 11<\/span>/);
+  assert.match(html, /class="print-pick-number">[^<]+\(\d+\) [←→] · XRank 11<\/span>/);
   assert.match(html, /<th scope="col">R<\/th>/);
 });
 
