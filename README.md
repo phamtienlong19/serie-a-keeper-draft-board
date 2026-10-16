@@ -84,7 +84,7 @@ Yahoo data is an external, non-authoritative enrichment layer:
 - `data/player_identity_map.json` joins stable local player IDs to Yahoo player IDs and keys.
 - `src/external/yahoo.js` provides normalization, reconciliation, and ID-based metadata lookup helpers.
 
-**XRank is the per-player `player_ranks[].player_rank` value whose `rank_type` is `OR`** in the 7 October 2026 Yahoo snapshot. The source array is sorted by average pick and does not define XRank. The raw OR value is also preserved as `oRank`; ADP and auction fields never define XRank. XRank may exceed 300 because the supplied 300-player slice includes a player with OR 467. Auction fields remain preserved externally but are absent from main UI/export ranking columns.
+**XRank is the per-player `player_ranks[].player_rank` value whose `rank_type` is `OR`** in the 16 October 2026 Yahoo snapshot. The source array's order does not define XRank. The raw OR value is also preserved as `oRank`; ADP and auction fields never define XRank. Auction fields remain preserved externally but are absent from main UI/export ranking columns. The board, team drawer, Rankings, print view, and exports consume this same normalized metadata.
 
 Names are used only to bootstrap the checked-in identity map. Runtime consumers join through `playerId` and `yahooPlayerId`; Yahoo metadata never updates canonical draft round, original drafter, keeper eligibility, declarations, entitlement ownership, or trades.
 

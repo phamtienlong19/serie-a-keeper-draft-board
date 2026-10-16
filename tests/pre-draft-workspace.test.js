@@ -80,11 +80,10 @@ test("XRank follows Yahoo O-Rank independently of source array order", () => {
     assert.equal(p.oRank, Number(raw.fantasy_content.league.players[i].player.player_ranks.find((rank) => rank.player_rank.rank_type === "OR").player_rank.rank_value));
     assert.equal(p.yahooPlayerId, raw.fantasy_content.league.players[i].player.player_id);
   });
-  assert.ok(parsed.some((p, i) => p.xrank !== i + 1));
   assert.equal(parsed.find((p) => p.fullName === "Stephen Curry").xrank, 25);
   assert.equal(parsed.find((p) => p.fullName === "Stephen Curry").oRank, 25);
   assert.equal(parsed.find((p) => p.fullName === "Dejounte Murray").xrank, 57);
-  assert.equal(parsed.find((p) => p.fullName === "Bronny James").xrank, 467);
+  assert.equal(parsed.find((p) => p.fullName === "Hugo González").xrank, 208);
   const duplicate = structuredClone(raw);
   duplicate.fantasy_content.league.players[1] = duplicate.fantasy_content.league.players[0];
   assert.throws(() => extractYahooPlayers(duplicate), /duplicate/);
@@ -96,6 +95,9 @@ test("XRank follows Yahoo O-Rank independently of source array order", () => {
     [reordered.fantasy_content.league.players[1], reordered.fantasy_content.league.players[0]];
   assert.equal(extractYahooPlayers(reordered)[0].yahooPlayerId, parsed[1].yahooPlayerId);
   assert.equal(extractYahooPlayers(reordered)[0].xrank, parsed[1].xrank);
+  const reorderedPool = buildDraftPool({ resolvedState: resolution.resolvedState, yahooPlayers: extractYahooPlayers(reordered), identityMap: identities, baselineInput: base, overrides: empty });
+  assert.equal(reorderedPool.rows[0].xrank, 1);
+  assert.equal(reorderedPool.rows[1].xrank, 2);
   assert.throws(() => extractYahooPlayers({}), /does not contain/);
 });
 test("all declared keeper identities are stable and unambiguous", () => {

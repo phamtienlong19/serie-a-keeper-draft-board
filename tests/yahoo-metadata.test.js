@@ -135,7 +135,6 @@ test("Yahoo OR rank supplies XRank independently of source array position", () =
   assert.equal(normalized.oRank, 13);
   assert.equal(normalized.xrank, 13);
   assert.ok(normalizedYahooPayload.players.every((player) => player.xrank === player.oRank));
-  assert.ok(normalizedYahooPayload.players.some((player, index) => player.xrank !== index + 1));
   assert.equal(normalizedYahooPayload.source.xrankProvenance, "PLAYER_RANK_OR");
   assert.deepEqual(normalizedYahooPayload.source.rankTypes, ["OR"]);
 });
