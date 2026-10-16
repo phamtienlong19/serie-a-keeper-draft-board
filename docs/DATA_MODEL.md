@@ -310,7 +310,7 @@ Only user inputs are serialized; reports, exact picks, costs and pool rows are r
 
 ## 18. External ranks and exports
 
-Yahoo `xrank` is the embedded per-player `OR` rank, also preserved as `oRank` in normalized metadata. The supplied array is ordered by average pick and does not define XRank. Neither field is a canonical league fact. `buildDraftPool` joins Yahoo IDs to resolver playerPool availability; it never consumes Yahoo is_keeper. Missing keeper identities are reported without guessed exclusion.
+Yahoo `xrank` is the embedded per-player `OR` rank, also preserved as `oRank` in normalized metadata. The supplied array's order does not define XRank. Neither field is a canonical league fact. `buildDraftPool` joins Yahoo IDs to resolver playerPool availability; it never consumes Yahoo is_keeper. Missing keeper identities are reported without guessed exclusion. Board cells, team drawer rows, Rankings, print output, and exports all receive Yahoo metadata from this same normalized snapshot.
 
 The report builders consume the same input/resolved state pair as the board. XLSX strings are encoded as literal inline strings. Print views and exports carry state provenance, declaration count and generated time; unresolved exact picks remain PENDING.
 

@@ -6,6 +6,9 @@ import { resolveDraftState } from "../src/domain/engine.js";
 import { buildBoardRanges, buildDraftPool, filterDraftPool } from "../src/presentation/draft-pool.js";
 import { createEmptyScenarioOverrides, resolveScenario, setScenarioKeeperSelection } from "../src/scenario/scenario-state.js";
 import { buildAvailableXRank, buildExportSheets } from "../src/exports/report-data.js";
+import { buildDraftBoardViewModel } from "../src/presentation/board-view-model.js";
+import { buildTeamScenarioViewModel } from "../src/presentation/team-scenario-view-model.js";
+import { renderDraftBoard } from "../src/ui/render-board.js";
 import { renderPool } from "../src/ui/render-surfaces.js";
 
 const read = (path) => JSON.parse(fs.readFileSync(path, "utf8"));
@@ -51,6 +54,42 @@ test("available rank is gapless; kept rows retain source XRank and have no avail
   assert.equal(available.find((row) => row.fullName === "Cooper Flagg").xrank, 11);
   assert.equal(pool.rows.find((row) => row.xrank === 5).availableRank, 4);
   assert.equal(filterDraftPool(pool.rows, { search: "Giannis" })[0].availableRank, 5);
+});
+
+test("latest Yahoo OR reaches the board, drawer, print view, Rankings, and export", () => {
+  const raw = read("data/external/yahoo/draft_analysis.json");
+  const fredSource = raw.fantasy_content.league.players.find((entry) => entry.player.player_id === "5727").player;
+  const fredOR = Number(fredSource.player_ranks.find((entry) => entry.player_rank.rank_type === "OR").player_rank.rank_value);
+  assert.equal(fredOR, 129);
+
+  const viewModel = buildDraftBoardViewModel({ resolvedState, teams: base.teams, identityMap, yahooPlayers: yahoo });
+  const sourceORByYahooId = new Map(raw.fantasy_content.league.players.map(({ player }) =>
+    [player.player_id, Number(player.player_ranks.find((entry) => entry.player_rank.rank_type === "OR").player_rank.rank_value)]));
+  const yahooIdByPlayerId = new Map(identityMap.matches.map((row) => [row.playerId, row.yahooPlayerId]));
+  for (const cell of viewModel.columns.flatMap((column) => column.cells).filter((entry) => entry.keeper)) {
+    assert.equal(cell.yahooMetadata.xrank, sourceORByYahooId.get(yahooIdByPlayerId.get(cell.keeper.playerId)));
+  }
+  const fredCell = viewModel.columns.flatMap((column) => column.cells).find((cell) => cell.keeper?.playerId === "fred-vanvleet");
+  assert.equal(fredCell.yahooMetadata.oRank, fredOR);
+  assert.equal(fredCell.yahooMetadata.xrank, fredOR);
+
+  const drawer = buildTeamScenarioViewModel({ baselineInput: base, scenarioOverrides: overrides, resolvedState,
+    teamId: "mnqa", identityMap, yahooPlayers: yahoo });
+  assert.equal(drawer.roster.find((row) => row.playerId === "fred-vanvleet").yahooMetadata.xrank, fredOR);
+  const firstPage = renderDraftBoard(viewModel, drawer);
+  assert.match(firstPage, /class="pick-xrank">XRank 129<\/span>/);
+  assert.match(firstPage, /class="o-rank">XRank 129<\/div>/);
+  assert.match(firstPage, /class="print-pick-number">[^<]*XRank 129<\/span>/);
+
+  const pool = poolFor();
+  assert.equal(pool.rows.find((row) => row.playerId === "fred-vanvleet").xrank, fredOR);
+  const keptRankings = renderPool({ pool, visibleRows: filterDraftPool(pool.rows, { availability: "KEPT" }),
+    filters: { search: "", position: "", nbaTeam: "", availability: "KEPT" } });
+  assert.match(keptRankings, /Fred VanVleet<\/td><td class="xrank">129<\/td>/);
+  const sheets = buildExportSheets({ input: base, resolvedState, baselineInput: base, overrides }, pool.rows,
+    { title: "Final", generatedAt: "2026-10-16T00:00:00Z" });
+  const exportedFred = sheets.find((sheet) => sheet.name === "Full Draft Board").rows.find((row) => row.Keeper === "Fred VanVleet");
+  assert.equal(exportedFred["Keeper XRank"], fredOR);
 });
 
 test("board ranges follow keeper pick placement and cumulative open capacity", () => {
