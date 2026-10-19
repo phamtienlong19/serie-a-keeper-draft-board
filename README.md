@@ -1,6 +1,14 @@
 # Serie A Draft Board
 
-This repository contains the canonical league rules/data, deterministic domain engine, and interactive 2026/27 keeper and draft board.
+This repository contains the canonical league rules/data, deterministic domain engine, and interactive Serie A keeper outlook. The landing view is the preliminary 2027–28 keeper-rights ledger, based on the completed 2026–27 draft.
+
+## 2027–28 Keeper Outlook
+
+`data/seasons/2026-27/draft-results.json` is the completed historical draft record. It is generated from the supplied sanitized Yahoo draft import with `npm run import:2026-draft`. The importer checks all 198 positions, 18 team identities, 12 keeper reservations, and finalized resolver pick ownership before writing the archive. The source HTML is not stored. Its SHA-256 is retained in the archive.
+
+`buildKeeperRights` derives 186 fresh draft-based rights from the archive. The 12 prior-year keeper reservations remain visible but do not create new rights; they are marked ineligible for consecutive keeping by the same manager. The individual base cost uses the existing keeper-cost function. Candidate comparisons reuse the existing finish-tier limits and collision allocator. Final 2026–27 finish, 2027–28 exact pick channels, and current roster ownership remain unknown. The 2025–26 finish in `data/teams.json` applies only to the archived 2026–27 pre-draft workspace.
+
+The saved Yahoo Sports profile ID is retained separately from the fantasy player identity. 149 records reconcile by established ID plus agreeing name; 49 retain source-profile-only identities without an inferred cross-source merge. The completed Draft Archive presents all 18 × 11 picks with search, print/PDF, and XLSX export. The completed pre-draft workspace is absent from the live site. Its old `serie-a.scenarios.v1` browser data is left untouched and never read as 2027–28 state. Candidate selections are temporary UI state and do not modify the archive or official inputs.
 
 ## Domain engine
 
@@ -17,31 +25,22 @@ Important input semantics:
 
 The resolver returns structured `ERROR`, `WARNING`, and `UNRESOLVED` validation. Open collision/channel questions remain machine-readable rather than receiving guessed outcomes.
 
-## Current local pre-draft workspace
+## Draft-cycle reuse after the season
 
-`data/pre_draft.json` records **18 / 18 confirmed declarations**, including ten explicit no-keeper declarations and 12 keepers. Run and Gun declared no keepers and Early; Rising Rockets is no keepers and Late. The resolver verifies the 18 × 11 board and the declaration layer is **FINALIZED** locally. Publication remains a separate action. The original demo fixtures remain for regression tests only.
+The 2026 pre-draft workspace is retired from the live interface. Its deterministic resolver, keeper and board renderers, scenario tools, trade builder, and report builders remain in the repository for a future draft cycle. The current site entry (`src/ui/main.js`) imports only the completed draft archive and preliminary rights ledger; it does not initialize the old declarations or local scenarios.
 
-The Rankings page defaults to **Available only**: 300 Yahoo players minus the 12 valid declared keepers = 288 players. Availability comes from `resolveDraftState().playerPool`, joined by persisted local/Yahoo IDs. Available Rank is consecutive among those 288 players; XRank is Yahoo's per-player OR rank and keeps its source values and gaps when keepers are hidden. Show kept restores keepers at their original XRank with no Available Rank, plus team and cost. Round separators derive from the active board's open picks after keeper placement. Search, Yahoo position, NBA team and availability filters do not renumber either underlying rank.
+`buildDraftCycle(input)` in `src/presentation/draft-cycle.js` provides the next cycle’s view boundary from the existing resolver:
 
-Team drawers fork local scenarios on edit. Confirmed inputs remain separate, with **SCENARIO OVERRIDE** on changed confirmed declarations and **SCENARIO ASSUMPTION** on pending-team choices. Set no keepers explicitly supplies an empty scenario declaration; it never fills a missing choice implicitly.
+- `keeperDecisions` and `keeperPicks` communicate declared keepers and occupied slots;
+- `livePicks` contains the actual open picks, excluding keeper-occupied positions;
+- `tradedPicks` retains both the entitlement origin and current pick owner;
+- `unresolvedPicks` stays separate from confirmed trades and live picks;
+- `board` retains every numbered position, including keeper reservations;
+- incomplete inputs return a pending board and structured validation instead of invented picks.
 
-The four primary surfaces are Draft Board, Keepers, Rankings and Trades. The compact Scenario menu opens the working league base or a named local copy. Changes autosave in browser `localStorage` under `serie-a.scenarios.v1`; only metadata and input overrides are saved. Save Copy, rename, duplicate, delete and reset manage workspaces. Export backup and Import backup remain under Advanced / Backup. Storage failures are visible and leave stored data intact. An older scenario opens as a fresh named copy against current league inputs only after the user chooses that action; its saved original remains intact. There is no backend, authentication or cloud sync.
+A 2027–28 board must wait for verified 2026–27 final finishes, the next season’s keeper and Early/Late declarations, confirmed pre-draft entitlement trades, and any required Q4/Q5 rule clarifications. When those inputs exist, the same resolver can show official decisions and scenario forks without altering the 2026 draft archive. A new persisted scenario format must use a distinct season, schema version, scenario type, and storage key.
 
-Trades uses a two-sided package builder with active keepers and picks by manager-facing names. Each pick shows its live exact/overall number from the active board; the same entitlement can move to a different numbered slot when a scenario changes R1 allocation. Preview shows the changed pick slots and opens a read-only full board before saving. The 2025 draft list is historical evidence, not a current tradeable roster. Picks still resolve internally as origin-team/round entitlements. Keeper moves remain hypothetical proposals and do not alter keeper declarations or roster ownership until the league supplies a transfer rule; the preview warns about that limit. Hypothetical pick transfers affect only the active scenario. Confirmed trades are entered in canonical `data/pre_draft.json` after commissioner verification; only `CONFIRMED` trades affect the base. Keeper-channel ambiguities under Q4/Q5 remain unresolved. No real trades were supplied in this task.
-
-Draft Board, Keeper Decisions and Keeper Eligibility have **Print / PDF** actions using browser printing. The board prints all 11 rounds in two nine-team landscape pages; Decisions prints a compact 18-team report in resolved R1 order; Eligibility prints all historical player rows and eligibility markers across three landscape pages. Each board pick shows its exact number, overall pick in parentheses and a small snake-direction arrow. Occupied cells add Yahoo XRank beside the pick and keeper cost below. **Export .xlsx** produces State, Keeper Decisions, Draft Order, Pick Trades, Available Rankings and Full Draft Board sheets. Available Rankings includes Rank, XRank and Board Range. The small dependency-free OOXML writer uses typed cells and inline strings (never formulas), frozen headers and filters. All report values consume canonical inputs and resolver output.
-
-### Finalization and publication
-
-The finalized declarations can be reviewed on the feature branch and in a pull request. Publishing the site still requires a separate merge or deployment action; the Pages workflow runs on pushes to `main` or a manual dispatch.
-
-The confirmed declarations and corrected Rising Rockets direction were entered in `data/pre_draft.json`, its revision was incremented, and `publicationStatus: FINALIZED` was set after resolver verification. The resolver rejects finalization of incomplete, conflicted or scenario inputs. Q6 (locking order) and Q7 (11-round confirmation) remain commissioner questions; no new league rule was inferred. Finalization here does not publish or deploy the board.
-
-## Keeper Decisions and Eligibility
-
-The Keeper surface defaults to **Decisions** with a lightweight **Eligibility** switch. Responsive cards lead with actual keeper choices and costs; prior rosters are one disclosure away. Actual confirmed keepers use `actual-keeper`, a positive border, **✓ KEPT** text and an emphasized cost chip in the expanded roster. Hypothetical selections use **SCENARIO** labeling instead. Confirmed empty declarations, including Run and Gun, show **NO KEEPERS**.
-
-Eligibility uses independent resolver probes against canonical history for ROUND LOCK, KEPT LAST YEAR and KEEP 1 ONLY, with old round and base if-kept cost. Switching views never changes league inputs. Selected costs use the current resolver's resolved cost; unselected costs are base costs before collisions. Search matches team/player and keeps roster context; team jump is available on mobile and desktop. The keeper print report includes all 18 decisions even when screen search filters them, with text/border keeper semantics for grayscale. The supplied `public/keeper-eligibility/index.html` remains an unchanged historical reference, not a data source.
+The completed 2026 pre-draft inputs in `data/pre_draft.json` and the old browser storage remain historical records. They are not a live tradeable roster or a 2027–28 board.
 
 ## Local Development
 
@@ -63,7 +62,7 @@ Create and verify the static GitHub Pages artifact:
 npm run build
 ```
 
-The output is written directly to `dist/`. The build verifier checks repository-subpath asset references, bundled canonical/Yahoo data, missing assets, source maps, local filesystem paths, and hosting-specific output. The default public base is `/serie-a-keeper-draft-board/`; set `VITE_BASE_PATH` and `VITE_PUBLIC_SITE_URL` when building for a differently named repository.
+The output is written directly to `dist/`. The build verifier checks repository-subpath asset references, bundled draft history, missing assets, source maps, local filesystem paths, and absence of the retired pre-draft workspace. The default public base is `/serie-a-keeper-draft-board/`; set `VITE_BASE_PATH` and `VITE_PUBLIC_SITE_URL` when building for a differently named repository.
 
 ## Public Deployment
 
@@ -84,7 +83,7 @@ Yahoo data is an external, non-authoritative enrichment layer:
 - `data/player_identity_map.json` joins stable local player IDs to Yahoo player IDs and keys.
 - `src/external/yahoo.js` provides normalization, reconciliation, and ID-based metadata lookup helpers.
 
-**XRank is the per-player `player_ranks[].player_rank` value whose `rank_type` is `OR`** in the 16 October 2026 Yahoo snapshot. The source array's order does not define XRank. The raw OR value is also preserved as `oRank`; ADP and auction fields never define XRank. Auction fields remain preserved externally but are absent from main UI/export ranking columns. The board, team drawer, Rankings, print view, and exports consume this same normalized metadata.
+**XRank is the per-player `player_ranks[].player_rank` value whose `rank_type` is `OR`** in the 16 October 2026 Yahoo snapshot. The source array's order does not define XRank. The raw OR value is also preserved as `oRank`; ADP and auction fields never define XRank. Auction fields remain preserved externally but are absent from main UI/export ranking columns. The retired 2026 pre-draft board, team drawer, Rankings, print view, and exports used this same normalized metadata; the current Keeper Outlook derives rights from the completed draft archive.
 
 Names are used only to bootstrap the checked-in identity map. Runtime consumers join through `playerId` and `yahooPlayerId`; Yahoo metadata never updates canonical draft round, original drafter, keeper eligibility, declarations, entitlement ownership, or trades.
 

@@ -1,5 +1,7 @@
 # Serie A 2026/27 Draft Board — Product Specification
 
+This document records the completed 2026–27 pre-draft product. Its resolver and board model remain available for future draft cycles, but these controls are not part of the current 2027–28 Keeper Outlook. The next live draft board will require verified next-season inputs; open live picks will be shown separately from keeper-occupied slots while preserving the complete board and trade ownership.
+
 ## 1. Product definition
 A stateful, deterministic pre-draft board for NBA Talk VN - Serie A.
 
