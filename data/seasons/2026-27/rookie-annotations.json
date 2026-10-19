@@ -1,0 +1,20 @@
+{
+  "season": "2026-27",
+  "meaning": "Selected in the 2026 NBA Draft; presentation annotation only",
+  "sourceUrl": "https://www.nba.com/news/2026-nba-draft-order",
+  "sourceUpdated": "2026-07-10",
+  "matches": [
+    { "playerId": "yahoo-sports-profile-10599", "playerName": "AJ Dybantsa", "nbaDraftPick": 1 },
+    { "playerId": "yahoo-sports-profile-10590", "playerName": "Darryn Peterson", "nbaDraftPick": 2 },
+    { "playerId": "yahoo-sports-profile-10592", "playerName": "Cameron Boozer", "nbaDraftPick": 3 },
+    { "playerId": "yahoo-sports-profile-10595", "playerName": "Caleb Wilson", "nbaDraftPick": 4 },
+    { "playerId": "yahoo-sports-profile-10585", "playerName": "Keaton Wagler", "nbaDraftPick": 5 },
+    { "playerId": "yahoo-sports-profile-10588", "playerName": "Mikel Brown Jr.", "nbaDraftPick": 6 },
+    { "playerId": "yahoo-sports-profile-10582", "playerName": "Darius Acuff Jr.", "nbaDraftPick": 7 },
+    { "playerId": "yahoo-sports-profile-10574", "playerName": "Kingston Flemings", "nbaDraftPick": 8 },
+    { "playerId": "yahoo-sports-profile-10572", "playerName": "Morez Johnson Jr.", "nbaDraftPick": 9 },
+    { "playerId": "yahoo-sports-profile-10576", "playerName": "Brayden Burries", "nbaDraftPick": 10 },
+    { "playerId": "yahoo-sports-profile-10571", "playerName": "Yaxel Lendeborg", "nbaDraftPick": 11 },
+    { "playerId": "yahoo-sports-profile-10579", "playerName": "Aday Mara", "nbaDraftPick": 12 }
+  ]
+}

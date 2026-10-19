@@ -9,6 +9,7 @@
     "dev": "vite",
     "diagnose:demo": "node scripts/diagnose-demo-allocation.js",
     "normalize:yahoo": "node scripts/normalize-yahoo-players.js",
+    "import:2026-draft": "node scripts/import-2026-draft.js",
     "preview": "vite preview",
     "test": "node --test"
   },

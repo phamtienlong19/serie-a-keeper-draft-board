@@ -221,7 +221,7 @@ function resolveEntitlements(input, teams, draftRounds, validation) {
   return entitlements;
 }
 
-function entitlementLimits(tier, selectedCount) {
+export function entitlementLimits(tier, selectedCount) {
   switch (tier) {
     case KEEPER_TIERS.ANY_2:
       return { maximum: 2, minimumOldRound: 1, mode: "UP_TO_TWO_ANY" };

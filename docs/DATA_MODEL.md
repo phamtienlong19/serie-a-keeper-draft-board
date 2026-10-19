@@ -1,5 +1,15 @@
 # Data Model — Serie A Draft Board
 
+## 2026–27 completed season and preliminary 2027–28 rights
+
+`data/imports/serie_a_2026_27_draft_import.json` is the sanitized Yahoo source. `scripts/import-2026-draft.js` validates it against the finalized resolver and writes `data/seasons/2026-27/draft-results.json`, a completed draft event. Each archive row keeps the source pick, player profile ID and display name, stable team IDs, selecting team, independently resolved entitlement origin, keeper-reservation flag, and historical keeper cost when applicable. Source profile IDs and fantasy player keys are distinct identity namespaces. Cross-source links require the established ID map and name agreement; otherwise the archive uses a source-profile-only ID.
+
+`src/domain/keeper-outlook.js` derives the next-season rights ledger from this event. It does not write back to the archive. A live 2026 selection grants the selecting team the draft-origin right even when the pick entitlement originated with another team. A 2026 keeper reservation creates no fresh right and is blocked from consecutive keeping by the same team. Individual costs use `mapKeeperCost`; pair comparisons use `deriveKeeperEntitlement`, `entitlementLimits`, and `allocateKeeperCosts`. Final 2026–27 finish is `UNKNOWN`, current roster owner is `null`, and exact 2027–28 pick/channel state is unknown. Future standings, roster ownership, and player performance must arrive as separate inputs.
+
+The prior `serie-a.scenarios.v1` storage key and schema remain scoped to the completed 2026–27 pre-draft cycle. The current site does not read or delete that storage. The 2027–28 outlook does not persist its temporary comparison choices. A future persisted 2027 scenario format will require a distinct season, schema version, scenario type, and key.
+
+`src/presentation/draft-cycle.js` is the read model for a future draft when verified inputs exist. It calls the existing resolver and separates `keeperDecisions`, `keeperPicks`, `livePicks` (open slots only), `tradedPicks` (known origin and owner), `unresolvedPicks`, and the complete `board`. An unresolved allocation yields no fabricated numbered picks. This is a presentation boundary, not an additional league rules engine. The 2026 historical archive remains independent of any later draft cycle.
+
 ## 1. Design goals
 The model must preserve the distinction between:
 - league facts;

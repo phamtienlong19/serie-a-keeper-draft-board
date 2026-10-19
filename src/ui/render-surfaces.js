@@ -1,8 +1,7 @@
 import { tradeAssetOptions, tradeAssetKey, describeKeeperMoves } from "../presentation/trade-builder.js";
+export { escapeHtml } from "./escape-html.js";
+import { escapeHtml } from "./escape-html.js";
 
-export function escapeHtml(value) {
-  return String(value ?? "").replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;");
-}
 const e = escapeHtml;
 export function renderDataTable(rows, className = "report-table") {
   const keys = Object.keys(rows[0] ?? {});

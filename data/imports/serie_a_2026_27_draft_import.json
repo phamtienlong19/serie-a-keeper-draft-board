@@ -1,0 +1,2001 @@
+{
+  "schemaVersion": 1,
+  "season": "2026-27",
+  "source": {
+    "label": "Yahoo Fantasy Basketball saved 2026-27 draft results",
+    "savedFileName": "Draft Results _ Fantasy Basketball _ Yahoo! Sports.html",
+    "originalUrl": "https://basketball.fantasysports.yahoo.com/nba/207464/draftresults",
+    "sha256OfSavedHtml": "d454ed0dccdbb4f8ad9ddf72f564f4072514fba3a8c9d4698c2e308063dac83b",
+    "provenanceNote": "Extracted only from the provided saved Yahoo HTML. Yahoo Sports player profile IDs are not assumed equal to fantasy player keys; reconcile in repository.",
+    "keeperFlagSource": "The HTML title attribute: This player is a keeper."
+  },
+  "summary": {
+    "teams": 18,
+    "rounds": 11,
+    "slots": 198,
+    "keeperReservations": 12,
+    "liveSelections": 186
+  },
+  "picks": [
+    {
+      "overallPick": 1,
+      "round": 1,
+      "pickInRound": 1,
+      "playerNameAsShown": "Nikola Jokić",
+      "yahooSportsProfileId": "5352",
+      "playerMetadataAsShown": "(DEN - C)",
+      "teamNameAsShown": "sup fam",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 2,
+      "round": 1,
+      "pickInRound": 2,
+      "playerNameAsShown": "Victor Wembanyama",
+      "yahooSportsProfileId": "10094",
+      "playerMetadataAsShown": "(SAS - C)",
+      "teamNameAsShown": "Angry Bird",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 3,
+      "round": 1,
+      "pickInRound": 3,
+      "playerNameAsShown": "Luka Dončić",
+      "yahooSportsProfileId": "6014",
+      "playerMetadataAsShown": "(LAL - PG,SG)",
+      "teamNameAsShown": "TO KINH",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 4,
+      "round": 1,
+      "pickInRound": 4,
+      "playerNameAsShown": "Giannis Antetokounmpo",
+      "yahooSportsProfileId": "5185",
+      "playerMetadataAsShown": "(MIA - PF,C)",
+      "teamNameAsShown": "J1nple",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 5,
+      "round": 1,
+      "pickInRound": 5,
+      "playerNameAsShown": "Cade Cunningham",
+      "yahooSportsProfileId": "6512",
+      "playerMetadataAsShown": "(DET - PG,SG)",
+      "teamNameAsShown": "Dial Square 🔴⚪",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 6,
+      "round": 1,
+      "pickInRound": 6,
+      "playerNameAsShown": "Tyrese Maxey",
+      "yahooSportsProfileId": "6413",
+      "playerMetadataAsShown": "(PHI - PG)",
+      "teamNameAsShown": "Run and Gun",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 7,
+      "round": 1,
+      "pickInRound": 7,
+      "playerNameAsShown": "Anthony Edwards",
+      "yahooSportsProfileId": "6355",
+      "playerMetadataAsShown": "(MIN - PG,SG)",
+      "teamNameAsShown": "Abcxyz",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 8,
+      "round": 1,
+      "pickInRound": 8,
+      "playerNameAsShown": "Cooper Flagg",
+      "yahooSportsProfileId": "10468",
+      "playerMetadataAsShown": "(DAL - SG,SF,PF)",
+      "teamNameAsShown": "Chicken Wings",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 9,
+      "round": 1,
+      "pickInRound": 9,
+      "playerNameAsShown": "Jalen Johnson",
+      "yahooSportsProfileId": "6562",
+      "playerMetadataAsShown": "(ATL - SF,PF)",
+      "teamNameAsShown": "bounce island",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 10,
+      "round": 1,
+      "pickInRound": 10,
+      "playerNameAsShown": "Donovan Mitchell",
+      "yahooSportsProfileId": "5826",
+      "playerMetadataAsShown": "(CLE - PG,SG)",
+      "teamNameAsShown": "Cuckoo",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 11,
+      "round": 1,
+      "pickInRound": 11,
+      "playerNameAsShown": "Karl-Anthony Towns",
+      "yahooSportsProfileId": "5432",
+      "playerMetadataAsShown": "(NYK - PF,C)",
+      "teamNameAsShown": "Seattle SuperSonics",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 12,
+      "round": 1,
+      "pickInRound": 12,
+      "playerNameAsShown": "Kevin Durant",
+      "yahooSportsProfileId": "4244",
+      "playerMetadataAsShown": "(HOU - SG,SF,PF)",
+      "teamNameAsShown": "DonTrick DevilTeam",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 13,
+      "round": 1,
+      "pickInRound": 13,
+      "playerNameAsShown": "Jamal Murray",
+      "yahooSportsProfileId": "5638",
+      "playerMetadataAsShown": "(DEN - PG)",
+      "teamNameAsShown": "MNQA ⛹️‍♂️",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 14,
+      "round": 1,
+      "pickInRound": 14,
+      "playerNameAsShown": "Trae Young",
+      "yahooSportsProfileId": "6016",
+      "playerMetadataAsShown": "(WAS - PG)",
+      "teamNameAsShown": "ecstasy",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 15,
+      "round": 1,
+      "pickInRound": 15,
+      "playerNameAsShown": "Josh Giddey",
+      "yahooSportsProfileId": "6548",
+      "playerMetadataAsShown": "(CHI - PG,SG)",
+      "teamNameAsShown": "Rip City Remix",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 16,
+      "round": 1,
+      "pickInRound": 16,
+      "playerNameAsShown": "Shai Gilgeous-Alexander",
+      "yahooSportsProfileId": "6022",
+      "playerMetadataAsShown": "(OKC - PG)",
+      "teamNameAsShown": "Under Armour",
+      "was2026KeeperReservation": true
+    },
+    {
+      "overallPick": 17,
+      "round": 1,
+      "pickInRound": 17,
+      "playerNameAsShown": "Austin Reaves",
+      "yahooSportsProfileId": "6606",
+      "playerMetadataAsShown": "(LAL - PG,SG,SF)",
+      "teamNameAsShown": "Tiến Delay",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 18,
+      "round": 1,
+      "pickInRound": 18,
+      "playerNameAsShown": "Amen Thompson",
+      "yahooSportsProfileId": "10108",
+      "playerMetadataAsShown": "(HOU - PG,SG)",
+      "teamNameAsShown": "Clutch City Rockets",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 19,
+      "round": 2,
+      "pickInRound": 1,
+      "playerNameAsShown": "Alperen Şengün",
+      "yahooSportsProfileId": "6558",
+      "playerMetadataAsShown": "(HOU - PF,C)",
+      "teamNameAsShown": "Clutch City Rockets",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 20,
+      "round": 2,
+      "pickInRound": 2,
+      "playerNameAsShown": "Stephen Curry",
+      "yahooSportsProfileId": "4612",
+      "playerMetadataAsShown": "(GSW - PG)",
+      "teamNameAsShown": "Tiến Delay",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 21,
+      "round": 2,
+      "pickInRound": 3,
+      "playerNameAsShown": "LaMelo Ball",
+      "yahooSportsProfileId": "6395",
+      "playerMetadataAsShown": "(MIN - PG)",
+      "teamNameAsShown": "Under Armour",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 22,
+      "round": 2,
+      "pickInRound": 4,
+      "playerNameAsShown": "Devin Booker",
+      "yahooSportsProfileId": "5473",
+      "playerMetadataAsShown": "(PHX - PG,SG)",
+      "teamNameAsShown": "Rip City Remix",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 23,
+      "round": 2,
+      "pickInRound": 5,
+      "playerNameAsShown": "Bam Adebayo",
+      "yahooSportsProfileId": "5827",
+      "playerMetadataAsShown": "(MIA - PF,C)",
+      "teamNameAsShown": "ecstasy",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 24,
+      "round": 2,
+      "pickInRound": 6,
+      "playerNameAsShown": "Trey Murphy III",
+      "yahooSportsProfileId": "6559",
+      "playerMetadataAsShown": "(NOP - SG,SF)",
+      "teamNameAsShown": "MNQA ⛹️‍♂️",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 25,
+      "round": 2,
+      "pickInRound": 7,
+      "playerNameAsShown": "Chet Holmgren",
+      "yahooSportsProfileId": "6692",
+      "playerMetadataAsShown": "(OKC - PF,C)",
+      "teamNameAsShown": "DonTrick DevilTeam",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 26,
+      "round": 2,
+      "pickInRound": 8,
+      "playerNameAsShown": "Scottie Barnes",
+      "yahooSportsProfileId": "6515",
+      "playerMetadataAsShown": "(TOR - SF,PF,C)",
+      "teamNameAsShown": "Seattle SuperSonics",
+      "was2026KeeperReservation": true
+    },
+    {
+      "overallPick": 27,
+      "round": 2,
+      "pickInRound": 9,
+      "playerNameAsShown": "Lauri Markkanen",
+      "yahooSportsProfileId": "5769",
+      "playerMetadataAsShown": "(UTA - SF,PF)",
+      "teamNameAsShown": "Cuckoo",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 28,
+      "round": 2,
+      "pickInRound": 10,
+      "playerNameAsShown": "Kawhi Leonard",
+      "yahooSportsProfileId": "4896",
+      "playerMetadataAsShown": "(TOR - SG,SF,PF)",
+      "teamNameAsShown": "bounce island",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 29,
+      "round": 2,
+      "pickInRound": 11,
+      "playerNameAsShown": "Walker Kessler",
+      "yahooSportsProfileId": "6712",
+      "playerMetadataAsShown": "(LAL - C)",
+      "teamNameAsShown": "Chicken Wings",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 30,
+      "round": 2,
+      "pickInRound": 12,
+      "playerNameAsShown": "James Harden",
+      "yahooSportsProfileId": "4563",
+      "playerMetadataAsShown": "(CLE - PG,SG)",
+      "teamNameAsShown": "Abcxyz",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 31,
+      "round": 2,
+      "pickInRound": 13,
+      "playerNameAsShown": "Jalen Brunson",
+      "yahooSportsProfileId": "6044",
+      "playerMetadataAsShown": "(NYK - PG)",
+      "teamNameAsShown": "Run and Gun",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 32,
+      "round": 2,
+      "pickInRound": 14,
+      "playerNameAsShown": "Evan Mobley",
+      "yahooSportsProfileId": "6514",
+      "playerMetadataAsShown": "(CLE - PF,C)",
+      "teamNameAsShown": "Dial Square 🔴⚪",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 33,
+      "round": 2,
+      "pickInRound": 15,
+      "playerNameAsShown": "Jalen Williams",
+      "yahooSportsProfileId": "6702",
+      "playerMetadataAsShown": "(OKC - SF,PF)",
+      "teamNameAsShown": "J1nple",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 34,
+      "round": 2,
+      "pickInRound": 16,
+      "playerNameAsShown": "Jalen Duren",
+      "yahooSportsProfileId": "6703",
+      "playerMetadataAsShown": "(DET - C)",
+      "teamNameAsShown": "TO KINH",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 35,
+      "round": 2,
+      "pickInRound": 17,
+      "playerNameAsShown": "Derrick White",
+      "yahooSportsProfileId": "5842",
+      "playerMetadataAsShown": "(BOS - PG,SG)",
+      "teamNameAsShown": "Angry Bird",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 36,
+      "round": 2,
+      "pickInRound": 18,
+      "playerNameAsShown": "Domantas Sabonis",
+      "yahooSportsProfileId": "5642",
+      "playerMetadataAsShown": "(SAC - PF,C)",
+      "teamNameAsShown": "sup fam",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 37,
+      "round": 3,
+      "pickInRound": 1,
+      "playerNameAsShown": "Darius Garland",
+      "yahooSportsProfileId": "6167",
+      "playerMetadataAsShown": "(LAC - PG)",
+      "teamNameAsShown": "sup fam",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 38,
+      "round": 3,
+      "pickInRound": 2,
+      "playerNameAsShown": "Brandon Miller",
+      "yahooSportsProfileId": "10104",
+      "playerMetadataAsShown": "(CHA - SF,PF)",
+      "teamNameAsShown": "Angry Bird",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 39,
+      "round": 3,
+      "pickInRound": 3,
+      "playerNameAsShown": "Deni Avdija",
+      "yahooSportsProfileId": "6401",
+      "playerMetadataAsShown": "(POR - SG,SF,PF)",
+      "teamNameAsShown": "TO KINH",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 40,
+      "round": 3,
+      "pickInRound": 4,
+      "playerNameAsShown": "Jaylen Brown",
+      "yahooSportsProfileId": "5602",
+      "playerMetadataAsShown": "(PHI - SG,SF,PF)",
+      "teamNameAsShown": "J1nple",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 41,
+      "round": 3,
+      "pickInRound": 5,
+      "playerNameAsShown": "Desmond Bane",
+      "yahooSportsProfileId": "6422",
+      "playerMetadataAsShown": "(ORL - SG,SF)",
+      "teamNameAsShown": "Dial Square 🔴⚪",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 42,
+      "round": 3,
+      "pickInRound": 6,
+      "playerNameAsShown": "Keyonte George",
+      "yahooSportsProfileId": "10100",
+      "playerMetadataAsShown": "(UTA - PG,SG)",
+      "teamNameAsShown": "Run and Gun",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 43,
+      "round": 3,
+      "pickInRound": 7,
+      "playerNameAsShown": "LeBron James",
+      "yahooSportsProfileId": "3704",
+      "playerMetadataAsShown": "(PHI - SF,PF)",
+      "teamNameAsShown": "Abcxyz",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 44,
+      "round": 3,
+      "pickInRound": 8,
+      "playerNameAsShown": "Jaren Jackson Jr.",
+      "yahooSportsProfileId": "6015",
+      "playerMetadataAsShown": "(UTA - PF,C)",
+      "teamNameAsShown": "Chicken Wings",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 45,
+      "round": 3,
+      "pickInRound": 9,
+      "playerNameAsShown": "Anthony Davis",
+      "yahooSportsProfileId": "5007",
+      "playerMetadataAsShown": "(WAS - PF,C)",
+      "teamNameAsShown": "bounce island",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 46,
+      "round": 3,
+      "pickInRound": 10,
+      "playerNameAsShown": "OG Anunoby",
+      "yahooSportsProfileId": "5836",
+      "playerMetadataAsShown": "(NYK - SF,PF)",
+      "teamNameAsShown": "Cuckoo",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 47,
+      "round": 3,
+      "pickInRound": 11,
+      "playerNameAsShown": "Ivica Zubac",
+      "yahooSportsProfileId": "5663",
+      "playerMetadataAsShown": "(IND - C)",
+      "teamNameAsShown": "Seattle SuperSonics",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 48,
+      "round": 3,
+      "pickInRound": 12,
+      "playerNameAsShown": "Joel Embiid",
+      "yahooSportsProfileId": "5294",
+      "playerMetadataAsShown": "(PHI - C)",
+      "teamNameAsShown": "DonTrick DevilTeam",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 49,
+      "round": 3,
+      "pickInRound": 13,
+      "playerNameAsShown": "Pascal Siakam",
+      "yahooSportsProfileId": "5658",
+      "playerMetadataAsShown": "(IND - PF,C)",
+      "teamNameAsShown": "MNQA ⛹️‍♂️",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 50,
+      "round": 3,
+      "pickInRound": 14,
+      "playerNameAsShown": "Franz Wagner",
+      "yahooSportsProfileId": "6550",
+      "playerMetadataAsShown": "(ORL - SF,PF)",
+      "teamNameAsShown": "ecstasy",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 51,
+      "round": 3,
+      "pickInRound": 15,
+      "playerNameAsShown": "Paolo Banchero",
+      "yahooSportsProfileId": "6691",
+      "playerMetadataAsShown": "(ORL - PF)",
+      "teamNameAsShown": "Rip City Remix",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 52,
+      "round": 3,
+      "pickInRound": 16,
+      "playerNameAsShown": "Alex Sarr",
+      "yahooSportsProfileId": "10294",
+      "playerMetadataAsShown": "(WAS - C)",
+      "teamNameAsShown": "Under Armour",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 53,
+      "round": 3,
+      "pickInRound": 17,
+      "playerNameAsShown": "Matas Buzelis",
+      "yahooSportsProfileId": "10265",
+      "playerMetadataAsShown": "(CHI - SF,PF)",
+      "teamNameAsShown": "Tiến Delay",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 54,
+      "round": 3,
+      "pickInRound": 18,
+      "playerNameAsShown": "Dyson Daniels",
+      "yahooSportsProfileId": "6698",
+      "playerMetadataAsShown": "(ATL - SG,SF)",
+      "teamNameAsShown": "Clutch City Rockets",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 55,
+      "round": 4,
+      "pickInRound": 1,
+      "playerNameAsShown": "Ausar Thompson",
+      "yahooSportsProfileId": "10096",
+      "playerMetadataAsShown": "(DET - SG,SF,PF)",
+      "teamNameAsShown": "Clutch City Rockets",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 56,
+      "round": 4,
+      "pickInRound": 2,
+      "playerNameAsShown": "Michael Porter Jr.",
+      "yahooSportsProfileId": "6025",
+      "playerMetadataAsShown": "(BKN - SF,PF)",
+      "teamNameAsShown": "Tiến Delay",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 57,
+      "round": 4,
+      "pickInRound": 3,
+      "playerNameAsShown": "Kon Knueppel",
+      "yahooSportsProfileId": "10450",
+      "playerMetadataAsShown": "(CHA - SG,SF)",
+      "teamNameAsShown": "Under Armour",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 58,
+      "round": 4,
+      "pickInRound": 4,
+      "playerNameAsShown": "Damian Lillard",
+      "yahooSportsProfileId": "5012",
+      "playerMetadataAsShown": "(POR - PG)",
+      "teamNameAsShown": "Rip City Remix",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 59,
+      "round": 4,
+      "pickInRound": 5,
+      "playerNameAsShown": "Cameron Boozer",
+      "yahooSportsProfileId": "10592",
+      "playerMetadataAsShown": "(MEM - PF)",
+      "teamNameAsShown": "ecstasy",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 60,
+      "round": 4,
+      "pickInRound": 6,
+      "playerNameAsShown": "Nickeil Alexander-Walker",
+      "yahooSportsProfileId": "6205",
+      "playerMetadataAsShown": "(ATL - PG,SG)",
+      "teamNameAsShown": "MNQA ⛹️‍♂️",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 61,
+      "round": 4,
+      "pickInRound": 7,
+      "playerNameAsShown": "Jayson Tatum",
+      "yahooSportsProfileId": "5765",
+      "playerMetadataAsShown": "(BOS - SF,PF)",
+      "teamNameAsShown": "DonTrick DevilTeam",
+      "was2026KeeperReservation": true
+    },
+    {
+      "overallPick": 62,
+      "round": 4,
+      "pickInRound": 8,
+      "playerNameAsShown": "Mikal Bridges",
+      "yahooSportsProfileId": "6021",
+      "playerMetadataAsShown": "(NYK - SF,PF)",
+      "teamNameAsShown": "Seattle SuperSonics",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 63,
+      "round": 4,
+      "pickInRound": 9,
+      "playerNameAsShown": "Donovan Clingan",
+      "yahooSportsProfileId": "10285",
+      "playerMetadataAsShown": "(POR - C)",
+      "teamNameAsShown": "Cuckoo",
+      "was2026KeeperReservation": true
+    },
+    {
+      "overallPick": 64,
+      "round": 4,
+      "pickInRound": 10,
+      "playerNameAsShown": "Jarrett Allen",
+      "yahooSportsProfileId": "5835",
+      "playerMetadataAsShown": "(CLE - C)",
+      "teamNameAsShown": "bounce island",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 65,
+      "round": 4,
+      "pickInRound": 11,
+      "playerNameAsShown": "Zion Williamson",
+      "yahooSportsProfileId": "6163",
+      "playerMetadataAsShown": "(NOP - PF,C)",
+      "teamNameAsShown": "Chicken Wings",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 66,
+      "round": 4,
+      "pickInRound": 12,
+      "playerNameAsShown": "Naz Reid",
+      "yahooSportsProfileId": "6253",
+      "playerMetadataAsShown": "(CHA - PF,C)",
+      "teamNameAsShown": "Abcxyz",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 67,
+      "round": 4,
+      "pickInRound": 13,
+      "playerNameAsShown": "De'Aaron Fox",
+      "yahooSportsProfileId": "5767",
+      "playerMetadataAsShown": "(SAS - PG)",
+      "teamNameAsShown": "Run and Gun",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 68,
+      "round": 4,
+      "pickInRound": 14,
+      "playerNameAsShown": "Tyler Herro",
+      "yahooSportsProfileId": "6175",
+      "playerMetadataAsShown": "(MIL - PG,SG)",
+      "teamNameAsShown": "Dial Square 🔴⚪",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 69,
+      "round": 4,
+      "pickInRound": 15,
+      "playerNameAsShown": "Stephon Castle",
+      "yahooSportsProfileId": "10290",
+      "playerMetadataAsShown": "(SAS - PG,SG)",
+      "teamNameAsShown": "J1nple",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 70,
+      "round": 4,
+      "pickInRound": 16,
+      "playerNameAsShown": "Julius Randle",
+      "yahooSportsProfileId": "5318",
+      "playerMetadataAsShown": "(BKN - PF)",
+      "teamNameAsShown": "TO KINH",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 71,
+      "round": 4,
+      "pickInRound": 17,
+      "playerNameAsShown": "Ryan Rollins",
+      "yahooSportsProfileId": "6734",
+      "playerMetadataAsShown": "(MIL - PG,SG)",
+      "teamNameAsShown": "Angry Bird",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 72,
+      "round": 4,
+      "pickInRound": 18,
+      "playerNameAsShown": "Zach Edey",
+      "yahooSportsProfileId": "10287",
+      "playerMetadataAsShown": "(MEM - C)",
+      "teamNameAsShown": "sup fam",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 73,
+      "round": 5,
+      "pickInRound": 1,
+      "playerNameAsShown": "Collin Murray-Boyles",
+      "yahooSportsProfileId": "10443",
+      "playerMetadataAsShown": "(TOR - PF,C)",
+      "teamNameAsShown": "sup fam",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 74,
+      "round": 5,
+      "pickInRound": 2,
+      "playerNameAsShown": "Paul George",
+      "yahooSportsProfileId": "4725",
+      "playerMetadataAsShown": "(BOS - SF,PF)",
+      "teamNameAsShown": "Angry Bird",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 75,
+      "round": 5,
+      "pickInRound": 3,
+      "playerNameAsShown": "Ja Morant",
+      "yahooSportsProfileId": "6164",
+      "playerMetadataAsShown": "(POR - PG)",
+      "teamNameAsShown": "TO KINH",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 76,
+      "round": 5,
+      "pickInRound": 4,
+      "playerNameAsShown": "Rudy Gobert",
+      "yahooSportsProfileId": "5197",
+      "playerMetadataAsShown": "(MIN - C)",
+      "teamNameAsShown": "J1nple",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 77,
+      "round": 5,
+      "pickInRound": 5,
+      "playerNameAsShown": "Jaden McDaniels",
+      "yahooSportsProfileId": "6420",
+      "playerMetadataAsShown": "(MIN - SF)",
+      "teamNameAsShown": "Dial Square 🔴⚪",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 78,
+      "round": 5,
+      "pickInRound": 6,
+      "playerNameAsShown": "Jabari Smith Jr.",
+      "yahooSportsProfileId": "6693",
+      "playerMetadataAsShown": "(HOU - PF,C)",
+      "teamNameAsShown": "Run and Gun",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 79,
+      "round": 5,
+      "pickInRound": 7,
+      "playerNameAsShown": "VJ Edgecombe",
+      "yahooSportsProfileId": "10454",
+      "playerMetadataAsShown": "(PHI - PG,SG)",
+      "teamNameAsShown": "Abcxyz",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 80,
+      "round": 5,
+      "pickInRound": 8,
+      "playerNameAsShown": "Payton Pritchard",
+      "yahooSportsProfileId": "6418",
+      "playerMetadataAsShown": "(BOS - PG)",
+      "teamNameAsShown": "Chicken Wings",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 81,
+      "round": 5,
+      "pickInRound": 9,
+      "playerNameAsShown": "Myles Turner",
+      "yahooSportsProfileId": "5471",
+      "playerMetadataAsShown": "(MIL - C)",
+      "teamNameAsShown": "bounce island",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 82,
+      "round": 5,
+      "pickInRound": 10,
+      "playerNameAsShown": "Day'Ron Sharpe",
+      "yahooSportsProfileId": "6571",
+      "playerMetadataAsShown": "(BKN - C)",
+      "teamNameAsShown": "Cuckoo",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 83,
+      "round": 5,
+      "pickInRound": 11,
+      "playerNameAsShown": "Ty Jerome",
+      "yahooSportsProfileId": "6212",
+      "playerMetadataAsShown": "(MEM - PG,SG)",
+      "teamNameAsShown": "Seattle SuperSonics",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 84,
+      "round": 5,
+      "pickInRound": 12,
+      "playerNameAsShown": "Jalen Suggs",
+      "yahooSportsProfileId": "6516",
+      "playerMetadataAsShown": "(ORL - PG,SG)",
+      "teamNameAsShown": "DonTrick DevilTeam",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 85,
+      "round": 5,
+      "pickInRound": 13,
+      "playerNameAsShown": "Coby White",
+      "yahooSportsProfileId": "6169",
+      "playerMetadataAsShown": "(CHA - PG,SG)",
+      "teamNameAsShown": "MNQA ⛹️‍♂️",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 86,
+      "round": 5,
+      "pickInRound": 14,
+      "playerNameAsShown": "Onyeka Okongwu",
+      "yahooSportsProfileId": "6398",
+      "playerMetadataAsShown": "(ATL - C)",
+      "teamNameAsShown": "ecstasy",
+      "was2026KeeperReservation": true
+    },
+    {
+      "overallPick": 87,
+      "round": 5,
+      "pickInRound": 15,
+      "playerNameAsShown": "Kel'el Ware",
+      "yahooSportsProfileId": "10274",
+      "playerMetadataAsShown": "(MIL - C)",
+      "teamNameAsShown": "Rip City Remix",
+      "was2026KeeperReservation": true
+    },
+    {
+      "overallPick": 88,
+      "round": 5,
+      "pickInRound": 16,
+      "playerNameAsShown": "Tyrese Haliburton",
+      "yahooSportsProfileId": "6404",
+      "playerMetadataAsShown": "(IND - PG,SG)",
+      "teamNameAsShown": "Under Armour",
+      "was2026KeeperReservation": true
+    },
+    {
+      "overallPick": 89,
+      "round": 5,
+      "pickInRound": 17,
+      "playerNameAsShown": "Immanuel Quickley",
+      "yahooSportsProfileId": "6417",
+      "playerMetadataAsShown": "(TOR - PG,SG)",
+      "teamNameAsShown": "Tiến Delay",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 90,
+      "round": 5,
+      "pickInRound": 18,
+      "playerNameAsShown": "Caleb Wilson",
+      "yahooSportsProfileId": "10595",
+      "playerMetadataAsShown": "(CHI - PF)",
+      "teamNameAsShown": "Clutch City Rockets",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 91,
+      "round": 6,
+      "pickInRound": 1,
+      "playerNameAsShown": "Norman Powell",
+      "yahooSportsProfileId": "5506",
+      "playerMetadataAsShown": "(CHI - SG,SF)",
+      "teamNameAsShown": "Clutch City Rockets",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 92,
+      "round": 6,
+      "pickInRound": 2,
+      "playerNameAsShown": "John Collins",
+      "yahooSportsProfileId": "5832",
+      "playerMetadataAsShown": "(DET - PF,C)",
+      "teamNameAsShown": "Tiến Delay",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 93,
+      "round": 6,
+      "pickInRound": 3,
+      "playerNameAsShown": "Keegan Murray",
+      "yahooSportsProfileId": "6694",
+      "playerMetadataAsShown": "(SAC - SF,PF)",
+      "teamNameAsShown": "Under Armour",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 94,
+      "round": 6,
+      "pickInRound": 4,
+      "playerNameAsShown": "Zach LaVine",
+      "yahooSportsProfileId": "5324",
+      "playerMetadataAsShown": "(SAC - PG,SG,SF)",
+      "teamNameAsShown": "Rip City Remix",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 95,
+      "round": 6,
+      "pickInRound": 5,
+      "playerNameAsShown": "Cason Wallace",
+      "yahooSportsProfileId": "10107",
+      "playerMetadataAsShown": "(OKC - PG,SG,SF)",
+      "teamNameAsShown": "ecstasy",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 96,
+      "round": 6,
+      "pickInRound": 6,
+      "playerNameAsShown": "AJ Dybantsa",
+      "yahooSportsProfileId": "10599",
+      "playerMetadataAsShown": "(WAS - SF)",
+      "teamNameAsShown": "MNQA ⛹️‍♂️",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 97,
+      "round": 6,
+      "pickInRound": 7,
+      "playerNameAsShown": "Darryn Peterson",
+      "yahooSportsProfileId": "10590",
+      "playerMetadataAsShown": "(UTA - SG)",
+      "teamNameAsShown": "DonTrick DevilTeam",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 98,
+      "round": 6,
+      "pickInRound": 8,
+      "playerNameAsShown": "Derik Queen",
+      "yahooSportsProfileId": "10444",
+      "playerMetadataAsShown": "(NOP - PF,C)",
+      "teamNameAsShown": "Seattle SuperSonics",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 99,
+      "round": 6,
+      "pickInRound": 9,
+      "playerNameAsShown": "Kyrie Irving",
+      "yahooSportsProfileId": "4840",
+      "playerMetadataAsShown": "(DAL - PG)",
+      "teamNameAsShown": "Cuckoo",
+      "was2026KeeperReservation": true
+    },
+    {
+      "overallPick": 100,
+      "round": 6,
+      "pickInRound": 10,
+      "playerNameAsShown": "Dejounte Murray",
+      "yahooSportsProfileId": "5660",
+      "playerMetadataAsShown": "(NOP - PG)",
+      "teamNameAsShown": "bounce island",
+      "was2026KeeperReservation": true
+    },
+    {
+      "overallPick": 101,
+      "round": 6,
+      "pickInRound": 11,
+      "playerNameAsShown": "Cedric Coward",
+      "yahooSportsProfileId": "10465",
+      "playerMetadataAsShown": "(MEM - SG,SF)",
+      "teamNameAsShown": "Chicken Wings",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 102,
+      "round": 6,
+      "pickInRound": 12,
+      "playerNameAsShown": "Miles Bridges",
+      "yahooSportsProfileId": "6023",
+      "playerMetadataAsShown": "(PHX - PF)",
+      "teamNameAsShown": "Abcxyz",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 103,
+      "round": 6,
+      "pickInRound": 13,
+      "playerNameAsShown": "Andrew Wiggins",
+      "yahooSportsProfileId": "5292",
+      "playerMetadataAsShown": "(MIA - SG,SF,PF)",
+      "teamNameAsShown": "Run and Gun",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 104,
+      "round": 6,
+      "pickInRound": 14,
+      "playerNameAsShown": "Isaiah Hartenstein",
+      "yahooSportsProfileId": "5856",
+      "playerMetadataAsShown": "(OKC - C)",
+      "teamNameAsShown": "Dial Square 🔴⚪",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 105,
+      "round": 6,
+      "pickInRound": 15,
+      "playerNameAsShown": "Ayo Dosunmu",
+      "yahooSportsProfileId": "6580",
+      "playerMetadataAsShown": "(MIN - PG,SG)",
+      "teamNameAsShown": "J1nple",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 106,
+      "round": 6,
+      "pickInRound": 16,
+      "playerNameAsShown": "Jalen Green",
+      "yahooSportsProfileId": "6513",
+      "playerMetadataAsShown": "(PHX - SG,SF)",
+      "teamNameAsShown": "TO KINH",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 107,
+      "round": 6,
+      "pickInRound": 17,
+      "playerNameAsShown": "Josh Hart",
+      "yahooSportsProfileId": "5843",
+      "playerMetadataAsShown": "(NYK - SG,SF)",
+      "teamNameAsShown": "Angry Bird",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 108,
+      "round": 6,
+      "pickInRound": 18,
+      "playerNameAsShown": "Brandin Podziemski",
+      "yahooSportsProfileId": "10115",
+      "playerMetadataAsShown": "(GSW - PG,SG)",
+      "teamNameAsShown": "sup fam",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 109,
+      "round": 7,
+      "pickInRound": 1,
+      "playerNameAsShown": "Yaxel Lendeborg",
+      "yahooSportsProfileId": "10571",
+      "playerMetadataAsShown": "(GSW - PF)",
+      "teamNameAsShown": "sup fam",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 110,
+      "round": 7,
+      "pickInRound": 2,
+      "playerNameAsShown": "CJ McCollum",
+      "yahooSportsProfileId": "5161",
+      "playerMetadataAsShown": "(ATL - PG,SG)",
+      "teamNameAsShown": "Angry Bird",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 111,
+      "round": 7,
+      "pickInRound": 3,
+      "playerNameAsShown": "Sandro Mamukelashvili",
+      "yahooSportsProfileId": "6596",
+      "playerMetadataAsShown": "(LAL - PF,C)",
+      "teamNameAsShown": "TO KINH",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 112,
+      "round": 7,
+      "pickInRound": 4,
+      "playerNameAsShown": "Joan Beringer",
+      "yahooSportsProfileId": "10460",
+      "playerMetadataAsShown": "(MIN - PF,C)",
+      "teamNameAsShown": "J1nple",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 113,
+      "round": 7,
+      "pickInRound": 5,
+      "playerNameAsShown": "Toumani Camara",
+      "yahooSportsProfileId": "10065",
+      "playerMetadataAsShown": "(POR - SF,PF)",
+      "teamNameAsShown": "Dial Square 🔴⚪",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 114,
+      "round": 7,
+      "pickInRound": 6,
+      "playerNameAsShown": "Quentin Grimes",
+      "yahooSportsProfileId": "6567",
+      "playerMetadataAsShown": "(LAL - SG,SF)",
+      "teamNameAsShown": "Run and Gun",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 115,
+      "round": 7,
+      "pickInRound": 7,
+      "playerNameAsShown": "Kristaps Porziņģis",
+      "yahooSportsProfileId": "5464",
+      "playerMetadataAsShown": "(GSW - C)",
+      "teamNameAsShown": "Abcxyz",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 116,
+      "round": 7,
+      "pickInRound": 8,
+      "playerNameAsShown": "Khaman Maluach",
+      "yahooSportsProfileId": "10447",
+      "playerMetadataAsShown": "(PHX - C)",
+      "teamNameAsShown": "Chicken Wings",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 117,
+      "round": 7,
+      "pickInRound": 9,
+      "playerNameAsShown": "Neemias Queta",
+      "yahooSportsProfileId": "6581",
+      "playerMetadataAsShown": "(BOS - C)",
+      "teamNameAsShown": "bounce island",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 118,
+      "round": 7,
+      "pickInRound": 10,
+      "playerNameAsShown": "Ajay Mitchell",
+      "yahooSportsProfileId": "10304",
+      "playerMetadataAsShown": "(OKC - PG,SG)",
+      "teamNameAsShown": "Cuckoo",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 119,
+      "round": 7,
+      "pickInRound": 11,
+      "playerNameAsShown": "Jaime Jaquez Jr.",
+      "yahooSportsProfileId": "10092",
+      "playerMetadataAsShown": "(MIL - SG,SF,PF)",
+      "teamNameAsShown": "Seattle SuperSonics",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 120,
+      "round": 7,
+      "pickInRound": 12,
+      "playerNameAsShown": "Brandon Ingram",
+      "yahooSportsProfileId": "5601",
+      "playerMetadataAsShown": "(LAC - SG,SF,PF)",
+      "teamNameAsShown": "DonTrick DevilTeam",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 121,
+      "round": 7,
+      "pickInRound": 13,
+      "playerNameAsShown": "Nic Claxton",
+      "yahooSportsProfileId": "6219",
+      "playerMetadataAsShown": "(CHI - C)",
+      "teamNameAsShown": "MNQA ⛹️‍♂️",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 122,
+      "round": 7,
+      "pickInRound": 14,
+      "playerNameAsShown": "Andrew Nembhard",
+      "yahooSportsProfileId": "6721",
+      "playerMetadataAsShown": "(IND - PG,SG)",
+      "teamNameAsShown": "ecstasy",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 123,
+      "round": 7,
+      "pickInRound": 15,
+      "playerNameAsShown": "Rui Hachimura",
+      "yahooSportsProfileId": "6171",
+      "playerMetadataAsShown": "(LAC - SF,PF)",
+      "teamNameAsShown": "Rip City Remix",
+      "was2026KeeperReservation": true
+    },
+    {
+      "overallPick": 124,
+      "round": 7,
+      "pickInRound": 16,
+      "playerNameAsShown": "Aaron Gordon",
+      "yahooSportsProfileId": "5295",
+      "playerMetadataAsShown": "(DEN - PF,C)",
+      "teamNameAsShown": "Under Armour",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 125,
+      "round": 7,
+      "pickInRound": 17,
+      "playerNameAsShown": "Davion Mitchell",
+      "yahooSportsProfileId": "6551",
+      "playerMetadataAsShown": "(MIA - PG)",
+      "teamNameAsShown": "Tiến Delay",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 126,
+      "round": 7,
+      "pickInRound": 18,
+      "playerNameAsShown": "Jakob Poeltl",
+      "yahooSportsProfileId": "5640",
+      "playerMetadataAsShown": "(TOR - C)",
+      "teamNameAsShown": "Clutch City Rockets",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 127,
+      "round": 8,
+      "pickInRound": 1,
+      "playerNameAsShown": "Darius Acuff Jr.",
+      "yahooSportsProfileId": "10582",
+      "playerMetadataAsShown": "(SAC - PG)",
+      "teamNameAsShown": "Clutch City Rockets",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 128,
+      "round": 8,
+      "pickInRound": 2,
+      "playerNameAsShown": "Kyshawn George",
+      "yahooSportsProfileId": "10272",
+      "playerMetadataAsShown": "(WAS - SG,SF,PF)",
+      "teamNameAsShown": "Tiến Delay",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 129,
+      "round": 8,
+      "pickInRound": 3,
+      "playerNameAsShown": "Saddiq Bey",
+      "yahooSportsProfileId": "6411",
+      "playerMetadataAsShown": "(NOP - SF,PF)",
+      "teamNameAsShown": "Under Armour",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 130,
+      "round": 8,
+      "pickInRound": 4,
+      "playerNameAsShown": "Wendell Carter Jr.",
+      "yahooSportsProfileId": "6018",
+      "playerMetadataAsShown": "(ORL - C)",
+      "teamNameAsShown": "Rip City Remix",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 131,
+      "round": 8,
+      "pickInRound": 5,
+      "playerNameAsShown": "Kevin Porter Jr.",
+      "yahooSportsProfileId": "6218",
+      "playerMetadataAsShown": "(MIL - PG,SG)",
+      "teamNameAsShown": "ecstasy",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 132,
+      "round": 8,
+      "pickInRound": 6,
+      "playerNameAsShown": "Fred VanVleet",
+      "yahooSportsProfileId": "5727",
+      "playerMetadataAsShown": "(HOU - PG)",
+      "teamNameAsShown": "MNQA ⛹️‍♂️",
+      "was2026KeeperReservation": true
+    },
+    {
+      "overallPick": 133,
+      "round": 8,
+      "pickInRound": 7,
+      "playerNameAsShown": "Draymond Green",
+      "yahooSportsProfileId": "5069",
+      "playerMetadataAsShown": "(GSW - PF,C)",
+      "teamNameAsShown": "DonTrick DevilTeam",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 134,
+      "round": 8,
+      "pickInRound": 8,
+      "playerNameAsShown": "Tre Jones",
+      "yahooSportsProfileId": "6433",
+      "playerMetadataAsShown": "(CHI - PG,SG)",
+      "teamNameAsShown": "Seattle SuperSonics",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 135,
+      "round": 8,
+      "pickInRound": 9,
+      "playerNameAsShown": "Cameron Johnson",
+      "yahooSportsProfileId": "6173",
+      "playerMetadataAsShown": "(DEN - SF,PF)",
+      "teamNameAsShown": "Cuckoo",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 136,
+      "round": 8,
+      "pickInRound": 10,
+      "playerNameAsShown": "Peyton Watson",
+      "yahooSportsProfileId": "6720",
+      "playerMetadataAsShown": "(CLE - SF,PF)",
+      "teamNameAsShown": "bounce island",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 137,
+      "round": 8,
+      "pickInRound": 11,
+      "playerNameAsShown": "Jeremiah Fears",
+      "yahooSportsProfileId": "10440",
+      "playerMetadataAsShown": "(NOP - PG,SG)",
+      "teamNameAsShown": "Chicken Wings",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 138,
+      "round": 8,
+      "pickInRound": 12,
+      "playerNameAsShown": "Reed Sheppard",
+      "yahooSportsProfileId": "10288",
+      "playerMetadataAsShown": "(HOU - PG,SG)",
+      "teamNameAsShown": "Abcxyz",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 139,
+      "round": 8,
+      "pickInRound": 13,
+      "playerNameAsShown": "DeMar DeRozan",
+      "yahooSportsProfileId": "4614",
+      "playerMetadataAsShown": "(DEN - SF,PF)",
+      "teamNameAsShown": "Run and Gun",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 140,
+      "round": 8,
+      "pickInRound": 14,
+      "playerNameAsShown": "Dillon Brooks",
+      "yahooSportsProfileId": "5858",
+      "playerMetadataAsShown": "(PHX - SF,PF)",
+      "teamNameAsShown": "Dial Square 🔴⚪",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 141,
+      "round": 8,
+      "pickInRound": 15,
+      "playerNameAsShown": "Daniel Gafford",
+      "yahooSportsProfileId": "6226",
+      "playerMetadataAsShown": "(DAL - C)",
+      "teamNameAsShown": "J1nple",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 142,
+      "round": 8,
+      "pickInRound": 16,
+      "playerNameAsShown": "RJ Barrett",
+      "yahooSportsProfileId": "6165",
+      "playerMetadataAsShown": "(TOR - SG,SF,PF)",
+      "teamNameAsShown": "TO KINH",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 143,
+      "round": 8,
+      "pickInRound": 17,
+      "playerNameAsShown": "Isaiah Jackson",
+      "yahooSportsProfileId": "6564",
+      "playerMetadataAsShown": "(LAC - C)",
+      "teamNameAsShown": "Angry Bird",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 144,
+      "round": 8,
+      "pickInRound": 18,
+      "playerNameAsShown": "Gui Santos",
+      "yahooSportsProfileId": "6745",
+      "playerMetadataAsShown": "(GSW - SF,PF)",
+      "teamNameAsShown": "sup fam",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 145,
+      "round": 9,
+      "pickInRound": 1,
+      "playerNameAsShown": "Morez Johnson Jr.",
+      "yahooSportsProfileId": "10572",
+      "playerMetadataAsShown": "(DAL - PF)",
+      "teamNameAsShown": "sup fam",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 146,
+      "round": 9,
+      "pickInRound": 2,
+      "playerNameAsShown": "Cam Spencer",
+      "yahooSportsProfileId": "10327",
+      "playerMetadataAsShown": "(MEM - PG,SG)",
+      "teamNameAsShown": "Angry Bird",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 147,
+      "round": 9,
+      "pickInRound": 3,
+      "playerNameAsShown": "Devin Vassell",
+      "yahooSportsProfileId": "6403",
+      "playerMetadataAsShown": "(SAS - SG,SF)",
+      "teamNameAsShown": "TO KINH",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 148,
+      "round": 9,
+      "pickInRound": 4,
+      "playerNameAsShown": "Ben Simmons",
+      "yahooSportsProfileId": "5600",
+      "playerMetadataAsShown": "(SAC - PG)",
+      "teamNameAsShown": "J1nple",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 149,
+      "round": 9,
+      "pickInRound": 5,
+      "playerNameAsShown": "Christian Braun",
+      "yahooSportsProfileId": "6711",
+      "playerMetadataAsShown": "(DEN - SG,SF,PF)",
+      "teamNameAsShown": "Dial Square 🔴⚪",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 150,
+      "round": 9,
+      "pickInRound": 6,
+      "playerNameAsShown": "Tari Eason",
+      "yahooSportsProfileId": "6707",
+      "playerMetadataAsShown": "(HOU - SG,SF,PF)",
+      "teamNameAsShown": "Run and Gun",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 151,
+      "round": 9,
+      "pickInRound": 7,
+      "playerNameAsShown": "Jrue Holiday",
+      "yahooSportsProfileId": "4622",
+      "playerMetadataAsShown": "(POR - PG,SG)",
+      "teamNameAsShown": "Abcxyz",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 152,
+      "round": 9,
+      "pickInRound": 8,
+      "playerNameAsShown": "Ace Bailey",
+      "yahooSportsProfileId": "10462",
+      "playerMetadataAsShown": "(UTA - SF,PF)",
+      "teamNameAsShown": "Chicken Wings",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 153,
+      "round": 9,
+      "pickInRound": 9,
+      "playerNameAsShown": "Dylan Harper",
+      "yahooSportsProfileId": "10467",
+      "playerMetadataAsShown": "(SAS - PG,SG)",
+      "teamNameAsShown": "bounce island",
+      "was2026KeeperReservation": true
+    },
+    {
+      "overallPick": 154,
+      "round": 9,
+      "pickInRound": 10,
+      "playerNameAsShown": "Jalen Smith",
+      "yahooSportsProfileId": "6402",
+      "playerMetadataAsShown": "(CHI - PF,C)",
+      "teamNameAsShown": "Cuckoo",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 155,
+      "round": 9,
+      "pickInRound": 11,
+      "playerNameAsShown": "Jimmy Butler III",
+      "yahooSportsProfileId": "4912",
+      "playerMetadataAsShown": "(GSW - SF,PF)",
+      "teamNameAsShown": "Seattle SuperSonics",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 156,
+      "round": 9,
+      "pickInRound": 12,
+      "playerNameAsShown": "Mitchell Robinson",
+      "yahooSportsProfileId": "6047",
+      "playerMetadataAsShown": "(BOS - C)",
+      "teamNameAsShown": "DonTrick DevilTeam",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 157,
+      "round": 9,
+      "pickInRound": 13,
+      "playerNameAsShown": "Jonathan Kuminga",
+      "yahooSportsProfileId": "6549",
+      "playerMetadataAsShown": "(MIN - SF,PF)",
+      "teamNameAsShown": "MNQA ⛹️‍♂️",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 158,
+      "round": 9,
+      "pickInRound": 14,
+      "playerNameAsShown": "Collin Sexton",
+      "yahooSportsProfileId": "6019",
+      "playerMetadataAsShown": "(LAL - PG,SG)",
+      "teamNameAsShown": "ecstasy",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 159,
+      "round": 9,
+      "pickInRound": 15,
+      "playerNameAsShown": "Mikel Brown Jr.",
+      "yahooSportsProfileId": "10588",
+      "playerMetadataAsShown": "(BKN - PG)",
+      "teamNameAsShown": "Rip City Remix",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 160,
+      "round": 9,
+      "pickInRound": 16,
+      "playerNameAsShown": "Tobias Harris",
+      "yahooSportsProfileId": "4901",
+      "playerMetadataAsShown": "(SAS - PF)",
+      "teamNameAsShown": "Under Armour",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 161,
+      "round": 9,
+      "pickInRound": 17,
+      "playerNameAsShown": "Nikola Vučević",
+      "yahooSportsProfileId": "4897",
+      "playerMetadataAsShown": "(ORL - C)",
+      "teamNameAsShown": "Tiến Delay",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 162,
+      "round": 9,
+      "pickInRound": 18,
+      "playerNameAsShown": "Egor Dëmin",
+      "yahooSportsProfileId": "10445",
+      "playerMetadataAsShown": "(BKN - PG,SG)",
+      "teamNameAsShown": "Clutch City Rockets",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 163,
+      "round": 10,
+      "pickInRound": 1,
+      "playerNameAsShown": "Grayson Allen",
+      "yahooSportsProfileId": "6032",
+      "playerMetadataAsShown": "(CHA - SG,SF)",
+      "teamNameAsShown": "Clutch City Rockets",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 164,
+      "round": 10,
+      "pickInRound": 2,
+      "playerNameAsShown": "Anthony Black",
+      "yahooSportsProfileId": "10095",
+      "playerMetadataAsShown": "(ORL - PG,SG,SF)",
+      "teamNameAsShown": "Tiến Delay",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 165,
+      "round": 10,
+      "pickInRound": 3,
+      "playerNameAsShown": "Robert Williams III",
+      "yahooSportsProfileId": "6038",
+      "playerMetadataAsShown": "(POR - C)",
+      "teamNameAsShown": "Under Armour",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 166,
+      "round": 10,
+      "pickInRound": 4,
+      "playerNameAsShown": "Jake LaRavia",
+      "yahooSportsProfileId": "6709",
+      "playerMetadataAsShown": "(LAL - SF,PF)",
+      "teamNameAsShown": "Rip City Remix",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 167,
+      "round": 10,
+      "pickInRound": 5,
+      "playerNameAsShown": "Keaton Wagler",
+      "yahooSportsProfileId": "10585",
+      "playerMetadataAsShown": "(LAC - SG)",
+      "teamNameAsShown": "ecstasy",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 168,
+      "round": 10,
+      "pickInRound": 6,
+      "playerNameAsShown": "Collin Gillespie",
+      "yahooSportsProfileId": "6751",
+      "playerMetadataAsShown": "(PHX - PG,SG)",
+      "teamNameAsShown": "MNQA ⛹️‍♂️",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 169,
+      "round": 10,
+      "pickInRound": 7,
+      "playerNameAsShown": "Yves Missi",
+      "yahooSportsProfileId": "10289",
+      "playerMetadataAsShown": "(NOP - C)",
+      "teamNameAsShown": "DonTrick DevilTeam",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 170,
+      "round": 10,
+      "pickInRound": 8,
+      "playerNameAsShown": "Brayden Burries",
+      "yahooSportsProfileId": "10576",
+      "playerMetadataAsShown": "(MIL - SG)",
+      "teamNameAsShown": "Seattle SuperSonics",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 171,
+      "round": 10,
+      "pickInRound": 9,
+      "playerNameAsShown": "Mark Williams",
+      "yahooSportsProfileId": "6705",
+      "playerMetadataAsShown": "(PHX - C)",
+      "teamNameAsShown": "Cuckoo",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 172,
+      "round": 10,
+      "pickInRound": 10,
+      "playerNameAsShown": "Herbert Jones",
+      "yahooSportsProfileId": "6577",
+      "playerMetadataAsShown": "(NOP - SG,SF)",
+      "teamNameAsShown": "bounce island",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 173,
+      "round": 10,
+      "pickInRound": 11,
+      "playerNameAsShown": "Leonard Miller",
+      "yahooSportsProfileId": "10050",
+      "playerMetadataAsShown": "(CHI - SF,PF)",
+      "teamNameAsShown": "Chicken Wings",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 174,
+      "round": 10,
+      "pickInRound": 12,
+      "playerNameAsShown": "De'Anthony Melton",
+      "yahooSportsProfileId": "6057",
+      "playerMetadataAsShown": "(GSW - PG,SG)",
+      "teamNameAsShown": "Abcxyz",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 175,
+      "round": 10,
+      "pickInRound": 13,
+      "playerNameAsShown": "Bobby Portis Jr.",
+      "yahooSportsProfileId": "5482",
+      "playerMetadataAsShown": "(MIA - PF,C)",
+      "teamNameAsShown": "Run and Gun",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 176,
+      "round": 10,
+      "pickInRound": 14,
+      "playerNameAsShown": "P.J. Washington",
+      "yahooSportsProfileId": "6174",
+      "playerMetadataAsShown": "(DAL - PF,C)",
+      "teamNameAsShown": "Dial Square 🔴⚪",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 177,
+      "round": 10,
+      "pickInRound": 15,
+      "playerNameAsShown": "Kris Dunn",
+      "yahooSportsProfileId": "5636",
+      "playerMetadataAsShown": "(LAC - PG,SG)",
+      "teamNameAsShown": "J1nple",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 178,
+      "round": 10,
+      "pickInRound": 16,
+      "playerNameAsShown": "Julian Champagnie",
+      "yahooSportsProfileId": "6754",
+      "playerMetadataAsShown": "(SAS - SF,PF)",
+      "teamNameAsShown": "TO KINH",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 179,
+      "round": 10,
+      "pickInRound": 17,
+      "playerNameAsShown": "Jerami Grant",
+      "yahooSportsProfileId": "5350",
+      "playerMetadataAsShown": "(MEM - SF,PF)",
+      "teamNameAsShown": "Angry Bird",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 180,
+      "round": 10,
+      "pickInRound": 18,
+      "playerNameAsShown": "Paul Reed",
+      "yahooSportsProfileId": "6450",
+      "playerMetadataAsShown": "(DET - PF,C)",
+      "teamNameAsShown": "sup fam",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 181,
+      "round": 11,
+      "pickInRound": 1,
+      "playerNameAsShown": "Kingston Flemings",
+      "yahooSportsProfileId": "10574",
+      "playerMetadataAsShown": "(ATL - PG)",
+      "teamNameAsShown": "sup fam",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 182,
+      "round": 11,
+      "pickInRound": 2,
+      "playerNameAsShown": "Zaccharie Risacher",
+      "yahooSportsProfileId": "10296",
+      "playerMetadataAsShown": "(DAL - SF,PF)",
+      "teamNameAsShown": "Angry Bird",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 183,
+      "round": 11,
+      "pickInRound": 3,
+      "playerNameAsShown": "Jared McCain",
+      "yahooSportsProfileId": "10276",
+      "playerMetadataAsShown": "(OKC - PG,SG)",
+      "teamNameAsShown": "TO KINH",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 184,
+      "round": 11,
+      "pickInRound": 4,
+      "playerNameAsShown": "Jaylon Tyson",
+      "yahooSportsProfileId": "10279",
+      "playerMetadataAsShown": "(CLE - SG,SF,PF)",
+      "teamNameAsShown": "J1nple",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 185,
+      "round": 11,
+      "pickInRound": 5,
+      "playerNameAsShown": "Aday Mara",
+      "yahooSportsProfileId": "10579",
+      "playerMetadataAsShown": "(OKC - C)",
+      "teamNameAsShown": "Dial Square 🔴⚪",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 186,
+      "round": 11,
+      "pickInRound": 6,
+      "playerNameAsShown": "Alex Caruso",
+      "yahooSportsProfileId": "5754",
+      "playerMetadataAsShown": "(OKC - SG,SF)",
+      "teamNameAsShown": "Run and Gun",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 187,
+      "round": 11,
+      "pickInRound": 7,
+      "playerNameAsShown": "Sam Hauser",
+      "yahooSportsProfileId": "6619",
+      "playerMetadataAsShown": "(BOS - SF,PF)",
+      "teamNameAsShown": "Abcxyz",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 188,
+      "round": 11,
+      "pickInRound": 8,
+      "playerNameAsShown": "Aaron Nesmith",
+      "yahooSportsProfileId": "6406",
+      "playerMetadataAsShown": "(IND - SG,SF)",
+      "teamNameAsShown": "Chicken Wings",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 189,
+      "round": 11,
+      "pickInRound": 9,
+      "playerNameAsShown": "Isaiah Collier",
+      "yahooSportsProfileId": "10282",
+      "playerMetadataAsShown": "(UTA - PG,SG)",
+      "teamNameAsShown": "bounce island",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 190,
+      "round": 11,
+      "pickInRound": 10,
+      "playerNameAsShown": "Maxime Raynaud",
+      "yahooSportsProfileId": "10496",
+      "playerMetadataAsShown": "(SAC - C)",
+      "teamNameAsShown": "Cuckoo",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 191,
+      "round": 11,
+      "pickInRound": 11,
+      "playerNameAsShown": "Deandre Ayton",
+      "yahooSportsProfileId": "5958",
+      "playerMetadataAsShown": "(WAS - C)",
+      "teamNameAsShown": "Seattle SuperSonics",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 192,
+      "round": 11,
+      "pickInRound": 12,
+      "playerNameAsShown": "Moussa Diabaté",
+      "yahooSportsProfileId": "6733",
+      "playerMetadataAsShown": "(CHA - C)",
+      "teamNameAsShown": "DonTrick DevilTeam",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 193,
+      "round": 11,
+      "pickInRound": 13,
+      "playerNameAsShown": "Kelly Oubre Jr.",
+      "yahooSportsProfileId": "5475",
+      "playerMetadataAsShown": "(IND - SF,PF)",
+      "teamNameAsShown": "MNQA ⛹️‍♂️",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 194,
+      "round": 11,
+      "pickInRound": 14,
+      "playerNameAsShown": "Tim Hardaway Jr.",
+      "yahooSportsProfileId": "5194",
+      "playerMetadataAsShown": "(MIA - SG,SF)",
+      "teamNameAsShown": "ecstasy",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 195,
+      "round": 11,
+      "pickInRound": 15,
+      "playerNameAsShown": "Precious Achiuwa",
+      "yahooSportsProfileId": "6412",
+      "playerMetadataAsShown": "(SAC - PF,C)",
+      "teamNameAsShown": "Rip City Remix",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 196,
+      "round": 11,
+      "pickInRound": 16,
+      "playerNameAsShown": "Hugo González",
+      "yahooSportsProfileId": "10459",
+      "playerMetadataAsShown": "(BOS - SG,SF)",
+      "teamNameAsShown": "Under Armour",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 197,
+      "round": 11,
+      "pickInRound": 17,
+      "playerNameAsShown": "Pelle Larsson",
+      "yahooSportsProfileId": "10312",
+      "playerMetadataAsShown": "(MIA - SG,SF)",
+      "teamNameAsShown": "Tiến Delay",
+      "was2026KeeperReservation": false
+    },
+    {
+      "overallPick": 198,
+      "round": 11,
+      "pickInRound": 18,
+      "playerNameAsShown": "Jusuf Nurkić",
+      "yahooSportsProfileId": "5327",
+      "playerMetadataAsShown": "(UTA - C)",
+      "teamNameAsShown": "Clutch City Rockets",
+      "was2026KeeperReservation": false
+    }
+  ]
+}
